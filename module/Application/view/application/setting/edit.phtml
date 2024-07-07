@@ -1,0 +1,128 @@
+<div class="content" style="margin-top: 80px;">
+    <div class="page-header">
+        <div class="page-title">
+            <h4>Edit Company</h4>
+            <h6>Company info</h6>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form id="formAddProduct" method="post" enctype="multipart/form-data">
+
+                <div class="row">
+                    <?php  foreach ($this->companyinfo as $setting){
+                ?>
+
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" value="<?=  $setting['companyName']?>" name="CompanyName"
+                                id="CompanyName">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Logo</label>
+                            <input type="file" name="Logo" id="Logo" value="<?=   $setting['logo'] ?>">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Language</label>
+                            <input type="text" name="Language" id="Language" value="<?=  $setting['language']   ?>">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>SKU Format</label>
+                            <input name="SkuFormat" id="SkuFormat" class="form-control"
+                                value="<?=  $setting['skuFormat']   ?>">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Color</label>
+                            <input type="text" name="Color" id="Color" value="<?= $setting['color']?>">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Dark Mode</label>
+                            <input type="text" name="DarkMode" id="DarkMode" value="<?=  $setting['darkMode']   ?>">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Currency</label>
+                            <input name="Currency" id="Currency" class="form-control"
+                                value="<?=  $setting['currency']   ?>">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Country</label>
+                            <input name="Country" id="Country" class="form-control"
+                                value="<?=  $setting['country']   ?>">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Company City</label>
+                            <input name="CompanyCity" id="CompanyCity" class="form-control"
+                                value="<?=  $setting['companyCity']   ?>">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Company Address</label>
+                            <input name="CompanyAddress" id="CompanyAddress" class="form-control"
+                                value="<?=  $setting['companyAddresse']   ?>">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Company Phone</label>
+                            <input type="text" name="CompanyPhone" id="CompanyPhone"
+                                value="<?=  $setting['companyPhone']   ?>">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Company Email</label>
+                            <input class="form-control" type="email" name="CompanyEmail" id="CompanyEmail"
+                                value="<?=  $setting['companyEmail']   ?>">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Company Status</label>
+                            <input type="text" name="CompanyStatus" id="CompanyStatus"
+                                value="<?=  $setting['companyStatus']   ?>">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Created By :</label>
+                            <input disabled type="text" name="creator" id="creator"
+                                value="<?=  $setting['fullname']   ?>">
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <button type="submit" class="btn btn-submit me-2">Submit</button>
+                        <a href="productlist.html" class="btn btn-cancel">Cancel</a>
+                    </div>
+                </div>
+                <?php }?>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<?= $this->inlineScript()
+               
+                ->appendFile($this->basePath('js/setting/scriptsetting.js'));              
+?>

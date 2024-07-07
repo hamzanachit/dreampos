@@ -1,0 +1,87 @@
+<?php
+// Set the title of the page
+$this->headTitle('Home');
+
+// Set the base path for assets
+$basePath = $this->basePath();
+?>
+
+<?= $this->headLink([
+    'rel' => 'shortcut icon',
+    'type' => 'image/vnd.microsoft.icon',
+    'href' => $basePath . '/img/favicon.ico'
+])->prependStylesheet($basePath . '/css/landingpage.css') ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $this->headTitle() ?></title>
+    <?= $this->headLink() ?>
+</head>
+
+<body>
+
+
+    <section id="overview" class="overview">
+        <div class="container">
+            <h2>Overview</h2>
+            <p>Briefly explain what your ERP system does and why it’s essential for businesses. Highlight the primary
+                advantages such as streamlined operations, enhanced productivity, and real-time insights.</p>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Key Features</h2>
+            <div class="feature">
+                <h3>Inventory Management</h3>
+                <p>Manage stock levels efficiently with real-time updates.</p>
+            </div>
+            <div class="feature">
+                <h3>HR Solutions</h3>
+                <p>Simplify payroll, employee management, and performance tracking.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <p>Visual or step-by-step description of how users can integrate and utilize your ERP system. Screenshots or
+                videos demonstrating the user interface and key functionalities.</p>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>Customer Testimonials</h2>
+            <div class="testimonial">
+                <blockquote>
+                    "Highlight success stories and outcomes from businesses that have implemented your ERP system."
+                </blockquote>
+                <cite>Client Name, Company Name</cite>
+            </div>
+            <!-- Repeat testimonials as needed -->
+        </div>
+    </section>
+
+    <section id="call-to-action" class="call-to-action">
+        <div class="container">
+            <h2>Start Your Free Trial</h2>
+            <p>Encourage visitors to sign up for a demo or free trial to experience the ERP system firsthand.</p>
+            <a href="#" class="button">Start Your Free Trial</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Contact Information: Company address, phone number, and email for further inquiries.</p>
+            <p>Social Proof: Links to social media profiles or relevant industry affiliations.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

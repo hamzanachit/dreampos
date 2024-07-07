@@ -1,0 +1,103 @@
+<!-- <div class="page-wrapper" > -->
+<div class="content" style="margin-top:80px;">
+    <div class="page-header">
+        <div class="page-title">
+            <h4>Product Details</h4>
+            <h6>Full details of a product</h6>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="bar-code-view d-flex justify-content-between align-items-center">
+                        <img src="<?= $this->basePath('img/barcode1.png') ?>" alt="barcode" class="img-fluid">
+                        <a class="printimg">
+                            <img src="<?= $this->basePath('img/icons/printer.svg') ?>" alt="print">
+                        </a>
+                    </div>
+                    <div class="productdetails mt-4">
+                        <ul class="product-bar list-unstyled">
+                            <li class="mb-2">
+                                <h4>Product</h4>
+                                <h6><?= $product->getName(); ?></h6>
+                            </li>
+                            <li class="mb-2">
+                                <h4>Category</h4>
+                                <h6><?= $product->getCategory(); ?></h6>
+                            </li>
+                            <li class="mb-2">
+                                <h4>Sub Category</h4>
+                                <h6><?= $product->getSubCategory(); ?></h6>
+                            </li>
+                            <li class="mb-2">
+                                <h4>Brand</h4>
+                                <h6><?= $product->getBrand(); ?></h6>
+                            </li>
+                            <li class="mb-2">
+                                <h4>Unit</h4>
+                                <h6><?= $product->getUnit(); ?></h6>
+                            </li>
+                            <li class="mb-2">
+                                <h4>SKU</h4>
+                                <h6><?= $product->getSku(); ?></h6>
+                            </li>
+                            <li class="mb-2">
+                                <h4>Minimum Qty<?= $product->getMinQty(); ?></h4>
+                                <h6></h6>
+                            </li>
+                            <li class="mb-2">
+                                <h4>Quantity</h4>
+                                <h6><?= $product->getQuantity(); ?></h6>
+                            </li>
+                            <li class="mb-2">
+                                <h4>Tax</h4>
+                                <h6><?= $product->getTax(); ?></h6>
+                            </li>
+                            <li class="mb-2">
+                                <h4>Discount Type</h4>
+                                <h6><?= $product->getDiscountType(); ?></h6>
+                            </li>
+                            <li class="mb-2">
+                                <h4>Price</h4>
+                                <h6><?= $product->getPrice(); ?></h6>
+                            </li>
+                            <li class="mb-2">
+                                <h4>Status</h4>
+                                <h6><?= $product->getStatus(); ?></h6>
+                            </li>
+                            <li class="mb-2">
+                                <h4>Description</h4>
+                                <h6><?= $product->getDescription(); ?></h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="slider-product-details">
+                        <div class="owl-carousel owl-theme product-slide">
+                            <div class="slider-product">
+                                <img src="<?= $this->basePath('img/product/' . $product->getImage()) ?>" alt="img">
+                                <h4><?=   $product->getImage(); ?></h4>
+                                <!-- <h6>581kb</h6> -->
+                            </div>
+                            <!-- <div class="slider-product"> -->
+                            <!-- <img src="assets/img/product/product69.jpg" alt="img">
+                                <h4>macbookpro.jpg</h4>
+                                <h6>581kb</h6> -->
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
