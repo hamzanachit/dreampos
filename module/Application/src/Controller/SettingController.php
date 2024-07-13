@@ -45,7 +45,7 @@ class SettingController extends AbstractActionController{
                 $tempPath = $files['Logo']['tmp_name'];
                 $uploadFile = $uploadPath . DIRECTORY_SEPARATOR . $Logo;
                 if (move_uploaded_file($tempPath, $uploadFile)) {
-                } else { 
+                    } else { 
                     echo 'Failed to upload logo file.';
                     return $this->redirect()->toRoute('settings', ['action' => 'add']);
                 }
@@ -62,10 +62,7 @@ class SettingController extends AbstractActionController{
 
                 
             }
- 
-            
-
-            return $this->redirect()->toRoute('settingActions', ['action' => 'edit']);
+                 return $this->redirect()->toRoute('settingActions', ['action' => 'edit']);
         }
  
           return new ViewModel([

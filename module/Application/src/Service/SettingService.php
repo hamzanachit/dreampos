@@ -136,7 +136,7 @@
             try {
                 $query = $this->entityManager->createQueryBuilder()
                         ->from('Application\Entity\Category','c') 
-                        ->select('c as category,c.categoryName,c.createdBy,c.description,c.categoryCode,c.id ');
+                        ->select('c as category,c.categoryName,c.createdBy,c.description,c.categoryCode,c.id,c.logo ');
                         // ->Where("s.creator = ".$userid)
                         // ->AndWhere("s.id = ".$idcompany);
                 $data = $query->getQuery()->getResult();
@@ -151,10 +151,10 @@
         
     
      
-    public function addCategory($categoryName, $description, $categoryCode, $Logo,$userid){
+    public function addCategory($categoryName, $description, $categoryCode,$Logo,$userid){
             $Category = new Category();
             $Category->setCategoryName($categoryName);
-            // $setting->setLogo($Logo);
+            $Category->setLogo($Logo);
             $Category->setDescription($description);
             $Category->setCategoryCode($categoryCode);
             $Category->setCreatedBy($userid);
@@ -162,5 +162,69 @@
             $this->entityManager->flush();
             return $Category;
         }
+
+
+ 
+
+      public function editCategory($categoryName, $description, $categoryCode, $Logo, $userid,$categoryId){
+        try {
+        // dd($categoryName, $description, $categoryCode, $Logo, $userid,$categoryId);
+            $category = $this->entityManager->getRepository('Application\Entity\Category')->find($categoryId);
+            if (!$category) {
+                echo "Category not found";
+            }
+      
+            if(!empty($Logo)){
+                  $category->setLogo($Logo);
+            }
+            $category->setCategoryName($categoryName);
+            $category->setDescription($description);
+            $category->setCategoryCode($categoryCode);
+            $category->setCreatedBy($userid);
+            $this->entityManager->persist($category);
+            $this->entityManager->flush();
+
+            return $category;
+        } catch (\Throwable $th) {
+
+            throw $th;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // delete  category
+  public function deleteCategory($idcategory){
+        // try {
+            $category = $this->entityManager->getRepository(Category::class)->find($idcategory);
+            
+            // if (!$category) {
+            //     throw new \Exception("category with ID $idcategory not found");
+            // }
+
+            $this->entityManager->remove($category);
+            $this->entityManager->flush();
+
+            return true;
+        // } catch (\Exception $e) { 
+        //     return false;
+        // }
+    }
+
+
+
 
 }

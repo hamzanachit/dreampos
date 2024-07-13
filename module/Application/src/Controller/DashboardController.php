@@ -21,14 +21,15 @@ class DashboardController extends AbstractActionController
     }
 
     public function indexAction(){
-
     $mail = "";
     $auth = $this->plugin('auth');
-        if ($auth->hasIdentity()){
+    if ($auth->hasIdentity()){
             
             $mail = $auth->getIdentity();
             $user = $auth->getUser();
             $userid =$user['id'];
+
+            // dd(  $userid );
             $checkcompany = $this->dashboardService->getCheckCompanyById($userid);
         if ($checkcompany === null) {
                 echo '<script>alert("Company check returned null.");</script>';

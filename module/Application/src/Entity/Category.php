@@ -49,6 +49,12 @@ class Category
      */
     private $createdBy;
 
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="logo", type="string", length=20, nullable=true)
+     */
+    private $logo;
 
 
     /**
@@ -167,6 +173,32 @@ class Category
     public function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+
+
+      /**
+     * Get the value of logo
+     *
+     * @return  string
+     */ 
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+    /**
+     * Set the value of logo
+     *
+     * @param  string  $logo
+     *
+     * @return  self
+     */ 
+    public function setLogo(string $logo)
+    {
+        $this->logo = $logo;
 
         return $this;
     }

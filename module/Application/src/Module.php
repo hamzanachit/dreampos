@@ -1,4 +1,6 @@
 <?php
+// src/Application/Module.php
+
 namespace Application;
 
 use Laminas\ModuleManager\Feature\ConfigProviderInterface;

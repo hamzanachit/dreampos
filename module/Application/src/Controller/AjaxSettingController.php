@@ -20,32 +20,37 @@ class AjaxSettingController extends AbstractActionController
          
     }
 
-    public function addAction(){
-        $request = $this->getRequest();
+    public function addAction()
+{
+    $request = $this->getRequest();
 
-        if ($request->isPost()) {
-            // Decode JSON data from request
+    if ($request->isPost()) {
         $postdata = json_decode($request->getContent(), true);
-        $files = $request->getFiles();
-        $Logo = '';
+        
+        // Extract form data
         $categoryName = htmlspecialchars($postdata['name'] ?? '');
         $description = htmlspecialchars($postdata['description'] ?? '');
         $categoryCode = htmlspecialchars($postdata['code'] ?? '');
-
-        // Handle logo upload
+        
+        // Handle uploaded image
+        $Logo = '';
         $uploadPath = 'public/img/category/';
-        if (!is_dir($uploadPath)) {
-            mkdir($uploadPath, 0777, true);
-        }
 
-        if (!empty($files['Logo']['name'])) {
-            $Logo = basename($files['Logo']['name']);
-            $tempPath = $files['Logo']['tmp_name'];
+        // Check if the 'image' field exists and is not empty
+        if (isset($postdata['image']) && !empty($postdata['image'])) {
+            $imageData = base64_decode($postdata['image']);
+            $Logo = uniqid() . '.png'; // Generate a unique filename
             $uploadFile = $uploadPath . DIRECTORY_SEPARATOR . $Logo;
-            move_uploaded_file($tempPath, $uploadFile);
+            
+            // Save the decoded image data to the file
+            file_put_contents($uploadFile, $imageData);
         }
 
-        $userid = 2; 
+        // Optionally, retrieve user ID for logging purposes
+        $auth = $this->plugin('auth');
+        $user = $auth->getUser();
+        $userid = $user['id'];
+
         // Save category data
         $resultAdd = $this->settingService->addCategory($categoryName, $description, $categoryCode, $Logo, $userid);
 
@@ -61,7 +66,71 @@ class AjaxSettingController extends AbstractActionController
             ]);
         }
     }
- 
+}
+
+
+
+    // edit category 
+     public function editcategoryAction(){
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $postdata = json_decode($request->getContent(), true);
+            $categoryName = htmlspecialchars($postdata['name'] ?? '');
+            $description = htmlspecialchars($postdata['description'] ?? '');
+            $categoryCode = htmlspecialchars($postdata['code'] ?? '');
+            $categoryId = htmlspecialchars($postdata['idcategory'] ?? '');
+            // dd($idcategory);
+            $Logo = '';
+            $uploadPath = 'public/img/category/';
+             if (isset($postdata['image']) && !empty($postdata['image'])) {
+                $imageData = base64_decode($postdata['image']);
+                $Logo = uniqid() . '.png';
+                $uploadFile = $uploadPath . DIRECTORY_SEPARATOR . $Logo;
+                
+             file_put_contents($uploadFile, $imageData);
+        }
+            // dd($postdata['image']);
+
+        // Optionally, retrieve user ID for logging purposes
+        $auth = $this->plugin('auth');
+        $user = $auth->getUser();
+        $userid = $user['id'];
+        $resultAdd = $this->settingService->editCategory($categoryName, $description, $categoryCode, $Logo, $userid,$categoryId);
+
+        if ($resultAdd) {
+            return new JsonModel([
+                'success' => true,
+                'message' => 'Category edited successfully'
+            ]);
+        } else {
+            return new JsonModel([
+                'success' => false,
+                'message' => 'Failed to edited category'
+            ]);
+        }
+    }
+}
+
+
+
+
+     function deletecategoryAction(){
+        $request = $this->getRequest();
+            if ($request->isPost()) {
+            $idcategory = json_decode($request->getContent(), true);
+            $resultDelete = $this->settingService->deleteCategory($idcategory);
+        if ($resultDelete) {
+            return new JsonModel([
+                'success' => true,
+                'message' => 'Category deleted successfully'
+            ]);
+        } else {
+            return new JsonModel([
+                'success' => false,
+            'message' => 'Failed to delete category'
+        ]);
+    }
+}
 }
 
     }

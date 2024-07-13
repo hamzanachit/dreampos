@@ -52,6 +52,19 @@ abstract class AbstractActionController extends AbstractController
      */
     public function onDispatch(MvcEvent $e)
     {
+
+
+        $authService = $this->plugin('auth'); // Ensure this plugin is correctly configured
+        
+      if (!$authService->hasIdentity()) {
+            // Redirect to login only if not already on login or registration page
+            $routeMatch = $e->getRouteMatch();
+            $currentRoute = $routeMatch->getMatchedRouteName();
+
+            if ($currentRoute !== 'login' && $currentRoute !== 'register') {
+                return $this->redirect()->toRoute('login');
+            }
+        }
         $routeMatch = $e->getRouteMatch();
         if (! $routeMatch) {
             /**

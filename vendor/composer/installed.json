@@ -54,17 +54,17 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "1.14.3",
-            "version_normalized": "1.14.3.0",
+            "version": "1.14.x-dev",
+            "version_normalized": "1.14.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "fb0d71a7393298a7b232cbf4c8b1f73f3ec3d5af"
+                "reference": "50f9235edd3a3b0fc509d458eaf469f2f5cad932"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/fb0d71a7393298a7b232cbf4c8b1f73f3ec3d5af",
-                "reference": "fb0d71a7393298a7b232cbf4c8b1f73f3ec3d5af",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/50f9235edd3a3b0fc509d458eaf469f2f5cad932",
+                "reference": "50f9235edd3a3b0fc509d458eaf469f2f5cad932",
                 "shasum": ""
             },
             "require": {
@@ -75,16 +75,16 @@
             },
             "require-dev": {
                 "doctrine/cache": "^1.11 || ^2.0",
-                "doctrine/coding-standard": "^9 || ^10",
-                "phpstan/phpstan": "~1.4.10 || ^1.8.0",
+                "doctrine/coding-standard": "^9 || ^12",
+                "phpstan/phpstan": "~1.4.10 || ^1.10.28",
                 "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
                 "symfony/cache": "^4.4 || ^5.4 || ^6",
-                "vimeo/psalm": "^4.10"
+                "vimeo/psalm": "^4.30 || ^5.14"
             },
             "suggest": {
                 "php": "PHP 8.0 or higher comes with attributes, a native replacement for annotations"
             },
-            "time": "2023-02-01T09:20:38+00:00",
+            "time": "2023-08-14T13:42:08+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -127,14 +127,14 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/annotations/issues",
-                "source": "https://github.com/doctrine/annotations/tree/1.14.3"
+                "source": "https://github.com/doctrine/annotations/tree/1.14.x"
             },
             "install-path": "../doctrine/annotations"
         },
         {
             "name": "doctrine/cache",
-            "version": "1.13.0",
-            "version_normalized": "1.13.0.0",
+            "version": "1.13.x-dev",
+            "version_normalized": "1.13.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
@@ -215,7 +215,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/cache/issues",
-                "source": "https://github.com/doctrine/cache/tree/1.13.0"
+                "source": "https://github.com/doctrine/cache/tree/1.13.x"
             },
             "funding": [
                 {
@@ -235,17 +235,17 @@
         },
         {
             "name": "doctrine/collections",
-            "version": "1.8.0",
-            "version_normalized": "1.8.0.0",
+            "version": "1.8.x-dev",
+            "version_normalized": "1.8.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/collections.git",
-                "reference": "2b44dd4cbca8b5744327de78bafef5945c7e7b5e"
+                "reference": "ca783dc3ff8afe806a16f118b9e4d42cb71b28aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/collections/zipball/2b44dd4cbca8b5744327de78bafef5945c7e7b5e",
-                "reference": "2b44dd4cbca8b5744327de78bafef5945c7e7b5e",
+                "url": "https://api.github.com/repos/doctrine/collections/zipball/ca783dc3ff8afe806a16f118b9e4d42cb71b28aa",
+                "reference": "ca783dc3ff8afe806a16f118b9e4d42cb71b28aa",
                 "shasum": ""
             },
             "require": {
@@ -258,7 +258,7 @@
                 "phpunit/phpunit": "^7.5 || ^8.5 || ^9.1.5",
                 "vimeo/psalm": "^4.22"
             },
-            "time": "2022-09-01T20:12:10+00:00",
+            "time": "2022-09-29T14:08:59+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -302,23 +302,37 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/collections/issues",
-                "source": "https://github.com/doctrine/collections/tree/1.8.0"
+                "source": "https://github.com/doctrine/collections/tree/1.8.x"
             },
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fcollections",
+                    "type": "tidelift"
+                }
+            ],
             "install-path": "../doctrine/collections"
         },
         {
             "name": "doctrine/common",
-            "version": "3.4.4",
-            "version_normalized": "3.4.4.0",
+            "version": "3.5.x-dev",
+            "version_normalized": "3.5.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common.git",
-                "reference": "0aad4b7ab7ce8c6602dfbb1e1a24581275fb9d1a"
+                "reference": "6b266d694a1be846979da0755ce9c6941c835187"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/0aad4b7ab7ce8c6602dfbb1e1a24581275fb9d1a",
-                "reference": "0aad4b7ab7ce8c6602dfbb1e1a24581275fb9d1a",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/6b266d694a1be846979da0755ce9c6941c835187",
+                "reference": "6b266d694a1be846979da0755ce9c6941c835187",
                 "shasum": ""
             },
             "require": {
@@ -335,7 +349,7 @@
                 "symfony/phpunit-bridge": "^6.1",
                 "vimeo/psalm": "^4.4"
             },
-            "time": "2024-04-16T13:35:33+00:00",
+            "time": "2024-04-16T13:37:41+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -382,7 +396,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/common/issues",
-                "source": "https://github.com/doctrine/common/tree/3.4.4"
+                "source": "https://github.com/doctrine/common/tree/3.5.x"
             },
             "funding": [
                 {
@@ -514,8 +528,8 @@
         },
         {
             "name": "doctrine/deprecations",
-            "version": "1.1.3",
-            "version_normalized": "1.1.3.0",
+            "version": "1.1.x-dev",
+            "version_normalized": "1.1.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/deprecations.git",
@@ -543,6 +557,7 @@
                 "psr/log": "Allows logging deprecations via PSR-3 logger implementation"
             },
             "time": "2024-01-30T19:34:25+00:00",
+            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -564,8 +579,8 @@
         },
         {
             "name": "doctrine/doctrine-laminas-hydrator",
-            "version": "3.2.1",
-            "version_normalized": "3.2.1.0",
+            "version": "3.2.x-dev",
+            "version_normalized": "3.2.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine-laminas-hydrator.git",
@@ -633,8 +648,8 @@
         },
         {
             "name": "doctrine/doctrine-module",
-            "version": "5.3.0",
-            "version_normalized": "5.3.0.0",
+            "version": "5.3.x-dev",
+            "version_normalized": "5.3.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineModule.git",
@@ -770,17 +785,17 @@
         },
         {
             "name": "doctrine/doctrine-orm-module",
-            "version": "5.3.0",
-            "version_normalized": "5.3.0.0",
+            "version": "5.3.x-dev",
+            "version_normalized": "5.3.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineORMModule.git",
-                "reference": "79715e6ed9939595789b62eb21ed15592493ee3c"
+                "reference": "82ff71c6e45964a39d308491b237cdfa12d6e0e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineORMModule/zipball/79715e6ed9939595789b62eb21ed15592493ee3c",
-                "reference": "79715e6ed9939595789b62eb21ed15592493ee3c",
+                "url": "https://api.github.com/repos/doctrine/DoctrineORMModule/zipball/82ff71c6e45964a39d308491b237cdfa12d6e0e3",
+                "reference": "82ff71c6e45964a39d308491b237cdfa12d6e0e3",
                 "shasum": ""
             },
             "require": {
@@ -825,7 +840,7 @@
                 "laminas/laminas-developer-tools": "laminas-developer-tools if you want to profile operations executed by the ORM during development",
                 "laminas/laminas-form": "if you want to use form elements backed by Doctrine"
             },
-            "time": "2022-12-23T10:42:13+00:00",
+            "time": "2023-06-07T19:17:50+00:00",
             "type": "library",
             "extra": {
                 "laminas": {
@@ -878,7 +893,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/DoctrineORMModule/issues",
-                "source": "https://github.com/doctrine/DoctrineORMModule/tree/5.3.0"
+                "source": "https://github.com/doctrine/DoctrineORMModule/tree/5.3.x"
             },
             "funding": [
                 {
@@ -898,8 +913,8 @@
         },
         {
             "name": "doctrine/event-manager",
-            "version": "1.2.0",
-            "version_normalized": "1.2.0.0",
+            "version": "1.2.x-dev",
+            "version_normalized": "1.2.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/event-manager.git",
@@ -973,7 +988,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/event-manager/issues",
-                "source": "https://github.com/doctrine/event-manager/tree/1.2.0"
+                "source": "https://github.com/doctrine/event-manager/tree/1.2.x"
             },
             "funding": [
                 {
@@ -993,17 +1008,17 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "2.0.10",
-            "version_normalized": "2.0.10.0",
+            "version": "2.1.x-dev",
+            "version_normalized": "2.1.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "5817d0659c5b50c9b950feb9af7b9668e2c436bc"
+                "reference": "f587d8c05c6e00f99cbfb32d565e4f6743c07ee4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/5817d0659c5b50c9b950feb9af7b9668e2c436bc",
-                "reference": "5817d0659c5b50c9b950feb9af7b9668e2c436bc",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/f587d8c05c6e00f99cbfb32d565e4f6743c07ee4",
+                "reference": "f587d8c05c6e00f99cbfb32d565e4f6743c07ee4",
                 "shasum": ""
             },
             "require": {
@@ -1017,7 +1032,7 @@
                 "phpunit/phpunit": "^8.5 || ^9.5",
                 "vimeo/psalm": "^4.25 || ^5.4"
             },
-            "time": "2024-02-18T20:23:39+00:00",
+            "time": "2024-02-18T21:47:00+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1067,7 +1082,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/inflector/issues",
-                "source": "https://github.com/doctrine/inflector/tree/2.0.10"
+                "source": "https://github.com/doctrine/inflector/tree/2.1.x"
             },
             "funding": [
                 {
@@ -1087,33 +1102,33 @@
         },
         {
             "name": "doctrine/instantiator",
-            "version": "1.5.0",
-            "version_normalized": "1.5.0.0",
+            "version": "1.5.x-dev",
+            "version_normalized": "1.5.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "0a0fa9780f5d4e507415a065172d26a98d02047b"
+                "reference": "12be2483e1f0e850b353e26869e4e6c038459501"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/0a0fa9780f5d4e507415a065172d26a98d02047b",
-                "reference": "0a0fa9780f5d4e507415a065172d26a98d02047b",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/12be2483e1f0e850b353e26869e4e6c038459501",
+                "reference": "12be2483e1f0e850b353e26869e4e6c038459501",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^9 || ^11",
+                "doctrine/coding-standard": "^9 || ^12",
                 "ext-pdo": "*",
                 "ext-phar": "*",
                 "phpbench/phpbench": "^0.16 || ^1",
                 "phpstan/phpstan": "^1.4",
                 "phpstan/phpstan-phpunit": "^1",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.6",
                 "vimeo/psalm": "^4.30 || ^5.4"
             },
-            "time": "2022-12-30T00:15:36+00:00",
+            "time": "2023-12-09T14:16:53+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1140,7 +1155,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/instantiator/issues",
-                "source": "https://github.com/doctrine/instantiator/tree/1.5.0"
+                "source": "https://github.com/doctrine/instantiator/tree/1.5.x"
             },
             "funding": [
                 {
@@ -1160,8 +1175,8 @@
         },
         {
             "name": "doctrine/lexer",
-            "version": "2.1.1",
-            "version_normalized": "2.1.1.0",
+            "version": "2.1.x-dev",
+            "version_normalized": "2.1.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
@@ -1221,7 +1236,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/lexer/issues",
-                "source": "https://github.com/doctrine/lexer/tree/2.1.1"
+                "source": "https://github.com/doctrine/lexer/tree/2.1.x"
             },
             "funding": [
                 {
@@ -1241,17 +1256,17 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "2.19.6",
-            "version_normalized": "2.19.6.0",
+            "version": "2.20.x-dev",
+            "version_normalized": "2.20.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/orm.git",
-                "reference": "c1bb2ccf4b19c845f91ff7c4c01dc7cbba7f4073"
+                "reference": "7d01f1966769c926f835437bb522ee25673af646"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/orm/zipball/c1bb2ccf4b19c845f91ff7c4c01dc7cbba7f4073",
-                "reference": "c1bb2ccf4b19c845f91ff7c4c01dc7cbba7f4073",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/7d01f1966769c926f835437bb522ee25673af646",
+                "reference": "7d01f1966769c926f835437bb522ee25673af646",
                 "shasum": ""
             },
             "require": {
@@ -1294,7 +1309,7 @@
                 "symfony/cache": "Provides cache support for Setup Tool with doctrine/cache 2.0",
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
             },
-            "time": "2024-06-26T17:24:40+00:00",
+            "time": "2024-06-27T15:50:50+00:00",
             "bin": [
                 "bin/doctrine"
             ],
@@ -1339,23 +1354,23 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/orm/issues",
-                "source": "https://github.com/doctrine/orm/tree/2.19.6"
+                "source": "https://github.com/doctrine/orm/tree/2.20.x"
             },
             "install-path": "../doctrine/orm"
         },
         {
             "name": "doctrine/persistence",
-            "version": "3.3.3",
-            "version_normalized": "3.3.3.0",
+            "version": "3.4.x-dev",
+            "version_normalized": "3.4.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/persistence.git",
-                "reference": "b337726451f5d530df338fc7f68dee8781b49779"
+                "reference": "d0ae4b4517dfc1103e9aaa5993bd05165cb72f57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/persistence/zipball/b337726451f5d530df338fc7f68dee8781b49779",
-                "reference": "b337726451f5d530df338fc7f68dee8781b49779",
+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/d0ae4b4517dfc1103e9aaa5993bd05165cb72f57",
+                "reference": "d0ae4b4517dfc1103e9aaa5993bd05165cb72f57",
                 "shasum": ""
             },
             "require": {
@@ -1372,11 +1387,11 @@
                 "phpstan/phpstan": "1.11.1",
                 "phpstan/phpstan-phpunit": "^1",
                 "phpstan/phpstan-strict-rules": "^1.1",
-                "phpunit/phpunit": "^8.5 || ^9.5",
+                "phpunit/phpunit": "^8.5.38 || ^9.5",
                 "symfony/cache": "^4.4 || ^5.4 || ^6.0",
                 "vimeo/psalm": "4.30.0 || 5.24.0"
             },
-            "time": "2024-06-20T10:14:30+00:00",
+            "time": "2024-06-23T18:29:58+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1425,7 +1440,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/persistence/issues",
-                "source": "https://github.com/doctrine/persistence/tree/3.3.3"
+                "source": "https://github.com/doctrine/persistence/tree/3.4.x"
             },
             "funding": [
                 {
@@ -1444,9 +1459,144 @@
             "install-path": "../doctrine/persistence"
         },
         {
+            "name": "guzzlehttp/psr7",
+            "version": "1.8.0",
+            "version_normalized": "1.8.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/psr7.git",
+                "reference": "043f17d447dc88045a13b5b1b6d9f902e2820685"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/043f17d447dc88045a13b5b1b6d9f902e2820685",
+                "reference": "043f17d447dc88045a13b5b1b6d9f902e2820685",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "psr/http-message": "~1.0",
+                "ralouphie/getallheaders": "^2.0.5 || ^3.0.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "1.0"
+            },
+            "require-dev": {
+                "ext-zlib": "*",
+                "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.8 || ^9.3.10"
+            },
+            "suggest": {
+                "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
+            },
+            "time": "2021-03-21T12:38:22+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.7-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\Psr7\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "homepage": "https://github.com/Tobion"
+                }
+            ],
+            "description": "PSR-7 message implementation that also provides common utility methods",
+            "keywords": [
+                "http",
+                "message",
+                "psr-7",
+                "request",
+                "response",
+                "stream",
+                "uri",
+                "url"
+            ],
+            "support": {
+                "issues": "https://github.com/guzzle/psr7/issues",
+                "source": "https://github.com/guzzle/psr7/tree/1.8.0"
+            },
+            "install-path": "../guzzlehttp/psr7"
+        },
+        {
+            "name": "http-interop/http-factory-guzzle",
+            "version": "1.0.0",
+            "version_normalized": "1.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/http-interop/http-factory-guzzle.git",
+                "reference": "34861658efb9899a6618cef03de46e2a52c80fc0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/http-interop/http-factory-guzzle/zipball/34861658efb9899a6618cef03de46e2a52c80fc0",
+                "reference": "34861658efb9899a6618cef03de46e2a52c80fc0",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/psr7": "^1.4.2",
+                "psr/http-factory": "^1.0"
+            },
+            "provide": {
+                "psr/http-factory-implementation": "^1.0"
+            },
+            "require-dev": {
+                "http-interop/http-factory-tests": "^0.5",
+                "phpunit/phpunit": "^6.5"
+            },
+            "time": "2018-07-31T19:32:56+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Http\\Factory\\Guzzle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "An HTTP Factory using Guzzle PSR7",
+            "keywords": [
+                "factory",
+                "http",
+                "psr-17",
+                "psr-7"
+            ],
+            "support": {
+                "issues": "https://github.com/http-interop/http-factory-guzzle/issues",
+                "source": "https://github.com/http-interop/http-factory-guzzle/tree/master"
+            },
+            "install-path": "../http-interop/http-factory-guzzle"
+        },
+        {
             "name": "laminas/laminas-authentication",
-            "version": "2.12.0",
-            "version_normalized": "2.12.0.0",
+            "version": "2.12.x-dev",
+            "version_normalized": "2.12.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-authentication.git",
@@ -1524,8 +1674,8 @@
         },
         {
             "name": "laminas/laminas-cache",
-            "version": "3.6.0",
-            "version_normalized": "3.6.0.0",
+            "version": "3.6.x-dev",
+            "version_normalized": "3.6.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-cache.git",
@@ -1584,6 +1734,7 @@
                 "laminas/laminas-serializer": "Laminas\\Serializer component"
             },
             "time": "2022-09-19T21:06:59+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laminas": {
@@ -1627,8 +1778,8 @@
         },
         {
             "name": "laminas/laminas-component-installer",
-            "version": "2.8.0",
-            "version_normalized": "2.8.0.0",
+            "version": "2.8.x-dev",
+            "version_normalized": "2.8.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-component-installer.git",
@@ -1657,6 +1808,7 @@
                 "webmozart/assert": "^1.10.0"
             },
             "time": "2022-07-03T21:27:51+00:00",
+            "default-branch": true,
             "type": "composer-plugin",
             "extra": {
                 "class": "Laminas\\ComponentInstaller\\ComponentInstaller"
@@ -1697,8 +1849,8 @@
         },
         {
             "name": "laminas/laminas-config",
-            "version": "3.7.0",
-            "version_normalized": "3.7.0.0",
+            "version": "3.7.x-dev",
+            "version_normalized": "3.7.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-config.git",
@@ -1733,6 +1885,7 @@
                 "laminas/laminas-servicemanager": "^2.7.8 || ^3.3; if you need an extensible plugin manager for use with the Config Factory"
             },
             "time": "2021-10-01T16:07:46+00:00",
+            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1768,8 +1921,8 @@
         },
         {
             "name": "laminas/laminas-db",
-            "version": "2.15.1",
-            "version_normalized": "2.15.1.0",
+            "version": "2.15.x-dev",
+            "version_normalized": "2.15.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-db.git",
@@ -1842,8 +1995,8 @@
         },
         {
             "name": "laminas/laminas-development-mode",
-            "version": "3.8.0",
-            "version_normalized": "3.8.0.0",
+            "version": "3.8.x-dev",
+            "version_normalized": "3.8.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-development-mode.git",
@@ -1869,6 +2022,7 @@
                 "vimeo/psalm": "^4.24"
             },
             "time": "2022-07-26T07:48:21+00:00",
+            "default-branch": true,
             "bin": [
                 "bin/laminas-development-mode"
             ],
@@ -1906,8 +2060,8 @@
         },
         {
             "name": "laminas/laminas-escaper",
-            "version": "2.12.0",
-            "version_normalized": "2.12.0.0",
+            "version": "2.12.x-dev",
+            "version_normalized": "2.12.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-escaper.git",
@@ -1936,6 +2090,7 @@
                 "vimeo/psalm": "^4.22.0"
             },
             "time": "2022-10-10T10:11:09+00:00",
+            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1971,17 +2126,17 @@
         },
         {
             "name": "laminas/laminas-eventmanager",
-            "version": "3.5.0",
-            "version_normalized": "3.5.0.0",
+            "version": "3.5.x-dev",
+            "version_normalized": "3.5.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-eventmanager.git",
-                "reference": "41f7209428f37cab9573365e361f4078209aaafa"
+                "reference": "be17de4b1a24e3a230707b8310d4e08433eae634"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-eventmanager/zipball/41f7209428f37cab9573365e361f4078209aaafa",
-                "reference": "41f7209428f37cab9573365e361f4078209aaafa",
+                "url": "https://api.github.com/repos/laminas/laminas-eventmanager/zipball/be17de4b1a24e3a230707b8310d4e08433eae634",
+                "reference": "be17de4b1a24e3a230707b8310d4e08433eae634",
                 "shasum": ""
             },
             "require": {
@@ -2003,7 +2158,7 @@
                 "laminas/laminas-stdlib": "^2.7.3 || ^3.0, to use the FilterChain feature",
                 "psr/container": "^1.1.2 || ^2.0.2, to use the lazy listeners feature"
             },
-            "time": "2022-04-06T21:05:17+00:00",
+            "time": "2022-04-06T21:05:27+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2041,8 +2196,8 @@
         },
         {
             "name": "laminas/laminas-filter",
-            "version": "2.22.0",
-            "version_normalized": "2.22.0.0",
+            "version": "2.22.x-dev",
+            "version_normalized": "2.22.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-filter.git",
@@ -2082,6 +2237,7 @@
                 "psr/http-factory-implementation": "psr/http-factory-implementation, for creating file upload instances when consuming PSR-7 in file upload filters"
             },
             "time": "2022-10-11T08:14:46+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laminas": {
@@ -2123,8 +2279,8 @@
         },
         {
             "name": "laminas/laminas-form",
-            "version": "3.4.1",
-            "version_normalized": "3.4.1.0",
+            "version": "3.4.x-dev",
+            "version_normalized": "3.4.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-form.git",
@@ -2224,8 +2380,8 @@
         },
         {
             "name": "laminas/laminas-http",
-            "version": "2.16.1",
-            "version_normalized": "2.16.1.0",
+            "version": "2.16.x-dev",
+            "version_normalized": "2.16.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-http.git",
@@ -2292,8 +2448,8 @@
         },
         {
             "name": "laminas/laminas-hydrator",
-            "version": "4.5.0",
-            "version_normalized": "4.5.0.0",
+            "version": "4.5.x-dev",
+            "version_normalized": "4.5.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-hydrator.git",
@@ -2332,6 +2488,7 @@
                 "laminas/laminas-servicemanager": "^3.14, to support hydrator plugin manager usage"
             },
             "time": "2022-07-13T13:58:31+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laminas": {
@@ -2373,8 +2530,8 @@
         },
         {
             "name": "laminas/laminas-inputfilter",
-            "version": "2.21.0",
-            "version_normalized": "2.21.0.0",
+            "version": "2.21.x-dev",
+            "version_normalized": "2.21.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-inputfilter.git",
@@ -2410,6 +2567,7 @@
                 "psr/http-message-implementation": "PSR-7 is required if you wish to validate PSR-7 UploadedFileInterface payloads"
             },
             "time": "2022-09-20T10:03:09+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laminas": {
@@ -2451,8 +2609,8 @@
         },
         {
             "name": "laminas/laminas-json",
-            "version": "3.3.0",
-            "version_normalized": "3.3.0.0",
+            "version": "3.3.x-dev",
+            "version_normalized": "3.3.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-json.git",
@@ -2480,6 +2638,7 @@
                 "laminas/laminas-xml2json": "For converting XML documents to JSON"
             },
             "time": "2021-09-02T18:02:31+00:00",
+            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2515,8 +2674,8 @@
         },
         {
             "name": "laminas/laminas-loader",
-            "version": "2.8.0",
-            "version_normalized": "2.8.0.0",
+            "version": "2.8.x-dev",
+            "version_normalized": "2.8.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-loader.git",
@@ -2539,6 +2698,7 @@
                 "phpunit/phpunit": "^9.3"
             },
             "time": "2021-09-02T18:30:53+00:00",
+            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2574,8 +2734,8 @@
         },
         {
             "name": "laminas/laminas-log",
-            "version": "2.15.3",
-            "version_normalized": "2.15.3.0",
+            "version": "2.15.x-dev",
+            "version_normalized": "2.15.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-log.git",
@@ -2665,8 +2825,8 @@
         },
         {
             "name": "laminas/laminas-modulemanager",
-            "version": "2.12.0",
-            "version_normalized": "2.12.0.0",
+            "version": "2.12.x-dev",
+            "version_normalized": "2.12.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-modulemanager.git",
@@ -2705,6 +2865,7 @@
                 "laminas/laminas-servicemanager": "Laminas\\ServiceManager component"
             },
             "time": "2022-09-07T11:22:27+00:00",
+            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2740,8 +2901,8 @@
         },
         {
             "name": "laminas/laminas-mvc",
-            "version": "3.3.5",
-            "version_normalized": "3.3.5.0",
+            "version": "3.3.x-dev",
+            "version_normalized": "3.3.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-mvc.git",
@@ -2825,8 +2986,8 @@
         },
         {
             "name": "laminas/laminas-paginator",
-            "version": "2.13.0",
-            "version_normalized": "2.13.0.0",
+            "version": "2.13.x-dev",
+            "version_normalized": "2.13.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-paginator.git",
@@ -2866,6 +3027,7 @@
                 "laminas/laminas-view": "Laminas\\View component"
             },
             "time": "2022-07-12T11:56:05+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laminas": {
@@ -2907,8 +3069,8 @@
         },
         {
             "name": "laminas/laminas-router",
-            "version": "3.9.0",
-            "version_normalized": "3.9.0.0",
+            "version": "3.9.x-dev",
+            "version_normalized": "3.9.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-router.git",
@@ -2940,6 +3102,7 @@
                 "laminas/laminas-i18n": "^2.15.0 if defining translatable HTTP path segments"
             },
             "time": "2022-08-30T22:41:24+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laminas": {
@@ -2981,8 +3144,8 @@
         },
         {
             "name": "laminas/laminas-servicemanager",
-            "version": "3.17.0",
-            "version_normalized": "3.17.0.0",
+            "version": "3.17.x-dev",
+            "version_normalized": "3.17.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-servicemanager.git",
@@ -3028,6 +3191,7 @@
                 "ocramius/proxy-manager": "ProxyManager ^2.1.1 to handle lazy initialization of services"
             },
             "time": "2022-09-22T11:33:46+00:00",
+            "default-branch": true,
             "bin": [
                 "bin/generate-deps-for-config-factory",
                 "bin/generate-factory-for-class"
@@ -3075,8 +3239,8 @@
         },
         {
             "name": "laminas/laminas-session",
-            "version": "2.13.0",
-            "version_normalized": "2.13.0.0",
+            "version": "2.13.x-dev",
+            "version_normalized": "2.13.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-session.git",
@@ -3120,6 +3284,7 @@
                 "mongodb/mongodb": "If you want to use the MongoDB session save handler"
             },
             "time": "2022-07-22T10:26:33+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laminas": {
@@ -3161,17 +3326,17 @@
         },
         {
             "name": "laminas/laminas-skeleton-installer",
-            "version": "0.6.0",
-            "version_normalized": "0.6.0.0",
+            "version": "0.6.x-dev",
+            "version_normalized": "0.6.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-skeleton-installer.git",
-                "reference": "209f7c6cfbb3dcd347062bef18b3e6158c6f884d"
+                "reference": "65d6f4bd7d0d6596daa12a4f003d22438d7fa81b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-skeleton-installer/zipball/209f7c6cfbb3dcd347062bef18b3e6158c6f884d",
-                "reference": "209f7c6cfbb3dcd347062bef18b3e6158c6f884d",
+                "url": "https://api.github.com/repos/laminas/laminas-skeleton-installer/zipball/65d6f4bd7d0d6596daa12a4f003d22438d7fa81b",
+                "reference": "65d6f4bd7d0d6596daa12a4f003d22438d7fa81b",
                 "shasum": ""
             },
             "require": {
@@ -3192,7 +3357,7 @@
                 "psalm/plugin-phpunit": "^0.16.1",
                 "vimeo/psalm": "^4.13"
             },
-            "time": "2022-04-13T15:02:03+00:00",
+            "time": "2022-04-13T15:02:10+00:00",
             "type": "composer-plugin",
             "extra": {
                 "class": "Laminas\\SkeletonInstaller\\Plugin"
@@ -3231,8 +3396,8 @@
         },
         {
             "name": "laminas/laminas-stdlib",
-            "version": "3.13.0",
-            "version_normalized": "3.13.0.0",
+            "version": "3.13.x-dev",
+            "version_normalized": "3.13.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-stdlib.git",
@@ -3259,6 +3424,7 @@
                 "vimeo/psalm": "^4.26"
             },
             "time": "2022-08-24T13:56:50+00:00",
+            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -3294,8 +3460,8 @@
         },
         {
             "name": "laminas/laminas-uri",
-            "version": "2.9.1",
-            "version_normalized": "2.9.1.0",
+            "version": "2.9.x-dev",
+            "version_normalized": "2.9.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-uri.git",
@@ -3355,8 +3521,8 @@
         },
         {
             "name": "laminas/laminas-validator",
-            "version": "2.25.0",
-            "version_normalized": "2.25.0.0",
+            "version": "2.25.x-dev",
+            "version_normalized": "2.25.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-validator.git",
@@ -3403,6 +3569,7 @@
                 "psr/http-message": "psr/http-message, required when validating PSR-7 UploadedFileInterface instances via the Upload and UploadFile validators"
             },
             "time": "2022-09-20T11:33:19+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laminas": {
@@ -3444,8 +3611,8 @@
         },
         {
             "name": "laminas/laminas-view",
-            "version": "2.23.0",
-            "version_normalized": "2.23.0.0",
+            "version": "2.23.x-dev",
+            "version_normalized": "2.23.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-view.git",
@@ -3554,17 +3721,17 @@
         },
         {
             "name": "maximebf/debugbar",
-            "version": "v1.22.3",
-            "version_normalized": "1.22.3.0",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maximebf/php-debugbar.git",
-                "reference": "7aa9a27a0b1158ed5ad4e7175e8d3aee9a818b96"
+                "reference": "c9cb28d5ee6f657fcc48440f38db8bbd140bef83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/7aa9a27a0b1158ed5ad4e7175e8d3aee9a818b96",
-                "reference": "7aa9a27a0b1158ed5ad4e7175e8d3aee9a818b96",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/c9cb28d5ee6f657fcc48440f38db8bbd140bef83",
+                "reference": "c9cb28d5ee6f657fcc48440f38db8bbd140bef83",
                 "shasum": ""
             },
             "require": {
@@ -3583,7 +3750,8 @@
                 "monolog/monolog": "Log using Monolog",
                 "predis/predis": "Redis storage"
             },
-            "time": "2024-04-03T19:39:26+00:00",
+            "time": "2024-07-02T07:24:16+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -3619,23 +3787,23 @@
             ],
             "support": {
                 "issues": "https://github.com/maximebf/php-debugbar/issues",
-                "source": "https://github.com/maximebf/php-debugbar/tree/v1.22.3"
+                "source": "https://github.com/maximebf/php-debugbar/tree/master"
             },
             "install-path": "../maximebf/debugbar"
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.19.1",
-            "version_normalized": "4.19.1.0",
+            "version": "4.x-dev",
+            "version_normalized": "4.9999999.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "4e1b88d21c69391150ace211e9eaf05810858d0b"
+                "reference": "4d36e9c16f4820c2ed9360bc818982f3c02a08f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/4e1b88d21c69391150ace211e9eaf05810858d0b",
-                "reference": "4e1b88d21c69391150ace211e9eaf05810858d0b",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/4d36e9c16f4820c2ed9360bc818982f3c02a08f5",
+                "reference": "4d36e9c16f4820c2ed9360bc818982f3c02a08f5",
                 "shasum": ""
             },
             "require": {
@@ -3646,7 +3814,7 @@
                 "ircmaxell/php-yacc": "^0.0.7",
                 "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0 || ^9.0"
             },
-            "time": "2024-03-17T08:10:35+00:00",
+            "time": "2024-03-17T09:03:35+00:00",
             "bin": [
                 "bin/php-parse"
             ],
@@ -3678,7 +3846,7 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.19.1"
+                "source": "https://github.com/nikic/PHP-Parser/tree/4.x"
             },
             "install-path": "../nikic/php-parser"
         },
@@ -3848,8 +4016,8 @@
         },
         {
             "name": "psr/container",
-            "version": "1.1.2",
-            "version_normalized": "1.1.2.0",
+            "version": "1.x-dev",
+            "version_normalized": "1.9999999.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/container.git",
@@ -4013,24 +4181,25 @@
         },
         {
             "name": "psr/http-server-handler",
-            "version": "1.0.2",
-            "version_normalized": "1.0.2.0",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-server-handler.git",
-                "reference": "84c4fb66179be4caaf8e97bd239203245302e7d4"
+                "reference": "13403d43196ab3382d0a4ca28be32984282641f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-server-handler/zipball/84c4fb66179be4caaf8e97bd239203245302e7d4",
-                "reference": "84c4fb66179be4caaf8e97bd239203245302e7d4",
+                "url": "https://api.github.com/repos/php-fig/http-server-handler/zipball/13403d43196ab3382d0a4ca28be32984282641f9",
+                "reference": "13403d43196ab3382d0a4ca28be32984282641f9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0",
                 "psr/http-message": "^1.0 || ^2.0"
             },
-            "time": "2023-04-10T20:06:20+00:00",
+            "time": "2023-11-16T18:17:39+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -4066,23 +4235,23 @@
                 "server"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-server-handler/tree/1.0.2"
+                "source": "https://github.com/php-fig/http-server-handler"
             },
             "install-path": "../psr/http-server-handler"
         },
         {
             "name": "psr/http-server-middleware",
-            "version": "1.0.2",
-            "version_normalized": "1.0.2.0",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-server-middleware.git",
-                "reference": "c1481f747daaa6a0782775cd6a8c26a1bf4a3829"
+                "reference": "459eeb7efeae55b4102a951c4ecc93a11ce58d0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-server-middleware/zipball/c1481f747daaa6a0782775cd6a8c26a1bf4a3829",
-                "reference": "c1481f747daaa6a0782775cd6a8c26a1bf4a3829",
+                "url": "https://api.github.com/repos/php-fig/http-server-middleware/zipball/459eeb7efeae55b4102a951c4ecc93a11ce58d0f",
+                "reference": "459eeb7efeae55b4102a951c4ecc93a11ce58d0f",
                 "shasum": ""
             },
             "require": {
@@ -4090,7 +4259,8 @@
                 "psr/http-message": "^1.0 || ^2.0",
                 "psr/http-server-handler": "^1.0"
             },
-            "time": "2023-04-11T06:14:47+00:00",
+            "time": "2023-09-22T11:17:21+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -4126,7 +4296,7 @@
             ],
             "support": {
                 "issues": "https://github.com/php-fig/http-server-middleware/issues",
-                "source": "https://github.com/php-fig/http-server-middleware/tree/1.0.2"
+                "source": "https://github.com/php-fig/http-server-middleware"
             },
             "install-path": "../psr/http-server-middleware"
         },
@@ -4238,6 +4408,53 @@
             "install-path": "../psr/simple-cache"
         },
         {
+            "name": "ralouphie/getallheaders",
+            "version": "3.0.3",
+            "version_normalized": "3.0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ralouphie/getallheaders.git",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^5 || ^6.5"
+            },
+            "time": "2019-03-08T08:55:37+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/getallheaders.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ralph Khattar",
+                    "email": "ralph.khattar@gmail.com"
+                }
+            ],
+            "description": "A polyfill for getallheaders.",
+            "support": {
+                "issues": "https://github.com/ralouphie/getallheaders/issues",
+                "source": "https://github.com/ralouphie/getallheaders/tree/develop"
+            },
+            "install-path": "../ralouphie/getallheaders"
+        },
+        {
             "name": "stella-maris/clock",
             "version": "0.1.7",
             "version_normalized": "0.1.7.0",
@@ -4289,8 +4506,8 @@
         },
         {
             "name": "symfony/console",
-            "version": "v5.4.41",
-            "version_normalized": "5.4.41.0",
+            "version": "5.4.x-dev",
+            "version_normalized": "5.4.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -4371,7 +4588,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v5.4.41"
+                "source": "https://github.com/symfony/console/tree/5.4"
             },
             "funding": [
                 {
@@ -4391,23 +4608,23 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v2.5.3",
-            "version_normalized": "2.5.3.0",
+            "version": "2.5.x-dev",
+            "version_normalized": "2.5.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "80d075412b557d41002320b96a096ca65aa2c98d"
+                "reference": "d36279a5a4bc7f3ca2c412839f10d7c0aa2c1a02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/80d075412b557d41002320b96a096ca65aa2c98d",
-                "reference": "80d075412b557d41002320b96a096ca65aa2c98d",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/d36279a5a4bc7f3ca2c412839f10d7c0aa2c1a02",
+                "reference": "d36279a5a4bc7f3ca2c412839f10d7c0aa2c1a02",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
             },
-            "time": "2023-01-24T14:02:46+00:00",
+            "time": "2024-04-18T08:26:06+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -4441,7 +4658,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v2.5.3"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/2.5"
             },
             "funding": [
                 {
@@ -4461,8 +4678,8 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.30.0",
-            "version_normalized": "1.30.0.0",
+            "version": "1.x-dev",
+            "version_normalized": "1.9999999.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -4484,6 +4701,7 @@
                 "ext-ctype": "For best performance"
             },
             "time": "2024-05-31T15:07:36+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "thanks": {
@@ -4543,8 +4761,8 @@
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
-            "version": "v1.30.0",
-            "version_normalized": "1.30.0.0",
+            "version": "1.x-dev",
+            "version_normalized": "1.9999999.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
@@ -4563,6 +4781,7 @@
                 "ext-intl": "For best performance"
             },
             "time": "2024-05-31T15:07:36+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "thanks": {
@@ -4624,8 +4843,8 @@
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
-            "version": "v1.30.0",
-            "version_normalized": "1.30.0.0",
+            "version": "1.x-dev",
+            "version_normalized": "1.9999999.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
@@ -4644,6 +4863,7 @@
                 "ext-intl": "For best performance"
             },
             "time": "2024-05-31T15:07:36+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "thanks": {
@@ -4708,17 +4928,17 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.30.0",
-            "version_normalized": "1.30.0.0",
+            "version": "1.x-dev",
+            "version_normalized": "1.9999999.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "fd22ab50000ef01661e2a31d850ebaa297f8e03c"
+                "reference": "8740a072b86292957feb42703edde77fcfca84fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fd22ab50000ef01661e2a31d850ebaa297f8e03c",
-                "reference": "fd22ab50000ef01661e2a31d850ebaa297f8e03c",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/8740a072b86292957feb42703edde77fcfca84fb",
+                "reference": "8740a072b86292957feb42703edde77fcfca84fb",
                 "shasum": ""
             },
             "require": {
@@ -4730,7 +4950,8 @@
             "suggest": {
                 "ext-mbstring": "For best performance"
             },
-            "time": "2024-06-19T12:30:46+00:00",
+            "time": "2024-06-20T08:18:00+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "thanks": {
@@ -4771,7 +4992,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.30.0"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/1.x"
             },
             "funding": [
                 {
@@ -4791,23 +5012,24 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.30.0",
-            "version_normalized": "1.30.0.0",
+            "version": "1.x-dev",
+            "version_normalized": "1.9999999.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "10112722600777e02d2745716b70c5db4ca70442"
+                "reference": "e5670122fdf3e86a1f6dee9f043893e70c343b34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/10112722600777e02d2745716b70c5db4ca70442",
-                "reference": "10112722600777e02d2745716b70c5db4ca70442",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/e5670122fdf3e86a1f6dee9f043893e70c343b34",
+                "reference": "e5670122fdf3e86a1f6dee9f043893e70c343b34",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
             },
-            "time": "2024-06-19T12:30:46+00:00",
+            "time": "2024-06-20T08:18:00+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "thanks": {
@@ -4847,7 +5069,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php72/tree/v1.30.0"
+                "source": "https://github.com/symfony/polyfill-php72/tree/1.x"
             },
             "funding": [
                 {
@@ -4867,8 +5089,8 @@
         },
         {
             "name": "symfony/polyfill-php73",
-            "version": "v1.30.0",
-            "version_normalized": "1.30.0.0",
+            "version": "1.x-dev",
+            "version_normalized": "1.9999999.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php73.git",
@@ -4884,6 +5106,7 @@
                 "php": ">=7.1"
             },
             "time": "2024-05-31T15:07:36+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "thanks": {
@@ -4946,8 +5169,8 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.30.0",
-            "version_normalized": "1.30.0.0",
+            "version": "1.x-dev",
+            "version_normalized": "1.9999999.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
@@ -4963,6 +5186,7 @@
                 "php": ">=7.1"
             },
             "time": "2024-05-31T15:07:36+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "thanks": {
@@ -5029,17 +5253,17 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v2.5.3",
-            "version_normalized": "2.5.3.0",
+            "version": "2.5.x-dev",
+            "version_normalized": "2.5.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "a2329596ddc8fd568900e3fc76cba42489ecc7f3"
+                "reference": "351fb560172c6972ffa169f4ffaea6d58a9de33b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/a2329596ddc8fd568900e3fc76cba42489ecc7f3",
-                "reference": "a2329596ddc8fd568900e3fc76cba42489ecc7f3",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/351fb560172c6972ffa169f4ffaea6d58a9de33b",
+                "reference": "351fb560172c6972ffa169f4ffaea6d58a9de33b",
                 "shasum": ""
             },
             "require": {
@@ -5053,7 +5277,7 @@
             "suggest": {
                 "symfony/service-implementation": ""
             },
-            "time": "2023-04-21T15:04:16+00:00",
+            "time": "2024-04-18T08:26:06+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -5095,7 +5319,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/service-contracts/tree/v2.5.3"
+                "source": "https://github.com/symfony/service-contracts/tree/2.5"
             },
             "funding": [
                 {
@@ -5115,17 +5339,17 @@
         },
         {
             "name": "symfony/string",
-            "version": "v5.4.41",
-            "version_normalized": "5.4.41.0",
+            "version": "5.4.x-dev",
+            "version_normalized": "5.4.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "065a9611e0b1fd2197a867e1fb7f2238191b7096"
+                "reference": "42cb3f3e135163ce5abc9ca2d1a45820559023ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/065a9611e0b1fd2197a867e1fb7f2238191b7096",
-                "reference": "065a9611e0b1fd2197a867e1fb7f2238191b7096",
+                "url": "https://api.github.com/repos/symfony/string/zipball/42cb3f3e135163ce5abc9ca2d1a45820559023ef",
+                "reference": "42cb3f3e135163ce5abc9ca2d1a45820559023ef",
                 "shasum": ""
             },
             "require": {
@@ -5145,7 +5369,7 @@
                 "symfony/translation-contracts": "^1.1|^2",
                 "symfony/var-exporter": "^4.4|^5.0|^6.0"
             },
-            "time": "2024-06-28T09:20:55+00:00",
+            "time": "2024-07-05T17:27:14+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -5184,7 +5408,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v5.4.41"
+                "source": "https://github.com/symfony/string/tree/5.4"
             },
             "funding": [
                 {
@@ -5204,8 +5428,8 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v5.4.40",
-            "version_normalized": "5.4.40.0",
+            "version": "5.4.x-dev",
+            "version_normalized": "5.4.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
@@ -5276,7 +5500,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v5.4.40"
+                "source": "https://github.com/symfony/var-dumper/tree/5.4"
             },
             "funding": [
                 {
@@ -5296,17 +5520,17 @@
         },
         {
             "name": "webimpress/safe-writer",
-            "version": "2.2.0",
-            "version_normalized": "2.2.0.0",
+            "version": "dev-develop",
+            "version_normalized": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webimpress/safe-writer.git",
-                "reference": "9d37cc8bee20f7cb2f58f6e23e05097eab5072e6"
+                "reference": "f06fc5fb526980819d01549a86b5288d0c94aa50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webimpress/safe-writer/zipball/9d37cc8bee20f7cb2f58f6e23e05097eab5072e6",
-                "reference": "9d37cc8bee20f7cb2f58f6e23e05097eab5072e6",
+                "url": "https://api.github.com/repos/webimpress/safe-writer/zipball/f06fc5fb526980819d01549a86b5288d0c94aa50",
+                "reference": "f06fc5fb526980819d01549a86b5288d0c94aa50",
                 "shasum": ""
             },
             "require": {
@@ -5317,7 +5541,7 @@
                 "vimeo/psalm": "^4.7",
                 "webimpress/coding-standard": "^1.2.2"
             },
-            "time": "2021-04-19T16:34:45+00:00",
+            "time": "2021-04-20T07:05:28+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -5346,7 +5570,7 @@
             ],
             "support": {
                 "issues": "https://github.com/webimpress/safe-writer/issues",
-                "source": "https://github.com/webimpress/safe-writer/tree/2.2.0"
+                "source": "https://github.com/webimpress/safe-writer/tree/develop"
             },
             "funding": [
                 {
@@ -5416,85 +5640,6 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "install-path": "../webmozart/assert"
-        },
-        {
-            "name": "zendframework/zend-diactoros",
-            "version": "2.2.1",
-            "version_normalized": "2.2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/zend-diactoros.git",
-                "reference": "de5847b068362a88684a55b0dbb40d85986cfa52"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/de5847b068362a88684a55b0dbb40d85986cfa52",
-                "reference": "de5847b068362a88684a55b0dbb40d85986cfa52",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1",
-                "psr/http-factory": "^1.0",
-                "psr/http-message": "^1.0"
-            },
-            "provide": {
-                "psr/http-factory-implementation": "1.0",
-                "psr/http-message-implementation": "1.0"
-            },
-            "require-dev": {
-                "ext-curl": "*",
-                "ext-dom": "*",
-                "ext-libxml": "*",
-                "http-interop/http-factory-tests": "^0.5.0",
-                "php-http/psr7-integration-tests": "dev-master",
-                "phpunit/phpunit": "^7.0.2",
-                "zendframework/zend-coding-standard": "~1.0.0"
-            },
-            "time": "2019-11-13T19:16:13+00:00",
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.1.x-dev",
-                    "dev-develop": "2.2.x-dev",
-                    "dev-release-1.8": "1.8.x-dev"
-                }
-            },
-            "installation-source": "dist",
-            "autoload": {
-                "files": [
-                    "src/functions/create_uploaded_file.php",
-                    "src/functions/marshal_headers_from_sapi.php",
-                    "src/functions/marshal_method_from_sapi.php",
-                    "src/functions/marshal_protocol_version_from_sapi.php",
-                    "src/functions/marshal_uri_from_sapi.php",
-                    "src/functions/normalize_server.php",
-                    "src/functions/normalize_uploaded_files.php",
-                    "src/functions/parse_cookie_header.php"
-                ],
-                "psr-4": {
-                    "Zend\\Diactoros\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "PSR HTTP Message implementations",
-            "keywords": [
-                "http",
-                "psr",
-                "psr-7"
-            ],
-            "support": {
-                "docs": "https://docs.zendframework.com/zend-diactoros/",
-                "forum": "https://discourse.zendframework.com/c/questions/exprssive",
-                "issues": "https://github.com/zendframework/zend-diactoros/issues",
-                "rss": "https://github.com/zendframework/zend-diactoros/releases.atom",
-                "slack": "https://zendframework-slack.herokuapp.com",
-                "source": "https://github.com/zendframework/zend-diactoros"
-            },
-            "abandoned": "laminas/laminas-diactoros",
-            "install-path": "../zendframework/zend-diactoros"
         }
     ],
     "dev": true,

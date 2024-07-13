@@ -1,22 +1,23 @@
 <?php
+  
 
-namespace Application\Controller\Factory;
+  namespace Application\Controller\Factory;
 
+use Interop\Container\ContainerInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 use Laminas\Authentication\AuthenticationService;
-use Laminas\Authentication\Storage\Session as SessionStorage;
-use Laminas\Authentication\Adapter\DbTable\CallbackCheckAdapter;
-use Psr\Container\ContainerInterface;
+use Laminas\Authentication\Adapter\DbTable\CredentialTreatmentAdapter;
 
-class AuthenticationServiceFactory
+class AuthenticationServiceFactory implements FactoryInterface
 {
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $dbAdapter = $container->get('Laminas\Db\Adapter\Adapter');
-        $authAdapter = new CallbackCheckAdapter($dbAdapter, 'users', 'username', 'password', function($hash, $password) {
-            // Use password_verify or any other hash check
-            return password_verify($password, $hash);
-        });
-        $authService = new AuthenticationService(new SessionStorage(), $authAdapter);
+        $authAdapter = new CredentialTreatmentAdapter($dbAdapter, 'users', 'username', 'password', 'SHA1(?)');
+
+        $authService = new AuthenticationService();
+        $authService->setAdapter($authAdapter);
+
         return $authService;
     }
 }
