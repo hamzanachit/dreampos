@@ -6,6 +6,7 @@
     use Application\Entity\Setting;
     use Application\Entity\User;
     use Application\Entity\Category;
+    use Application\Entity\SubCategory;
 
     class SettingService{
         
@@ -136,7 +137,9 @@
             try {
                 $query = $this->entityManager->createQueryBuilder()
                         ->from('Application\Entity\Category','c') 
-                        ->select('c as category,c.categoryName,c.createdBy,c.description,c.categoryCode,c.id,c.logo ');
+                        ->innerJoin("Application\Entity\user", "u","WITH", "u.id = c.createdBy")
+                        ->select('c as category,c.categoryName,c.createdBy,c.description,c.categoryCode,c.id,c.logo ')
+                        ->addselect('u.fullname as createdBy') ;
                         // ->Where("s.creator = ".$userid)
                         // ->AndWhere("s.id = ".$idcompany);
                 $data = $query->getQuery()->getResult();
@@ -168,7 +171,6 @@
 
       public function editCategory($categoryName, $description, $categoryCode, $Logo, $userid,$categoryId){
         try {
-        // dd($categoryName, $description, $categoryCode, $Logo, $userid,$categoryId);
             $category = $this->entityManager->getRepository('Application\Entity\Category')->find($categoryId);
             if (!$category) {
                 echo "Category not found";
@@ -191,40 +193,80 @@
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // delete  category
   public function deleteCategory($idcategory){
-        // try {
-            $category = $this->entityManager->getRepository(Category::class)->find($idcategory);
-            
-            // if (!$category) {
-            //     throw new \Exception("category with ID $idcategory not found");
-            // }
-
+             $category = $this->entityManager->getRepository(Category::class)->find($idcategory);
             $this->entityManager->remove($category);
             $this->entityManager->flush();
-
             return true;
-        // } catch (\Exception $e) { 
-        //     return false;
-        // }
     }
 
 
+
+
+
+
+    // sub category Section 
+     public function getAllSubCategorys(){
+            try {
+                $query = $this->entityManager->createQueryBuilder()
+                        ->from('Application\Entity\SubCategory','c') 
+                         ->innerJoin("Application\Entity\Category", "ca","WITH", "ca.id = c.IdCategory")
+                          ->innerJoin("Application\Entity\user", "u","WITH", "u.id = c.createdBy")
+                        ->select('c as sub,c.SubCategoryName,c.IdCategory,c.createdBy,c.description,c.id')
+                        ->addselect('ca.categoryName as categoryname') 
+                        ->addselect('u.fullname as createdBy') ;
+                $data = $query->getQuery()->getResult();
+                return $data;
+            } catch (\Throwable $th) {
+                throw $th;
+                return 'null';
+            }
+        }
+
+
+         public function addsubCategory($categoryName, $description, $subcategoryname,$userid){
+            $SubCategory = new SubCategory();
+            $SubCategory->setSubCategoryName($subcategoryname);
+            $SubCategory->setDescription($description);
+            $SubCategory->setIdCategory($categoryName);
+            $SubCategory->setCreatedBy($userid);
+            $this->entityManager->persist($SubCategory);
+            $this->entityManager->flush();
+            
+            return $SubCategory;
+        }
+        
+        // edit sub category
+        public function editsubCategory($categoryName, $description, $SubCategoryName, $userid,$idsubcategory){
+            try {
+                $SubCategory = $this->entityManager->getRepository('Application\Entity\SubCategory')->find($idsubcategory);
+                if (!$SubCategory) {
+                    echo "Category not found";
+                }
+        
+              
+                $SubCategory->setSubCategoryName($SubCategoryName);
+                $SubCategory->setDescription($description);
+                $SubCategory->setIdCategory($categoryName);
+                $SubCategory->setCreatedBy($userid);
+                $this->entityManager->persist($SubCategory);
+                $this->entityManager->flush();
+
+                return $SubCategory;
+            } catch (\Throwable $th) {
+
+            throw $th;
+        }
+    }
+    
+       // delete  sub category
+  public function deleteSubCategory($idsubcategory){
+             $subcategory = $this->entityManager->getRepository(SubCategory::class)->find($idsubcategory);
+            $this->entityManager->remove($subcategory);
+            $this->entityManager->flush();
+            return true;
+    }
 
 
 }

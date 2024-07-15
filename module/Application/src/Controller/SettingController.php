@@ -76,27 +76,60 @@ class SettingController extends AbstractActionController{
 
 
     public function listAction() {
-    $AllCategorys = '';
-    $AllCategorys = $this->settingService->getAllCategorys();
-    
-    if ($AllCategorys === null ){
+
         $AllCategorys = '';
+        $AllCategorys = $this->settingService->getAllCategorys();
+        if ($AllCategorys === null ){
+            $AllCategorys = '';
+        }
+        $viewModel = new ViewModel([
+            'AllCategorys' =>$AllCategorys,
+        ]);
+
+        $viewModel->setTemplate('application/category/list');  
+        return $viewModel;
     }
 
 
-   
-    
-    $viewModel = new ViewModel([
-
-        'AllCategorys' =>$AllCategorys,
+    //section sub category
+    public function subcategoryAction() {
+        $AllSubCategorys = '';
         
-    ]);
+        $Categorys = $this->settingService->getAllCategorys();
+        $AllSubCategorys = $this->settingService->getAllSubCategorys();
+        if ($AllSubCategorys === null ){
+            $AllSubCategorys = '';
+        }
+        // dd(getAllSubCategorys);
+        $viewModel = new ViewModel([
+            'AllSubCategorys' =>$AllSubCategorys,
+            'Categorys' =>$Categorys,
+        ]);
 
-    $viewModel->setTemplate('application/category/list');  
+    $viewModel->setTemplate('application/subcategory/list');  
 
     return $viewModel;
 }
 
+ //section brands
+    public function brandAction() {
+        $AllSubCategorys = '';
+        
+        $Categorys = $this->settingService->getAllCategorys();
+        $AllSubCategorys = $this->settingService->getAllSubCategorys();
+        if ($AllSubCategorys === null ){
+            $AllSubCategorys = '';
+        }
+        // dd(getAllSubCategorys);
+        $viewModel = new ViewModel([
+            'AllSubCategorys' =>$AllSubCategorys,
+            'Categorys' =>$Categorys,
+        ]);
+
+    $viewModel->setTemplate('application/subcategory/list');  
+
+    return $viewModel;
+}
 
 
 

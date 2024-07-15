@@ -20,26 +20,24 @@ class AjaxSettingController extends AbstractActionController
          
     }
 
-    public function addAction()
-{
-    $request = $this->getRequest();
+    public function addAction(){
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $postdata = json_decode($request->getContent(), true);
+            
+            // Extract form data
+            $categoryName = htmlspecialchars($postdata['name'] ?? '');
+            $description = htmlspecialchars($postdata['description'] ?? '');
+            $categoryCode = htmlspecialchars($postdata['code'] ?? '');
+            
+            // Handle uploaded image
+            $Logo = '';
+            $uploadPath = 'public/img/category/';
 
-    if ($request->isPost()) {
-        $postdata = json_decode($request->getContent(), true);
-        
-        // Extract form data
-        $categoryName = htmlspecialchars($postdata['name'] ?? '');
-        $description = htmlspecialchars($postdata['description'] ?? '');
-        $categoryCode = htmlspecialchars($postdata['code'] ?? '');
-        
-        // Handle uploaded image
-        $Logo = '';
-        $uploadPath = 'public/img/category/';
-
-        // Check if the 'image' field exists and is not empty
-        if (isset($postdata['image']) && !empty($postdata['image'])) {
-            $imageData = base64_decode($postdata['image']);
-            $Logo = uniqid() . '.png'; // Generate a unique filename
+            // Check if the 'image' field exists and is not empty
+            if (isset($postdata['image']) && !empty($postdata['image'])) {
+                $imageData = base64_decode($postdata['image']);
+                $Logo = uniqid() . '.png'; // Generate a unique filename
             $uploadFile = $uploadPath . DIRECTORY_SEPARATOR . $Logo;
             
             // Save the decoded image data to the file
@@ -89,8 +87,7 @@ class AjaxSettingController extends AbstractActionController
                 
              file_put_contents($uploadFile, $imageData);
         }
-            // dd($postdata['image']);
-
+ 
         // Optionally, retrieve user ID for logging purposes
         $auth = $this->plugin('auth');
         $user = $auth->getUser();
@@ -133,4 +130,109 @@ class AjaxSettingController extends AbstractActionController
 }
 }
 
+
+
+    // section sub category 
+ public function addsubcategoryAction(){
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $postdata = json_decode($request->getContent(), true);
+            
+            // Extract form data
+            $description = htmlspecialchars($postdata['description'] ?? '');
+            $subcategoryname = htmlspecialchars($postdata['subcategoryname'] ?? '');
+            $categoryName = htmlspecialchars($postdata['categoryname'] ?? '');
+
+            
+            // Handle uploaded image
+          
+        }
+
+         $auth = $this->plugin('auth');
+        $user = $auth->getUser();
+        $userid = $user['id'];
+        $resultAdd = $this->settingService->addsubCategory($categoryName, $description, $subcategoryname, $userid);
+        if ($resultAdd) {
+            return new JsonModel([
+                'success' => true,
+                'message' => 'Sub Category added successfully'
+            ]);
+        } else {
+            return new JsonModel([
+                'success' => false,
+                'message' => 'Failed to add sub category'
+            ]);
+        }
     }
+
+
+      public function editsubcategoryAction(){
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $postdata = json_decode($request->getContent(), true);
+            $categoryName = htmlspecialchars($postdata['categoryNameedit'] ?? '');
+            $description = htmlspecialchars($postdata['description'] ?? '');
+            $SubCategoryName= htmlspecialchars($postdata['SubCategoryNameedit'] ?? '');
+            $idsubcategory = htmlspecialchars($postdata['idsubcategory'] ?? '');
+            // dd($idcategory);
+         
+        }
+ 
+        // Optionally, retrieve user ID for logging purposes
+        $auth = $this->plugin('auth');
+        $user = $auth->getUser();
+        $userid = $user['id'];
+         $resultAdd = $this->settingService->editsubCategory($categoryName, $description, $SubCategoryName, $userid,$idsubcategory);
+        if ($resultAdd) {
+            return new JsonModel([
+                'success' => true,
+                'message' => 'Sub Category edited successfully'
+            ]);
+        } else {
+            return new JsonModel([
+                'success' => false,
+                'message' => 'Failed to edited Sub category'
+            ]);
+        }
+    }
+
+
+
+
+    
+ function deleteSubCategoryAction(){
+        $request = $this->getRequest();
+            if ($request->isPost()) {
+            $idsubcategory = json_decode($request->getContent(), true);
+            $resultDelete = $this->settingService->deleteSubCategory($idsubcategory);
+        if ($resultDelete) {
+            return new JsonModel([
+                'success' => true,
+                'message' => 'Sub Category deleted successfully'
+            ]);
+        } else {
+            return new JsonModel([
+                'success' => false,
+            'message' => 'Failed to delete Sub category'
+        ]);
+    }
+}
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+ 
+
+
+
+
+ 

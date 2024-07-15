@@ -216,6 +216,37 @@ return [
                     ],
                 ],
             ],
+
+            // // sub category
+            // 'subcategoryActions' => [
+            //             'type' => Segment::class,
+            //             'options' => [
+            //                 'route' => '/subcategory[/:action[/:id]]',
+            //                 'defaults' => [
+            //                     'controller' => Controller\SettingController::class,
+            //                 ],
+            //                 'constraints' => [
+            //                     'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+            //                     'id' => '[0-9]+',
+            //                 ],
+            //             ],
+            //         ],
+
+            //         'subcategory__NOLAYOUT' => [
+            //             'type' => Segment::class,
+            //             'options' => [
+            //                 'route' => '/ajaxsubcategory[/:action[/:id]]',
+            //                 'defaults' => [
+            //                     'controller' => Controller\AjaxSettingController::class,
+            //                 ],
+            //                 'constraints' => [
+            //                     'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+            //                     'id' => '[0-9]+',
+            //                 ],
+            //             ],
+            //         ],
+
+
         ],
     ],
       'controllers' => [

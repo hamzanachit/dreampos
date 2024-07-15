@@ -88,10 +88,19 @@ class Uri implements UriInterface
      * @see https://www.php.net/manual/en/function.parse-url.php#114817
      * @see https://curl.haxx.se/libcurl/c/CURLOPT_URL.html#ENCODING
      *
+     * @param string $url
+     *
      * @return array|false
      */
-    private static function parse($url, $component = -1)
+    private static function parse($url)
     {
+        // If IPv6
+        $prefix = '';
+        if (preg_match('%^(.*://\[[0-9:a-f]+\])(.*?)$%', $url, $matches)) {
+            $prefix = $matches[1];
+            $url = $matches[2];
+        }
+
         $encodedUrl = preg_replace_callback(
             '%[^:/@?&=#]+%usD',
             static function ($matches) {
@@ -100,13 +109,13 @@ class Uri implements UriInterface
             $url
         );
 
-        $result = parse_url($encodedUrl, $component);
+        $result = parse_url($prefix . $encodedUrl);
 
         if ($result === false) {
             return false;
         }
 
-        return is_array($result) ? array_map('urldecode', $result) : urldecode($result);
+        return array_map('urldecode', $result);
     }
 
     public function __toString()
