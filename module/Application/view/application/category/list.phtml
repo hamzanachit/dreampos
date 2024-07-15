@@ -2,12 +2,12 @@
     <input type="text" id="basePath" style="display:none;" value="<?= $this->basePath() ?>">
     <div class="page-header">
         <div class="page-title">
-            <h4>Product List</h4>
-            <h6>Manage your products</h6>
+            <h4>Category List</h4>
+            <h6>Manage your category</h6>
         </div>
         <div class="page-btn">
-            <a class="btn btn-added addcategory" id="addcategory"><img
-                    src="<?= $this->basePath('img/icons/plus.svg') ?>" alt="img" class="me-1">Add New Element</a>
+            <a class="btn btn-added addcategory" id="addcategory">
+                <img src="<?= $this->basePath('img/icons/plus.svg') ?>" alt="img" class="me-1">Add New Element</a>
         </div>
     </div>
 
@@ -126,28 +126,29 @@
                             </td>
                             <td class="productimgname">
                                 <a href="javascript:void(0);" class="product-img">
-                                    <img src="<?= $this->basePath('img/product/'.$row['categoryName'].'') ?>"
-                                        alt="product">
+                                    <img src="<?= $this->basePath('img/category/'.$row['logo'].'') ?>" alt="product">
                                 </a>
-                                <a href="javascript:void(0);"><?= $row['categoryName'] ?></a>
+                                <?= $row['categoryName'] ?>
                             </td>
                             <td> <?= $row['categoryCode'] ?></td>
                             <td><?= $row['description'] ?></td>
                             <td> <?= $row['createdBy'] ?></td>
                             <td>
-                                <a class="me-3"
-                                    href="<?= $this->url('productsActions', ['action' => 'details', 'id' => $row['categoryName']]) ?>">
-                                    <img src="<?= $this->basePath('img/icons/eye.svg') ?>" alt="img">
-                                </a>
-                                <a class="me-3" href="<?= $this->basePath('products/edit') ?>">
+
+                                <a id="editbtn" class="mr-3 editbtn" data-item-id="<?= $row['id'] ?>"
+                                    data-item-categoryName="<?= $row['categoryName'] ?>"
+                                    data-item-categoryCode="<?= $row['categoryCode'] ?>"
+                                    data-item-description="<?= $row['description'] ?>">
                                     <img src="<?= $this->basePath('img/icons/edit.svg') ?>" alt="img">
                                 </a>
-                                <a class="confirm-text" href="javascript:void(0);">
+
+                                <a class="deletebtn" data-item-id="<?= $row['id'] ?>">
                                     <img src="<?= $this->basePath('img/icons/delete.svg') ?>" alt="img">
                                 </a>
                             </td>
                         </tr>
                         <?php } ?>
+
                     </tbody>
                 </table>
             </div>
@@ -155,7 +156,7 @@
     </div>
 </div>
 
-<!-- Modal -->
+<!-- add category Modal -->
 <div class="modal fade" id="addcategoryModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -169,11 +170,13 @@
             <form id="addcategoryForm">
                 <div class="modal-body">
                     <label for="categoryname">Category Name</label>
-                    <input type="text" class="form-control" id="categoryname">
+                    <input type="text" class="form-control" id="categoryname" required>
                     <label for="categorycode">Category Code</label>
-                    <input type="text" class="form-control" id="categorycode">
+                    <input type="text" class="form-control" id="categorycode" required>
                     <label for="description">Description</label>
                     <input type="text" class="form-control" id="description">
+                    <label for="image">Category Image</label>
+                    <input type="file" class="form-control" name="image" id="image">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
@@ -187,9 +190,73 @@
 </div>
 
 
+<!-- edit category Modal -->
+<div class="modal fade" id="editcategoryModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="editcategoryForm">
+                <div class="modal-body">
+                    <label for="categoryNameedit">Category Name</label>
+                    <input type="text" class="form-control" id="categoryNameedit">
+                    <input type="text" class="form-control hidden " id="idcategory">
+                    <label for="categoryCodeedit">Category Code</label>
+                    <input type="text" class="form-control" id="categoryCodeedit">
+                    <label for="descriptionedit">Description</label>
+                    <input type="text" class="form-control" id="descriptionedit">
+                    <label for="image">Category Image</label>
+                    <input type="file" class="form-control" name="imageedit" id="imageedit">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="Closebtnaddcategory">Close</button>
+                    <button type="submit" class="btn btn-primary" oncklick="validateForm()"
+                        id="saveCategoryBtn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- delete category Modal -->
+
+<div class="modal fade" id="deletecategoryModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="deletecategoryForm">
+                <div class="modal-body ">
+                    <input type="text" class="form-control hidden" id="categoryid">
+                </div>
+                <div class="center modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="Closebtnaddcategory">Close</button>
+                    <button type="button" class="btn btn-primary" id="confirm">confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
 
 <?= $this->inlineScript()->prependFile($this->basePath('js/jquery-3.6.0.min.js'));?>
 
-<?php
-     $this->inlineScript() 
+<?php  $this->inlineScript() 
          ->appendFile($this->basePath('js/setting/scriptaddcategory.js'));

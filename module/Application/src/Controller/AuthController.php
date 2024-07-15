@@ -1,4 +1,5 @@
 <?php
+// File: module/Application/src/Controller/AuthController.php
 
 namespace Application\Controller;
 
@@ -7,44 +8,37 @@ use Laminas\View\Model\ViewModel;
 use Laminas\Authentication\AuthenticationService;
 use Laminas\Authentication\Adapter\DbTable\CallbackCheckAdapter;
 use Laminas\Db\Adapter\Adapter;
-use Laminas\Authentication\Storage\Session as SessionStorage;
-use Laminas\Db\Sql\Sql;
-use Laminas\Session\SessionManager;
 use Laminas\Session\Container;
-use Application\Entity\User;
+use Laminas\Db\Sql\Sql;
 
 class AuthController extends AbstractActionController
 {
     protected $dbAdapter;
     protected $authService;
-     protected $sessionManager;
 
-    public function __construct(Adapter $dbAdapter, AuthenticationService $authService, SessionManager $sessionManager)
+    public function __construct(Adapter $dbAdapter, AuthenticationService $authService)
     {
         $this->dbAdapter = $dbAdapter;
         $this->authService = $authService;
-         $this->sessionManager = $sessionManager;
-        //  $this->sessionManager->setSessionManager($this->sessionManager);
     }
 
-   public function loginAction()
+    public function loginAction()
     {
         if ($this->authService->hasIdentity()) {
             return $this->redirect()->toRoute('dashboard');
         }
 
         $viewModel = new ViewModel();
-
         $request = $this->getRequest();
+
         if ($request->isPost()) {
             $data = $request->getPost();
 
-            // Authentication Adapter
             $authAdapter = new CallbackCheckAdapter(
                 $this->dbAdapter,
-                'user', // Table name
-                'email', // Identity column
-                'password', // Credential column
+                'user',
+                'email',
+                'password',
                 function ($hash, $password) {
                     return password_verify($password, $hash);
                 }
@@ -54,24 +48,22 @@ class AuthController extends AbstractActionController
                 ->setIdentity($data['email'])
                 ->setCredential($data['password']);
 
-            // Set adapter to the authentication service
             $this->authService->setAdapter($authAdapter);
-
-            // Attempt authentication
             $result = $this->authService->authenticate();
 
             if ($result->isValid()) {
-                // Fetch the full User entity
                 $userTable = new \Laminas\Db\TableGateway\TableGateway('user', $this->dbAdapter);
                 $user = $userTable->select(['email' => $data['email']])->current();
 
                 if ($user) {
-                    // Store the User entity in the session
                     $session = new Container('user_session');
                     $session->user = $user;
+                 $_SESSION["user"] =$user;
 
-                    // Store the User entity in the AuthenticationService
                     $this->authService->getStorage()->write($user);
+
+                    // Debugging: Check if user is written to auth storage
+                    // var_dump($this->authService->getStorage()->read());
 
                     return $this->redirect()->toRoute('dashboard');
                 } else {
@@ -89,27 +81,22 @@ class AuthController extends AbstractActionController
     public function registerAction()
     {
         if ($this->authService->hasIdentity()) {
-             $_SESSION['islogged'] = true; 
-
-            return $this->redirect()->toRoute('login');
-        } 
+            return $this->redirect()->toRoute('dashboard');
+        }
 
         $viewModel = new ViewModel();
-
         $request = $this->getRequest();
+
         if ($request->isPost()) {
             $data = $request->getPost();
 
-            // Validate inputs
             if (empty($data['full_name']) || empty($data['email']) || empty($data['phone']) || empty($data['address']) || empty($data['password'])) {
                 $viewModel->setVariable('error', 'All fields are required.');
                 return $viewModel;
             }
 
-            // Check if email already exists
             $sql = new Sql($this->dbAdapter);
-            $select = $sql->select('users')
-                          ->where(['email' => $data['email']]);
+            $select = $sql->select('user')->where(['email' => $data['email']]);
             $statement = $sql->prepareStatementForSqlObject($select);
             $result = $statement->execute();
 
@@ -118,8 +105,7 @@ class AuthController extends AbstractActionController
                 return $viewModel;
             }
 
-            // Insert user into database
-            $insert = $sql->insert('users');
+            $insert = $sql->insert('user');
             $insert->values([
                 'full_name' => $data['full_name'],
                 'email' => $data['email'],
@@ -133,10 +119,8 @@ class AuthController extends AbstractActionController
             $result = $statement->execute();
 
             if ($result->getAffectedRows()) {
-                // Successful registration
                 return $this->redirect()->toRoute('login');
             } else {
-                // Failed registration
                 $viewModel->setVariable('error', 'Registration failed.');
             }
         }
@@ -148,7 +132,10 @@ class AuthController extends AbstractActionController
     public function logoutAction()
     {
         $this->authService->clearIdentity();
-        session_unset();
+
+        $session = new Container('user_session');
+        $session->getManager()->destroy();
+        $_SESSION["user"] = "";
 
         return $this->redirect()->toRoute('login');
     }

@@ -3,7 +3,9 @@
  * @var Laminas\View\Renderer\PhpRenderer $this
  */
 ?>
-<?= $this->doctype() ?>
+<?= $this->doctype();?>
+
+
 <html lang="en">
 
 <head>
@@ -45,12 +47,14 @@
         </a>
         <!-- <button>Close</button> -->
     </div>
-
     <div class="container" style="background-color:   ; margin-left:20%;">
         <?= $this->content ?>
+
         <div id="global-loader">
             <div class="whirly-loader"> </div>
         </div>
+        <?php if (!empty($_SESSION["user"])){?>
+
         <div class="main-wrapper">
             <div class="header">
                 <div class="header-left active">
@@ -296,14 +300,15 @@
                                 <ul>
                                     <li><a href="<?= $this->basePath('/products/list') ?>">Product List</a></li>
                                     <li><a href="<?= $this->basePath('/products/add') ?>">Add Product</a></li>
-                                    <li><a href="categorylist.html">Category List</a></li>
-                                    <li><a href="addcategory.html">Add Category</a></li>
-                                    <li><a href="subcategorylist.html">Sub Category List</a></li>
-                                    <li><a href="subaddcategory.html">Add Sub Category</a></li>
-                                    <li><a href="brandlist.html">Brand List</a></li>
-                                    <li><a href="addbrand.html">Add Brand</a></li>
-                                    <li><a href="importproduct.html">Import Products</a></li>
-                                    <li><a href="barcode.html">Print Barcode</a></li>
+                                    <li><a href="<?= $this->basePath('/category/list') ?>">Category</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Sub Category List</a>
+                                    </li>
+                                    <li><a href="<?= $this->basePath('/settings/brand') ?>">Brand List</a>
+                                    </li>
+                                    <li><a href="<?= $this->basePath('/import/list') ?>">Import
+                                            Products</a></li>
+                                    <li><a href="<?= $this->basePath('/print/list') ?>">Print
+                                            Barcode</a></li>
                                 </ul>
                             </li>
                             <li class="submenu">
@@ -533,7 +538,11 @@
             </div>
 
         </div>
+        <?php
+}
+// dd( $_SESSION["user"]);
 
+?>
         <!-- jQuery -->
         <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 

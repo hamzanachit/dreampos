@@ -38,7 +38,17 @@ $(document).ready(function () {
       nav: true,
       loop: false,
       responsiveClass: true,
-      responsive: { 0: { items: 1 }, 800: { items: 1 }, 1170: { items: 1 } }
+      responsive: {
+        0: {
+          items: 1
+        },
+        800: {
+          items: 1
+        },
+        1170: {
+          items: 1
+        }
+      }
     })
   }
   if ($('.owl-product').length > 0) {
@@ -50,7 +60,17 @@ $(document).ready(function () {
       loop: false,
       touchDrag: false,
       mouseDrag: false,
-      responsive: { 0: { items: 2 }, 768: { items: 4 }, 1170: { items: 8 } }
+      responsive: {
+        0: {
+          items: 2
+        },
+        768: {
+          items: 4
+        },
+        1170: {
+          items: 8
+        }
+      }
     })
   }
   if ($('.datanew').length > 0) {
@@ -71,7 +91,8 @@ $(document).ready(function () {
       }
     })
   }
-  function readURL (input) {
+
+  function readURL(input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader()
       reader.onload = function (e) {
@@ -84,7 +105,9 @@ $(document).ready(function () {
     readURL(this)
   })
   if ($('.datatable').length > 0) {
-    $('.datatable').DataTable({ bFilter: false })
+    $('.datatable').DataTable({
+      bFilter: false
+    })
   }
   setTimeout(function () {
     $('#global-loader')
@@ -137,10 +160,16 @@ $(document).ready(function () {
     })
   }
   if ($('.select').length > 0) {
-    $('.select').select2({ minimumResultsForSearch: -1, width: '100%' })
+    $('.select').select2({
+      minimumResultsForSearch: -1,
+      width: '100%'
+    })
   }
   if ($('.counter').length > 0) {
-    $('.counter').counterUp({ delay: 20, time: 2000 })
+    $('.counter').counterUp({
+      delay: 20,
+      time: 2000
+    })
   }
   if ($('#timer-countdown').length > 0) {
     $('#timer-countdown').countdown({
@@ -153,18 +182,27 @@ $(document).ready(function () {
     })
   }
   if ($('#timer-countup').length > 0) {
-    $('#timer-countup').countdown({ from: 0, to: 180 })
+    $('#timer-countup').countdown({
+      from: 0,
+      to: 180
+    })
   }
   if ($('#timer-countinbetween').length > 0) {
-    $('#timer-countinbetween').countdown({ from: 30, to: 20 })
+    $('#timer-countinbetween').countdown({
+      from: 30,
+      to: 20
+    })
   }
   if ($('#timer-countercallback').length > 0) {
     $('#timer-countercallback').countdown({
       from: 10,
       to: 0,
       timerEnd: function () {
-        this.css({ 'text-decoration': 'line-through' }).animate(
-          { opacity: 0.5 },
+        this.css({
+          'text-decoration': 'line-through'
+        }).animate({
+            opacity: 0.5
+          },
           500
         )
       }
@@ -206,7 +244,8 @@ $(document).ready(function () {
   var Sidemenu = function () {
     this.$menuItem = $('#sidebar-menu a')
   }
-  function init () {
+
+  function init() {
     var $this = Sidemenu
     $('#sidebar-menu a').on('click', function (e) {
       if ($(this).parent().hasClass('submenu')) {
@@ -321,19 +360,20 @@ $(document).ready(function () {
   $('.counters').each(function () {
     var $this = $(this),
       countTo = $this.attr('data-count')
-    $({ countNum: $this.text() }).animate(
-      { countNum: countTo },
-      {
-        duration: 2000,
-        easing: 'linear',
-        step: function () {
-          $this.text(Math.floor(this.countNum))
-        },
-        complete: function () {
-          $this.text(this.countNum)
-        }
+    $({
+      countNum: $this.text()
+    }).animate({
+      countNum: countTo
+    }, {
+      duration: 2000,
+      easing: 'linear',
+      step: function () {
+        $this.text(Math.floor(this.countNum))
+      },
+      complete: function () {
+        $this.text(this.countNum)
       }
-    )
+    })
   })
   if ($('.toggle-password').length > 0) {
     $(document).on('click', '.toggle-password', function () {
@@ -383,8 +423,8 @@ $(document).ready(function () {
   if ($('.clipboard').length > 0) {
     var clipboard = new Clipboard('.btn')
   }
-  var chatAppTarget = $('.chat-window')
-  ;(function () {
+  var chatAppTarget = $('.chat-window');
+  (function () {
     if ($(window).width() > 991) chatAppTarget.removeClass('chat-slide')
     $(document).on(
       'click',
@@ -524,7 +564,8 @@ $(document).ready(function () {
         toggleSwitch.checked = true
       }
     }
-    function switchTheme (e) {
+
+    function switchTheme(e) {
       if (e.target.checked) {
         app.setAttribute('data-theme', 'dark')
         localStorage.setItem('theme', 'dark')
@@ -546,19 +587,27 @@ $(document).ready(function () {
     var $this = $(this)
     var $theTab = $(this).attr('id')
     console.log($theTab)
-    if ($this.hasClass('active')) {
-    } else {
+    if ($this.hasClass('active')) {} else {
       $this
         .closest('.tabs_wrapper')
         .find('ul.tabs li, .tabs_container .tab_content')
         .removeClass('active')
       $(
         '.tabs_container .tab_content[data-tab="' +
-          $theTab +
-          '"], ul.tabs li[id="' +
-          $theTab +
-          '"]'
+        $theTab +
+        '"], ul.tabs li[id="' +
+        $theTab +
+        '"]'
       ).addClass('active')
     }
   })
 })
+
+function closeModal() {
+  $('.modal').modal('hide');
+}
+
+// Event listener for buttons with a specific class (e.g., '.close-modal-btn')
+$('.close').on('click', function () {
+  closeModal();
+});

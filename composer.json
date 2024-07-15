@@ -1,6 +1,8 @@
 {
     "name": "laminas/laminas-mvc-skeleton",
     "description": "Laminas MVC Skeleton Application",
+    "minimum-stability": "dev",
+
     "type": "project",
     "license": "BSD-3-Clause",
     "keywords": [
@@ -9,7 +11,7 @@
         "skeleton",
         "framework"
     ],
-    "require": {
+   "require": {
         "php": "^7.3 || ~8.0.0",
         "laminas/laminas-component-installer": "^2.4",
         "laminas/laminas-development-mode": "^3.2",
@@ -20,13 +22,16 @@
         "laminas/laminas-servicemanager": "^3.17",
         "doctrine/dbal": "2.*",
         "laminas/laminas-session": "^2.13",
-       "doctrine/orm": "^2.10", 
+        "doctrine/orm": "^2.10", 
         "doctrine/doctrine-laminas-hydrator": "^3.0",
         "doctrine/doctrine-module": "^5.3",
         "doctrine/common": "^3.4",
-        "php-middleware/php-debug-bar": "^4.2",
-        "laminas/laminas-log": "^2.15"
+       "php-middleware/php-debug-bar": "^4.0.0",
+        "laminas/laminas-log": "^2.15",
+        "guzzlehttp/psr7": "1.9.x-dev",
+        "http-interop/http-factory-guzzle": "1.0"
     },
+
     "autoload": {
         "psr-4": {
             "Application\\": "module/Application/src/"
