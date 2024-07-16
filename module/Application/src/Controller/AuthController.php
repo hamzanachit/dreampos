@@ -89,7 +89,7 @@ class AuthController extends AbstractActionController
 
         if ($request->isPost()) {
             $data = $request->getPost();
-
+// dd($data );
             if (empty($data['full_name']) || empty($data['email']) || empty($data['phone']) || empty($data['address']) || empty($data['password'])) {
                 $viewModel->setVariable('error', 'All fields are required.');
                 return $viewModel;
@@ -107,17 +107,18 @@ class AuthController extends AbstractActionController
 
             $insert = $sql->insert('user');
             $insert->values([
-                'full_name' => $data['full_name'],
+                'fullName' => $data['full_name'],
                 'email' => $data['email'],
                 'phone' => $data['phone'],
                 'address' => $data['address'],
                 'status' => 'active',
                 'password' => password_hash($data['password'], PASSWORD_DEFAULT),
             ]);
+// dd($insert);
 
             $statement = $sql->prepareStatementForSqlObject($insert);
             $result = $statement->execute();
-
+// dd($result);
             if ($result->getAffectedRows()) {
                 return $this->redirect()->toRoute('login');
             } else {

@@ -18,11 +18,15 @@ class SettingController extends AbstractActionController{
          $user = $auth->getUser();
         $userid =$user['id'];
         $companyinfo = $this->settingService->getAllSettings($userid);
+        
+        if (isset($companyinfo[0]['idcompany'])){
           $idcompany = $companyinfo[0]['idcompany'];
+        }
+        
          if ($this->getRequest()->isPost()) {
             $postdata = $this->params()->fromPost();
             $files = $this->getRequest()->getFiles();
-             $CompanyName = htmlspecialchars($postdata['CompanyName'] ?? '');
+            $CompanyName = htmlspecialchars($postdata['CompanyName'] ?? '');
             $Logo = '';
             $Language = htmlspecialchars($postdata['Language'] ?? '');
             $SkuFormat = htmlspecialchars($postdata['SkuFormat'] ?? '');
@@ -68,6 +72,9 @@ class SettingController extends AbstractActionController{
           return new ViewModel([
             'companyinfo' => $companyinfo,
         ]);
+
+            $viewModel->setTemplate('application/setting/edit'); 
+            return $viewModel;
     }
 
 
