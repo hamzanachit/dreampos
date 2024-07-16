@@ -20,7 +20,9 @@ class SettingController extends AbstractActionController{
         $companyinfo = $this->settingService->getAllSettings($userid);
         
         if (isset($companyinfo[0]['idcompany'])){
+            
           $idcompany = $companyinfo[0]['idcompany'];
+
         }
         
          if ($this->getRequest()->isPost()) {
