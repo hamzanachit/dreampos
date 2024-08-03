@@ -50,41 +50,61 @@ abstract class AbstractActionController extends AbstractController
      * @return mixed
      * @throws Exception\DomainException
      */
-    public function onDispatch(MvcEvent $e)
-    {
+ 
+    public function onDispatch(MvcEvent $e) {
+    $authService = $this->plugin('auth');
+    $routeMatch = $e->getRouteMatch();
+    $currentRoute = $routeMatch ? $routeMatch->getMatchedRouteName() : null;
+        if(isset($_SESSION['company'])){
+             $_SESSION['companyName'] = $_SESSION['company'][0]['companyName'];
+        }  
+    // dd($authService->ActifCompany());
+    // Authentication check
+    if (!$authService->hasIdentity()){
+        if ($currentRoute !== 'login' && $currentRoute !== 'register') {
+            return $this->redirect()->toRoute('login');
+        }
+    } elseif (!$authService->hasCompany()) {
+        $currentAction = $routeMatch ? $routeMatch->getParam('action') : null;
+        if ($currentRoute !== 'settingActions' || $currentAction !== 'addcompanyinfo') {
+            return $this->redirect()->toRoute('settingActions', ['action' => 'addcompanyinfo']);
+        }
+    } 
+        $company = $authService->Company();
+        $hasActiveCompany = false;
+        if (!empty($company)){
+        foreach ($company as $row) {
+            $Companystatus = $row['companyStatus'];
 
+            if ($Companystatus === 'actif') {
+                $hasActiveCompany = true;
+                break;
+            }
+        } 
+        if ($hasActiveCompany == false) {
+             if ($currentRoute !== 'settingActions') {
+                 return $this->redirect()->toRoute('settingActions', ['action' => 'selectcompany']);
 
-        $authService = $this->plugin('auth'); // Ensure this plugin is correctly configured
-        
-      if (!$authService->hasIdentity()) {
-            // Redirect to login only if not already on login or registration page
-            $routeMatch = $e->getRouteMatch();
-            $currentRoute = $routeMatch->getMatchedRouteName();
-
-            if ($currentRoute !== 'login' && $currentRoute !== 'register') {
-                return $this->redirect()->toRoute('login');
             }
         }
-        $routeMatch = $e->getRouteMatch();
-        if (! $routeMatch) {
-            /**
-             * @todo Determine requirements for when route match is missing.
-             *       Potentially allow pulling directly from request metadata?
-             */
-            throw new Exception\DomainException('Missing route matches; unsure how to retrieve action');
-        }
 
-        $action = $routeMatch->getParam('action', 'not-found');
-        $method = static::getMethodFromAction($action);
-
-        if (! method_exists($this, $method)) {
-            $method = 'notFoundAction';
-        }
-
-        $actionResponse = $this->$method();
-
-        $e->setResult($actionResponse);
-
-        return $actionResponse;
     }
+
+    if (!$routeMatch) {
+        throw new Exception\DomainException('Missing route matches; unsure how to retrieve action');
+    }
+
+    $action = $routeMatch->getParam('action', 'not-found');
+    $method = static::getMethodFromAction($action);
+
+    if (!method_exists($this, $method)) {
+        $method = 'notFoundAction';
+    }
+
+    $actionResponse = $this->$method();
+    $e->setResult($actionResponse);
+
+    return $actionResponse;
+}
+
 }

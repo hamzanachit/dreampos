@@ -26,7 +26,7 @@ class IndexController extends AbstractActionController
         
         if ($auth->hasIdentity()) {
             $fullName = $auth->getIdentity();
-            //  var_dump( $fullName);
+            //  dd( $fullName);
             // Now $userId should contain the user ID
         }
        

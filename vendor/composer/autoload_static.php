@@ -8,8 +8,8 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
 {
     public static $files = array (
         'c9d07b32a2e02bc0fc582d4f0c1b56cc' => __DIR__ . '/..' . '/laminas/laminas-servicemanager/src/autoload.php',
-        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
@@ -19,10 +19,15 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'Z' => 
+        array (
+            'ZipStream\\' => 10,
+        ),
         'W' => 
         array (
             'Webmozart\\Assert\\' => 17,
@@ -49,11 +54,19 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Server\\' => 16,
             'Psr\\Http\\Message\\' => 17,
+            'Psr\\Http\\Client\\' => 16,
             'Psr\\Container\\' => 14,
             'Psr\\Clock\\' => 10,
             'Psr\\Cache\\' => 10,
+            'Picqer\\Barcode\\' => 15,
             'PhpParser\\' => 10,
+            'PhpOffice\\PhpSpreadsheet\\' => 25,
             'PhpMiddleware\\PhpDebugBar\\' => 26,
+        ),
+        'M' => 
+        array (
+            'MyCLabs\\Enum\\' => 13,
+            'Matrix\\' => 7,
         ),
         'L' => 
         array (
@@ -111,6 +124,10 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
             'DoctrineModule\\' => 15,
             'DebugBar\\' => 9,
         ),
+        'C' => 
+        array (
+            'Complex\\' => 8,
+        ),
         'B' => 
         array (
             'Brick\\VarExporter\\' => 18,
@@ -123,6 +140,10 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
     );
 
     public static $prefixDirsPsr4 = array (
+        'ZipStream\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
+        ),
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
@@ -197,6 +218,10 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
             0 => __DIR__ . '/..' . '/psr/http-factory/src',
             1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
+        'Psr\\Http\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-client/src',
+        ),
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
@@ -209,13 +234,29 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
+        'Picqer\\Barcode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/picqer/php-barcode-generator/src',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'PhpOffice\\PhpSpreadsheet\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
+        ),
         'PhpMiddleware\\PhpDebugBar\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-middleware/php-debug-bar/src',
+        ),
+        'MyCLabs\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/myclabs/php-enum/src',
+        ),
+        'Matrix\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
         ),
         'Laminas\\View\\' => 
         array (
@@ -394,6 +435,10 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
         array (
             0 => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar',
         ),
+        'Complex\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
+        ),
         'Brick\\VarExporter\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/varexporter/src',
@@ -408,13 +453,23 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'H' => 
+        array (
+            'HTMLPurifier' => 
+            array (
+                0 => __DIR__ . '/..' . '/ezyang/htmlpurifier/library',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
-        'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+        'Stringable' => __DIR__ . '/..' . '/myclabs/php-enum/stubs/Stringable.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     );
@@ -424,6 +479,7 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80::$classMap;
 
         }, null, ClassLoader::class);

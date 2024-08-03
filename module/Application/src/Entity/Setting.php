@@ -52,9 +52,9 @@ class Setting
     /**
      * @var string
      *
-     * @ORM\Column(name="color", type="string", length=100, nullable=false)
+     * @ORM\Column(name="ICE", type="string", length=100, nullable=false)
      */
-    private $color;
+    private $ICE;
 
     /**
      * @var string
@@ -230,25 +230,25 @@ class Setting
     }
 
     /**
-     * Get the value of color
+     * Get the value of ICE
      *
      * @return  string
      */ 
-    public function getColor()
+    public function getICE()
     {
-        return $this->color;
+        return $this->ICE;
     }
 
     /**
-     * Set the value of color
+     * Set the value of ICE
      *
-     * @param  string  $color
+     * @param  string  $ICE
      *
      * @return  self
      */ 
-    public function setColor(string $color)
+    public function setICE(string $ICE)
     {
-        $this->color = $color;
+        $this->ICE = $ICE;
 
         return $this;
     }

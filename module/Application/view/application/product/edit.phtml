@@ -1,0 +1,166 @@
+<div class="content" style="margin-top:80px;">
+    <div class="page-header">
+        <div class="page-title">
+            <h4>Product Edit</h4>
+            <h6>Edit existing product details</h6>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form id="formEditProduct" method="post" enctype="multipart/form-data"
+                action="<?= $this->url('productsActions', ['action' => 'edit', 'id' => $product->getId()]) ?>">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input type="text" name="ProductName" id="ProductName" value="<?= $product->getName(); ?>">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select class="select" name="Category" id="Category">
+                                <option value="">Choose Category</option>
+                                <option value="Computers" <?= $product->getCategory(); ?>>
+                                    Computers</option>
+                                <!-- Add more categories as needed -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Sub Category</label>
+                            <select class="select" name="SubCategory" id="SubCategory">
+                                <option value="">Choose Sub Category</option>
+                                <option value="Fruits" <?= $product->getSubCategory(); ?>>
+                                    Fruits</option>
+                                <!-- Add more sub-categories as needed -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>PriceHt</label>
+                            <select class="select" name="PriceHt" id="PriceHt">
+                                <option value="">Choose PriceHt</option>
+                                <option value="PriceHt" <?=  $product->getPriceHt(); ?>>PriceHt
+                                </option>
+                                <!-- Add more PriceHts as needed -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Unit</label>
+                            <select class="select" name="Unit" id="Unit">
+                                <option value="">Choose Unit</option>
+                                <option value="Unit" <?= $product->getUnit(); ?>>Unit</option>
+                                <!-- Add more units as needed -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>SKU</label>
+                            <input type="text" value="<?= $product->getSku(); ?>" name="SKU" id="SKU"
+                                value="<?= $this->newsku ?>">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Minimum Qty</label>
+                            <input type="text" value="<?= $product->getMinQty(); ?>" name="Minimum" id="Minimum">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Quantity</label>
+                            <input type="text" value="<?= $product->getQuantity(); ?>" name="Quantity" id="Quantity">
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea value="<?= $product->getSku(); ?>" name="Description" id="Description"
+                                class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Tax</label>
+                            <select class="select" value="<?= $product->getTax(); ?>" name="Tax" id="Tax">
+                                <option>Choose Tax</option>
+                                <option value="2">2%</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Discount Type</label>
+                            <select class="select" value="<?= $product->getDiscountType(); ?>" name="Discount"
+                                id="Discount">
+                                <option>Percentage</option>
+                                <option value="10">10%</option>
+                                <option value="20">20%</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="text" value="<?= $product->getPrice(); ?>" name="Price" id="Price">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label> Status</label>
+                            <select class="select" value="<?= $product->getStatus(); ?>" name="Status" id="Status">
+                                <option value="Closed">Closed</option>
+                                <option value="Open">Open</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label> Product Image</label>
+                            <div class="image-upload">
+                                <input type="file" value="<?= $product->getDescription(); ?>" name="image" id="image">
+                                <div class="image-uploads">
+                                    <img src="<?= $this->basePath('img/icons/upload.svg') ?>" alt="img">
+                                    <h4>Drag and drop a file to upload</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="slider-product-details">
+                                    <div class="owl-carousel owl-theme product-slide">
+                                        <div class="slider-product">
+                                            <img src="<?= $this->basePath('img/product/' . $product->getImage()) ?>"
+                                                alt="img">
+                                            <h4><?=   $product->getImage(); ?></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <button type="submit" class="btn btn-submit me-2">Submit</button>
+                    <a href="productlist.html" class="btn btn-cancel">Cancel</a>
+                </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+</div>
+<?= $this->inlineScript()->prependFile($this->basePath('js/jquery-3.6.0.min.js'));?>
+
+<?php  $this->inlineScript() 
+         ->appendFile($this->basePath('js/setting/scripteditproduct.js'));

@@ -28,12 +28,10 @@ class DashboardController extends AbstractActionController
             $mail = $auth->getIdentity();
             $user = $auth->getUser();
             $userid =$user['id'];
-
-            // dd(  $userid );
             $checkcompany = $this->dashboardService->getCheckCompanyById($userid);
         if ($checkcompany === null) {
-                echo '<script>alert("Company check returned null.");</script>';
-                echo '<script>window.location.href = "' . $this->url()->fromRoute('settingActions', ['action' => 'edit']) . '";</script>';
+                echo '<script>alert("Company check returned that this user do not has any company.");</script>';
+                echo '<script>window.location.href = "' . $this->url()->fromRoute('settingActions', ['action' => 'addcompanyinfo']) . '";</script>';
                 exit;
             }
         }

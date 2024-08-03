@@ -7,22 +7,23 @@
     use Application\Entity\User;
     use Application\Entity\Category;
     use Application\Entity\SubCategory;
+    use Application\Entity\Company; 
 
     class SettingService{
         
         protected $entityManager;
 
-        public function __construct(EntityManager $entityManager){
+    public function __construct(EntityManager $entityManager){
             $this->entityManager = $entityManager;
-        }
+    }
 
 
-         public function getAllSettings($userid){
+    public function getAllSettings($userid){
             try {
                 $query = $this->entityManager->createQueryBuilder()
                         ->from('Application\Entity\Setting','s')
                         ->innerJoin("Application\Entity\User", "u","WITH", "u.id = s.creator")
-                        ->select('s as setting,s.id,s.companyName,s.logo,s.language,s.skuFormat,s.color,s.darkMode,s.currency,s.country,s.companyCity,s.companyAddresse,s.companyPhone,s.companyEmail,s.companyStatus,s.creator,s.id as idcompany')
+                        ->select('s as setting,s.id,s.companyName,s.logo,s.language,s.skuFormat,s.ICE,s.darkMode,s.currency,s.country,s.companyCity,s.companyAddresse,s.companyPhone,s.companyEmail,s.companyStatus,s.creator,s.id as idcompany')
                         ->addselect('u.fullname')
                         ->Where("s.creator = ".$userid);
                 $data = $query->getQuery()->getResult();
@@ -31,32 +32,100 @@
                 throw $th;
                 return [];
             }
-        }
+    }
 
 
-        
-          public function CheckCompanyExist($idcompany,$userid){
+     public function getactifcompany($userid){
             try {
                 $query = $this->entityManager->createQueryBuilder()
-                        ->from('Application\Entity\Setting','s') 
-                        ->select('s.id,s.creator')
+                        ->from('Application\Entity\Setting','s')
+                        ->innerJoin("Application\Entity\User", "u","WITH", "u.id = s.creator")
+                        ->select('s as setting,s.id,s.companyName,s.logo,s.language,s.skuFormat,s.ICE,s.darkMode,s.currency,s.country,s.companyCity,s.companyAddresse,s.companyPhone,s.companyEmail,s.companyStatus,s.creator,s.id as idcompany')
+                        ->addselect('u.fullname')
                         ->Where("s.creator = ".$userid)
-                        ->AndWhere("s.id = ".$idcompany);
+                        ->Where("s.companyStatus = 'actif'");
                 $data = $query->getQuery()->getResult();
                 return $data;
             } catch (\Throwable $th) {
                 throw $th;
-                return null;
+                return [];
+            }
+    }
+
+public function ChangeCompany($userId, $idCompany){
+    try {
+        // Find the company by its ID
+        $company = $this->entityManager->getRepository('Application\Entity\Setting')->find($idCompany);
+        
+        if ($company === null) {
+            throw new \Exception("Company with ID $idCompany not found");
+        }
+         $companies = $this->entityManager->getRepository('Application\Entity\Setting')->findAll();
+        foreach ($companies as $company) {
+            if ($company->getId() == $idCompany) {
+                // dd($company->getId(), $idCompany);
+                $company->setCompanyStatus("actif");
+                $this->entityManager->persist($company);
+            }else{
+                // dd($company->getId(), $idCompany);
+
+                 $company->setCompanyStatus("desable");
+                $this->entityManager->persist($company);
+            }
+        }
+        // Flush changes to the database
+        $this->entityManager->flush();
+        return $company;
+    } catch (\Throwable $th) {
+        error_log($th->getMessage());
+        throw $th;
+    }
+}
+
+
+
+
+   public function getCompaniesByUserId($userId) {
+    try {
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder
+            ->select('s')
+            ->from('Application\Entity\Setting', 's')
+            ->where('s.creator = :userId')
+            ->setParameter('userId', $userId);
+            $query = $queryBuilder->getQuery();
+            $data = $query->getResult();
+            // dd($data);
+           return $data;
+            } catch (\Throwable $th) { 
+                throw $th;
             }
         }
 
-        public function AddSetting($CompanyName, $Logo, $Language, $SkuFormat, $Color, $DarkMode, $Currency,  $Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $CompanyStatus,$userid){
-            $setting = new Setting();
+
+        
+     public function CheckCompanyExist($CompanyName, $userid){
+        $query = $this->entityManager->createQueryBuilder()
+            ->from('Application\Entity\Setting', 's')
+            ->select('s.id, s.creator, s.companyName')
+            ->where('s.companyName = :companyName')
+            ->Andwhere('s.creator = :creator')
+            ->setParameter('companyName', $CompanyName)
+            ->setParameter('creator', $userid)
+            ->getQuery();
+        $data = $query->getResult();
+        return $data;
+   
+}
+
+
+        public function AddSetting($CompanyName, $Logo, $Language, $SkuFormat, $ICE, $DarkMode, $Currency,  $Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $CompanyStatus,$userid){
+             $setting = new Setting();
             $setting->setCompanyName($CompanyName);
             $setting->setLogo($Logo);
             $setting->setLanguage($Language);
             $setting->setSkuFormat($SkuFormat);
-            $setting->setColor($Color);
+            $setting->setICE($ICE);
             $setting->setDarkMode($DarkMode);
             $setting->setCurrency($Currency);
             $setting->setCountry($Country);
@@ -71,15 +140,24 @@
             return $setting;
         }
 
+        public function AddCompany($CompanyName,$userid){
+             $setting = new Company();
+             $setting->setCompanyName($CompanyName);
+             $setting->setUserId($userid);
+             $this->entityManager->persist($setting);
+             $this->entityManager->flush();
+             return $setting;
+        }
 
 
-        //   public function editSetting($CompanyName, $Logo, $Language, $SkuFormat, $Color, $DarkMode, $Currency,  $Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $CompanyStatus,$userid){
+
+        //   public function editSetting($CompanyName, $Logo, $Language, $SkuFormat, $ICE, $DarkMode, $Currency,  $Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $CompanyStatus,$userid){
         //     $setting = new Setting();
         //     $setting->setCompanyName($CompanyName);
         //     $setting->setLogo($Logo);
         //     $setting->setLanguage($Language);
         //     $setting->setSkuFormat($SkuFormat);
-        //     $setting->setColor($Color);
+        //     $setting->setICE($ICE);
         //     $setting->setDarkMode($DarkMode);
         //     $setting->setCurrency($Currency);
         //     $setting->setCountry($Country);
@@ -98,7 +176,7 @@
 
 
 
-    public function editSetting($CompanyName, $Logo, $Language, $SkuFormat, $Color, $DarkMode, $Currency,  $Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $CompanyStatus,$userid,$idcompany){
+    public function editSetting($CompanyName, $Logo, $Language, $SkuFormat, $ICE, $DarkMode, $Currency,  $Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail,$userid,$idcompany){
         try {
 
             $setting = $this->entityManager->getRepository('Application\Entity\Setting')->find($idcompany);
@@ -112,7 +190,7 @@
             }
             $setting->setLanguage($Language);
             $setting->setSkuFormat($SkuFormat);
-            $setting->setColor($Color);
+            $setting->setICE($ICE);
             $setting->setDarkMode($DarkMode);
             $setting->setCurrency($Currency);
             $setting->setCountry($Country);
@@ -120,8 +198,7 @@
             $setting->setCompanyAddresse($CompanyAddress);
             $setting->setCompanyPhone($CompanyPhone);
             $setting->setCompanyEmail($CompanyEmail);
-            $setting->setCompanyStatus($CompanyStatus);
-            $setting->setCreator($userid);
+             $setting->setCreator($userid);
             $this->entityManager->persist($setting);
             $this->entityManager->flush();
 
@@ -133,7 +210,25 @@
     }
 
 
-      public function getAllCategorys(){
+       public function editCompany($CompanyName, $userid, $idcompany){
+        try { 
+            $Company = $this->entityManager->getRepository('Application\Entity\Company')->find($idcompany);
+            if ($Company === null) {
+                throw new \Exception("Company with ID $idcompany not found");
+            }
+            $Company->setCompanyName($CompanyName);
+            $Company->setUserId($userid);
+            $this->entityManager->persist($Company);
+            $this->entityManager->flush();
+            return $Company;
+            } catch (\Throwable $th) {
+                error_log($th->getMessage());
+                throw $th;
+            }
+    }
+ 
+
+    public function getAllCategorys(){
             try {
                 $query = $this->entityManager->createQueryBuilder()
                         ->from('Application\Entity\Category','c') 
@@ -155,6 +250,9 @@
     
      
     public function addCategory($categoryName, $description, $categoryCode,$Logo,$userid){
+        // $auth = $this->plugin('auth');
+        // $company = $auth->hasCompany();
+        // $companyid = $company['id'];
             $Category = new Category();
             $Category->setCategoryName($categoryName);
             $Category->setLogo($Logo);

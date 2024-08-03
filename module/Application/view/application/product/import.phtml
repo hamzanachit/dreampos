@@ -1,0 +1,56 @@
+ <style>
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="file"],
+button {
+    margin: 10px 0;
+}
+ </style>
+ </head>
+
+ <body>
+     <div class="container">
+         <input type="text" id="basePath" style="display:none;" value="<?= $this->basePath() ?>">
+
+         <h2>Import Products</h2>
+         <form id="import-form" method="POST" enctype="multipart/form-data"
+             action="<?= $this->url('productsActions', ['action' => 'processImport']) ?>">
+             <label for="file">Excel File:</label>
+             <input type="file" id="file" name="file" accept=".xlsx, .xls">
+             <button type="submit" id="Upload">Upload</button>
+         </form>
+     </div>
+ </body>
+
+ </html>
+
+
+ <?= $this->inlineScript()->prependFile($this->basePath('js/jquery-3.6.0.min.js'));?>
+
+ <?php  $this->inlineScript() 
+         ->appendFile($this->basePath('js/product/scriptimportproducts.js'));?>

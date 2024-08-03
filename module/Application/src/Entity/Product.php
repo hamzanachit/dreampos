@@ -24,7 +24,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 
@@ -45,16 +45,23 @@ class Product
     /**
      * @var string|null
      *
-     * @ORM\Column(name="brand", type="string", length=100, nullable=true)
+     * @ORM\Column(name="PriceHt", type="string", length=200, nullable=true)
      */
-    private $brand;
+    private $PriceHt;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="created_by", type="string", length=100, nullable=true)
+     * @ORM\Column(name="created_by", type="string", length=200, nullable=true)
      */
     private $createdBy;
+    
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="updated_by", type="string", length=100, nullable=true)
+     */
+    private $UpdatedBy;
 
     /**
      * @var string|null
@@ -66,7 +73,7 @@ class Product
     /**
      * @var string|null
      *
-     * @ORM\Column(name="sku", type="string", length=100, nullable=true)
+     * @ORM\Column(name="sku", type="string", length=200, nullable=true)
      */
     private $sku;
 
@@ -101,7 +108,7 @@ class Product
     /**
      * @var string|null
      *
-     * @ORM\Column(name="discount_type", type="string", length=50, nullable=true)
+     * @ORM\Column(name="discount_type", type="string", length=150, nullable=true)
      */
     private $discountType;
 
@@ -115,7 +122,7 @@ class Product
     /**
      * @var string|null
      *
-     * @ORM\Column(name="status", type="string", length=50, nullable=true)
+     * @ORM\Column(name="status", type="string", length=150, nullable=true)
      */
     private $status;
 
@@ -139,6 +146,26 @@ class Product
      * @ORM\Column(name="updated_at", type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
      */
     private $updatedAt ;
+
+     /**
+     * @var string|null
+     *
+     * @ORM\Column(name="barcode", type="string", length=50, nullable=true)
+     */
+    private $barcode;
+     /**
+     * @var string|null
+     *
+     * @ORM\Column(name="idcompany", type="string", length=50, nullable=true)
+     */
+    private $idcompany;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="CostPrice", type="string", length=50, nullable=true)
+     */
+    private $CostPrice;
 
 
 
@@ -230,25 +257,25 @@ class Product
     }
 
     /**
-     * Get the value of brand
+     * Get the value of PriceHt
      *
      * @return  string|null
      */ 
-    public function getBrand()
+    public function getPriceHt()
     {
-        return $this->brand;
+        return $this->PriceHt;
     }
 
     /**
-     * Set the value of brand
+     * Set the value of PriceHt
      *
-     * @param  string|null  $brand
+     * @param  string|null  $PriceHt
      *
      * @return  self
      */ 
-    public function setBrand($brand)
+    public function setPriceHt($PriceHt)
     {
-        $this->brand = $brand;
+        $this->PriceHt = $PriceHt;
 
         return $this;
     }
@@ -471,6 +498,69 @@ class Product
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of barcode
+     */
+    public function getBarcode() {
+        return $this->barcode;
+    }
+
+    /**
+     * Set the value of barcode
+     */
+    public function setBarcode($barcode): self {
+        $this->barcode = $barcode;
+        return $this;
+    }
+
+    /**
+     * Get the value of idcompany
+     *
+     * @return  string|null
+     */ 
+    public function getIdcompany()
+    {
+        return $this->idcompany;
+    }
+
+    /**
+     * Set the value of idcompany
+     *
+     * @param  string|null  $idcompany
+     *
+     * @return  self
+     */ 
+    public function setIdcompany($idcompany)
+    {
+        $this->idcompany = $idcompany;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of CostPrice
+     *
+     * @return  string|null
+     */ 
+    public function getCostPrice()
+    {
+        return $this->CostPrice;
+    }
+
+    /**
+     * Set the value of CostPrice
+     *
+     * @param  string|null  $CostPrice
+     *
+     * @return  self
+     */ 
+    public function setCostPrice($CostPrice)
+    {
+        $this->CostPrice = $CostPrice;
 
         return $this;
     }

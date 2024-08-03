@@ -48,8 +48,7 @@ class DashboardService
 
 
 
-      public function getCheckCompanyById($userid){ 
-
+    public function getCheckCompanyById($userid){ 
     $setting = $this->entityManager->getRepository(Setting::class)->findOneBy(['creator' => $userid]);
     
     if ($setting === null) {

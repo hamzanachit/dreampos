@@ -40,14 +40,19 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>Color</label>
-                            <input type="text" name="Color" id="Color" value="<?= $setting['color']?>">
+                            <label>ICE</label>
+                            <input type="text" name="ICE" id="ICE" value="<?= $setting['ICE']?>">
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Dark Mode</label>
-                            <input type="text" name="DarkMode" id="DarkMode" value="<?=  $setting['darkMode']   ?>">
+
+                            <select class="form-control" name="DarkMode" id="DarkMode">
+                                <option value="off">Off</option>
+                                <option value="on">On</option>
+                            </select>
+                            <!-- <input type="text" name="DarkMode" id="DarkMode" value="<?=  $setting['darkMode']   ?>"> -->
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
@@ -95,8 +100,7 @@
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Company Status</label>
-                            <input type="text" name="CompanyStatus" id="CompanyStatus"
-                                value="<?=  $setting['companyStatus']   ?>">
+                            <input type="text" disabled value="<?=  $setting['companyStatus']   ?>">
                         </div>
                     </div>
 
@@ -120,7 +124,6 @@
 </div>
 
 
-<?= $this->inlineScript()
-               
+<?= $this->inlineScript()     
                 ->appendFile($this->basePath('js/setting/scriptsetting.js'));              
 ?>

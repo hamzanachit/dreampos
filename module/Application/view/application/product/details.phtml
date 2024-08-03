@@ -12,7 +12,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="bar-code-view d-flex justify-content-between align-items-center">
-                        <img src="<?= $this->basePath('img/barcode1.png') ?>" alt="barcode" class="img-fluid">
+                        <img src="<?= $this->basePath('img/barcodes/' . basename($product->getBarcode())) ?>"
+                            alt="barcode" class="img-fluid">
                         <a class="printimg">
                             <img src="<?= $this->basePath('img/icons/printer.svg') ?>" alt="print">
                         </a>
@@ -32,8 +33,8 @@
                                 <h6><?= $product->getSubCategory(); ?></h6>
                             </li>
                             <li class="mb-2">
-                                <h4>Brand</h4>
-                                <h6><?= $product->getBrand(); ?></h6>
+                                <h4>PriceHt</h4>
+                                <h6><?= $product->getPriceHt(); ?></h6>
                             </li>
                             <li class="mb-2">
                                 <h4>Unit</h4>

@@ -36,4 +36,45 @@ class Company
     private $userId;
 
 
+
+    /**
+     * Get the value of idCompany
+     */
+    public function getIdCompany() {
+        return $this->idCompany;
+    }
+
+    
+    /**
+     * Get the value of companyName
+     */
+    public function getCompanyName() {
+        return $this->companyName;
+    }
+
+    /**
+     * Set the value of companyName
+     */
+    public function setCompanyName($companyName): self {
+        $this->companyName = $companyName;
+        return $this;
+    }
+
+
+
+      /**
+     * Get the value of userId
+     */
+    public function getUserId() {
+        return $this->userId;
+    }
+
+    /**
+     * Set the value of userId
+     */
+    public function setUserId($userId): self {
+        $this->userId = $userId;
+        return $this;
+    }
+
 }

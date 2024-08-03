@@ -10,16 +10,19 @@ use Laminas\Authentication\Adapter\DbTable\CallbackCheckAdapter;
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Session\Container;
 use Laminas\Db\Sql\Sql;
+use Application\Service\DashboardService;
 
 class AuthController extends AbstractActionController
 {
     protected $dbAdapter;
     protected $authService;
+    protected $DashboardService;
 
-    public function __construct(Adapter $dbAdapter, AuthenticationService $authService)
+    public function __construct(Adapter $dbAdapter, AuthenticationService $authService, DashboardService $DashboardService)
     {
         $this->dbAdapter = $dbAdapter;
         $this->authService = $authService;
+        $this->DashboardService = $DashboardService;
     }
 
     public function loginAction()
@@ -54,18 +57,30 @@ class AuthController extends AbstractActionController
             if ($result->isValid()) {
                 $userTable = new \Laminas\Db\TableGateway\TableGateway('user', $this->dbAdapter);
                 $user = $userTable->select(['email' => $data['email']])->current();
-
                 if ($user) {
                     $session = new Container('user_session');
                     $session->user = $user;
-                 $_SESSION["user"] =$user;
+                    $_SESSION["user"] =$user;
 
                     $this->authService->getStorage()->write($user);
+                       $user = $this->authService->getIdentity();
+                        $userid = $user['id'];
+                        $checkcompany = "";
+                        
+                       
+                        if ($this->DashboardService){
+                             $checkcompany = $this->DashboardService->getCheckCompanyById($userid);
 
-                    // Debugging: Check if user is written to auth storage
-                    // var_dump($this->authService->getStorage()->read());
+                         if ($checkcompany == null) {
+                            
+                            $session = new Container('company_session');
+                            $session->company = $checkcompany;
+                            $_SESSION["company"] =  $checkcompany;
+                            
+                         } 
+                            return $this->redirect()->toRoute('dashboard');
 
-                    return $this->redirect()->toRoute('dashboard');
+                    }
                 } else {
                     $viewModel->setVariable('error', 'User not found.');
                 }
@@ -89,7 +104,6 @@ class AuthController extends AbstractActionController
 
         if ($request->isPost()) {
             $data = $request->getPost();
-// dd($data );
             if (empty($data['full_name']) || empty($data['email']) || empty($data['phone']) || empty($data['address']) || empty($data['password'])) {
                 $viewModel->setVariable('error', 'All fields are required.');
                 return $viewModel;
@@ -114,11 +128,9 @@ class AuthController extends AbstractActionController
                 'status' => 'active',
                 'password' => password_hash($data['password'], PASSWORD_DEFAULT),
             ]);
-// dd($insert);
-
+ 
             $statement = $sql->prepareStatementForSqlObject($insert);
             $result = $statement->execute();
-// dd($result);
             if ($result->getAffectedRows()) {
                 return $this->redirect()->toRoute('login');
             } else {
@@ -137,7 +149,9 @@ class AuthController extends AbstractActionController
         $session = new Container('user_session');
         $session->getManager()->destroy();
         $_SESSION["user"] = "";
-
+        // $session = new Container('company_session');
+        $session->company = "";
+        $_SESSION["company"] = "";
         return $this->redirect()->toRoute('login');
     }
 }

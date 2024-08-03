@@ -14,22 +14,26 @@
                      <div class="col-lg-3 col-sm-6 col-12">
                          <div class="form-group">
                              <label>Product Name</label>
-                             <input type="text" name="ProductName" id="ProductName">
+                             <input type="text" Required name="ProductName" id="ProductName">
                          </div>
                      </div>
                      <div class="col-lg-3 col-sm-6 col-12">
                          <div class="form-group">
                              <label>Category</label>
-                             <select class="select" name="Category" id="Category">
+                             <select class="select" Required name="Category" id="Category">
                                  <option>Choose Category</option>
-                                 <option value="Computers">Computers</option>
+                                 <?php foreach ($AllCategorys as $row ) { ?>
+                                 <option value="<?= $row['id'] ?>">
+                                     <?= $row['categoryName'] ?>
+                                 </option>
+                                 <?php } ?>
                              </select>
                          </div>
                      </div>
                      <div class="col-lg-3 col-sm-6 col-12">
                          <div class="form-group">
                              <label>Sub Category</label>
-                             <select class="select" name="SubCategory" id="SubCategory">
+                             <select class="select" Required name="SubCategory" id="SubCategory">
                                  <option>Choose Sub Category</option>
                                  <option value="Fruits">Fruits</option>
                              </select>
@@ -37,17 +41,17 @@
                      </div>
                      <div class="col-lg-3 col-sm-6 col-12">
                          <div class="form-group">
-                             <label>Brand</label>
-                             <select class="select" name="Brand" id="Brand">
-                                 <option>Choose Brand</option>
-                                 <option value="Brand">Brand</option>
+                             <label> Status</label>
+                             <select class="select" Required name="Status" id="Status">
+                                 <option value="instock">in stock</option>
+                                 <option value="outstock">out of stock</option>
                              </select>
                          </div>
                      </div>
                      <div class="col-lg-3 col-sm-6 col-12">
                          <div class="form-group">
                              <label>Unit</label>
-                             <select class="select" name="Unit" id="Unit">
+                             <select class="select" Required name="Unit" id="Unit">
                                  <option>Choose Unit</option>
                                  <option value="Unit">Unit</option>
                              </select>
@@ -56,31 +60,31 @@
                      <div class="col-lg-3 col-sm-6 col-12">
                          <div class="form-group">
                              <label>SKU</label>
-                             <input type="text" name="SKU" id="SKU" value="<?= $this->newsku ?>">
+                             <input type="text" Required name="SKU" id="SKU" value="<?= $this->newsku ?>">
                          </div>
                      </div>
                      <div class="col-lg-3 col-sm-6 col-12">
                          <div class="form-group">
                              <label>Minimum Qty</label>
-                             <input type="text" name="Minimum" id="Minimum">
+                             <input type="text" Required name="Minimum" id="Minimum">
                          </div>
                      </div>
                      <div class="col-lg-3 col-sm-6 col-12">
                          <div class="form-group">
                              <label>Quantity</label>
-                             <input type="text" name="Quantity" id="Quantity">
+                             <input type="text" Required name="Quantity" id="Quantity">
                          </div>
                      </div>
                      <div class="col-lg-12">
                          <div class="form-group">
                              <label>Description</label>
-                             <textarea name="Description" id="Description" class="form-control"></textarea>
+                             <textarea Required name="Description" id="Description" class="form-control"></textarea>
                          </div>
                      </div>
                      <div class="col-lg-3 col-sm-6 col-12">
                          <div class="form-group">
                              <label>Tax</label>
-                             <select class="select" name="Tax" id="Tax">
+                             <select class="select" Required name="Tax" id="Tax">
                                  <option>Choose Tax</option>
                                  <option value="2">2%</option>
                              </select>
@@ -89,7 +93,7 @@
                      <div class="col-lg-3 col-sm-6 col-12">
                          <div class="form-group">
                              <label>Discount Type</label>
-                             <select class="select" name="Discount" id="Discount">
+                             <select class="select" Required name="Discount" id="Discount">
                                  <option>Percentage</option>
                                  <option value="10">10%</option>
                                  <option value="20">20%</option>
@@ -99,18 +103,16 @@
                      <div class="col-lg-3 col-sm-6 col-12">
                          <div class="form-group">
                              <label>Price</label>
-                             <input type="text" name="Price" id="Price">
+                             <input type="text" Required name="PriceHt" id="PriceHt">
                          </div>
                      </div>
                      <div class="col-lg-3 col-sm-6 col-12">
                          <div class="form-group">
-                             <label> Status</label>
-                             <select class="select" name="Status" id="Status">
-                                 <option value="Closed">Closed</option>
-                                 <option value="Open">Open</option>
-                             </select>
+                             <label>sale Price</label>
+                             <input type="text" Required name="Price" id="Price">
                          </div>
                      </div>
+
                      <div class="col-lg-12">
                          <div class="form-group">
                              <label> Product Image</label>

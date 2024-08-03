@@ -1,0 +1,149 @@
+<div class="content" style="margin-top: 80px;">
+    <div class="page-header">
+        <div class="page-title">
+            <h4>Add Company</h4>
+            <h6>Company info</h6>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form id="formAddProduct" method="post" enctype="multipart/form-data">
+
+                <div class="row">
+
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" name="CompanyName" id="CompanyName">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Logo</label>
+                            <input type="file" class="form-control" name="Logo" id="Logo">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Language</label>
+
+                            <select class="form-control" name="Language" id="Language">
+                                <option value="English">English</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>SKU Format</label title="SKU Format is a unique identifier used to track products.">
+                            <input name="SkuFormat" id="SkuFormat" class="form-control"
+                                title="SKU Format is a unique identifier used to track products.">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>ICE</label>
+                            <input class="form-control" type="text" name="ICE" id="ICE">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Tva</label>
+                            <input class="form-control" type="text" name="Tva" id="Tva">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Dark Mode</label>
+
+                            <select class="form-control" name="DarkMode" id="DarkMode">
+                                <option value="off">Desable</option>
+                                <option value="on">Actif</option>
+                            </select>
+
+
+
+                            <!-- <input type="text" name="DarkMode" id="DarkMode">: -->
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Currency</label>
+
+                            <select class="form-control" name="Currency" id="Currency">
+                                <option value="MAD">Dirham</option>
+                                <option value="USD">USD</option>
+                            </select>
+
+
+                            <!-- <input name="Currency" id="Currency" class="form-control"> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Country</label>
+                            <input name="Country" id="Country" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Company City</label>
+                            <input name="CompanyCity" id="CompanyCity" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Company Address</label>
+                            <input name="CompanyAddress" id="CompanyAddress" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Company Phone</label>
+                            <input type="text" name="CompanyPhone" id="CompanyPhone">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Company Email</label>
+                            <input class="form-control" type="email" name="CompanyEmail" id="CompanyEmail">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Company Status</label>
+                            <?php if($this->idcompany = null ){  ?>
+                            <input type="text" disabled name="CompanyStatus" value="actif" id="CompanyStatus">
+                            <?php }else{ ?>
+                            <input type="text" disabled name="CompanyStatus" value="desable" id="CompanyStatus">
+                            <?php } ?>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Created By :</label>
+                            <input disabled value="<?php echo $this->creator; ?>" type="text" name="creator"
+                                id="creator">
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <button type="submit" class="btn btn-submit me-2">Submit</button>
+                        <a href="productlist.html" class="btn btn-cancel">Cancel</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<?= $this->inlineScript()
+               
+                ->appendFile($this->basePath('js/setting/scriptaddcompany.js'));              
+?>

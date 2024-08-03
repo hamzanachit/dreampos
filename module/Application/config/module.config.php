@@ -11,6 +11,7 @@ use Laminas\Authentication\AuthenticationService;
 use Application\Service\UserService;
 use Application\Service\SettingService;
 use Application\Service\DashboardService;
+use Application\Service\SalesService;
 use Application\Middleware\AuthenticationMiddleware;
 use Laminas\Authentication\Storage\Session as SessionStorage;
 use Laminas\Authentication\Adapter\DbTable\CallbackCheckAdapter;
@@ -59,13 +60,23 @@ return [
                 $entityManager = $sm->get('doctrine.entitymanager.orm_default');
                 return new SettingService($entityManager);
             },
-            
+
+            // SalesService Service
+            SalesService::class => function ($sm) {
+                $entityManager = $sm->get('doctrine.entitymanager.orm_default');
+                return new SalesService($entityManager);
+            },
+            //   Application\Service\CompanyService::class => function ($container) {
+            //     $entityManager = $container->get('doctrine.entitymanager.orm_default');
+            //     return new Application\Service\CompanyService($entityManager);
+            // },
 
             AuthenticationMiddleware::class => function ($container) {
                 return new AuthenticationMiddleware(
                     $container->get(AuthenticationService::class)
                 );
             },
+            
         ],
     ],
 
@@ -174,6 +185,21 @@ return [
                     ],
                 ],
             ],
+              'ajaxproduct' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route' => '/ajaxproduct[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => Controller\ProductController::class,
+                    ],
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ],
+                ],
+            ],
+       
+
 
             'settingActions' => [
                 'type' => Segment::class,
@@ -217,20 +243,20 @@ return [
                 ],
             ],
 
-            // // sub category
-            // 'subcategoryActions' => [
-            //             'type' => Segment::class,
-            //             'options' => [
-            //                 'route' => '/subcategory[/:action[/:id]]',
-            //                 'defaults' => [
-            //                     'controller' => Controller\SettingController::class,
-            //                 ],
-            //                 'constraints' => [
-            //                     'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-            //                     'id' => '[0-9]+',
-            //                 ],
-            //             ],
-            //         ],
+            // sales
+            'salesActions' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/sales[/:action[/:id]]',
+                            'defaults' => [
+                                'controller' => Controller\SalesController::class,
+                            ],
+                            'constraints' => [
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '[0-9]+',
+                            ],
+                        ],
+                    ],
 
             //         'subcategory__NOLAYOUT' => [
             //             'type' => Segment::class,
@@ -258,6 +284,8 @@ return [
             Controller\ProductController::class => Controller\Factory\ProductControllerFactory::class,
             Controller\SettingController::class => Controller\Factory\SettingControllerFactory::class,
             Controller\AjaxSettingController::class => Controller\Factory\AjaxSettingControllerFactory::class,
+            Controller\SalesController::class => Controller\Factory\SalesControllerFactory::class,
+            
         ],
     ],
  
@@ -273,6 +301,9 @@ return [
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml',
+        ],
+        'strategies' => [
+            'ViewJsonStrategy',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',
