@@ -120,8 +120,20 @@ class Setting
     private $creator;
 
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="blformat", type="string", length=65535, nullable=true)
+     */
+    private $blformat;
 
-
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="invoiceformat", type="string", length=65535, nullable=true)
+     */
+    private $invoiceformat;
+    
     /**
      * Get the value of id
      *
@@ -465,6 +477,54 @@ class Setting
     public function setCreator(string $creator)
     {
         $this->creator = $creator;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of blformat
+     *
+     * @return  string
+     */ 
+    public function getBlformat()
+    {
+        return $this->blformat;
+    }
+
+    /**
+     * Set the value of blformat
+     *
+     * @param  string  $blformat
+     *
+     * @return  self
+     */ 
+    public function setBlformat(string $blformat)
+    {
+        $this->blformat = $blformat;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of invoiceformat
+     *
+     * @return  string
+     */ 
+    public function getInvoiceformat()
+    {
+        return $this->invoiceformat;
+    }
+
+    /**
+     * Set the value of invoiceformat
+     *
+     * @param  string  $invoiceformat
+     *
+     * @return  self
+     */ 
+    public function setInvoiceformat(string $invoiceformat)
+    {
+        $this->invoiceformat = $invoiceformat;
 
         return $this;
     }

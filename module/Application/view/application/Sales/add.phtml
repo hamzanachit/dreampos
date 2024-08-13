@@ -1,0 +1,174 @@
+ <div class="content" style="margin-top:80px;">
+     <input type="text" id="basePath" style="display:none;" value="<?= $this->basePath() ?>">
+     <input type="text" id="hiddencurrency" style="display:none;" value="<?=   $currency?>">
+     <div class="page-header">
+         <div class="page-title">
+             <h4>Add Sale</h4>
+             <h6>Add your new sale</h6>
+         </div>
+     </div>
+
+
+     <div class="card">
+         <div class="card-body">
+             <form action="">
+                 <div class="row">
+                     <div class="col-lg-3 col-sm-6 col-12">
+                         <div class="form-group">
+                             <label>Customer</label>
+                             <div class="row">
+                                 <div class="col-lg-10 col-sm-10 col-10">
+                                     <select id="customer" class="form-control">
+                                         <option value="">Choose</option>
+                                         <?php foreach($this->customers as $row){ ?>
+                                         <option value="<?= $row->getId(); ?>"><?= $row->getName(); ?></option>
+                                         <?php } ?>
+                                     </select>
+                                 </div>
+                                 <div class="col-lg-2 col-sm-2 col-2 ps-0">
+                                     <div class="add-icon">
+                                         <span><img src="<?= $this->basePath('img/icons/plus1.svg') ?>"
+                                                 alt="img"></span>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-lg-3 col-sm-6 col-12">
+                         <div class="form-group">
+                             <label>Date</label>
+                             <div class="input-groupicon">
+                                 <input type="date" id="orderDate" placeholder="Choose Date" class="form-control">
+                                 <!-- <a class="addonset">
+                                     <img src="<?= $this->basePath('img/icons/calendars.svg') ?>" alt="img">
+                                 </a> -->
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-lg-3 col-sm-6 col-12">
+                         <div class="form-group">
+                             <label>Supplier</label>
+                             <select id="supplier" class="form-control">
+                                 <option value="">Choose</option>
+                                 <option value="1">Supplier</option>
+                             </select>
+                         </div>
+                     </div>
+                     <div class="col-lg-3 col-sm-6 col-12">
+                         <div class="form-group">
+                             <label>Type</label>
+                             <select id="type" name="type" class="form-control" required>
+                                 <option value="SL">Invoice</option>
+                                 <option value="BL"> bond delivery</option>
+                             </select>
+                         </div>
+                     </div>
+                     <div class="col-lg-12 col-sm-6 col-12">
+                         <div class="form-group">
+                             <label>Product Name</label>
+                             <div class="input-groupicon">
+                                 <input type="text" id="productSearch" class="form-control"
+                                     placeholder="Please type product code and select...">
+                                 <div class="addonset">
+                                     <img src="<?= $this->basePath('img/icons/scanners.svg') ?>" alt="img">
+                                 </div>
+                                 <div id="productSearchResults" class="list-group mt-2"></div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="row">
+                     <div class="table-responsive mb-3">
+                         <table class="table" id="salesTable">
+                             <thead>
+                                 <tr>
+                                     <th>#</th>
+                                     <th>Product Name</th>
+                                     <th>QTY</th>
+                                     <th>Price</th>
+                                     <th>Discount</th>
+                                     <th>Tax</th>
+                                     <th>Subtotal</th>
+                                     <th></th>
+                                 </tr>
+                             </thead>
+                             <tbody id="salesTableBody">
+                                 <!-- Product rows will be added dynamically here -->
+                             </tbody>
+                         </table>
+                     </div>
+                 </div>
+                 <div class="row">
+                     <div class="col-lg-3 col-sm-6 col-12">
+                         <div class="form-group">
+                             <label>Order Tax</label>
+                             <input type="text" id="orderTax" name="orderTax">
+                         </div>
+                     </div>
+                     <div class="col-lg-3 col-sm-6 col-12">
+                         <div class="form-group">
+                             <label>Discount</label>
+                             <input type="text" id="discount" name="discount">
+                         </div>
+                     </div>
+                     <div class="col-lg-3 col-sm-6 col-12">
+                         <div class="form-group">
+                             <label>Shipping</label>
+                             <input type="text" id="shipping" name="shipping">
+                         </div>
+                     </div>
+                     <div class="col-lg-3 col-sm-6 col-12">
+                         <div class="form-group">
+                             <label>Status</label>
+                             <select id="status" class="select">
+                                 <option value="">Choose Status</option>
+                                 <option value="completed">Completed</option>
+                                 <option value="inprogress">In Progress</option>
+                             </select>
+                         </div>
+                     </div>
+                     <div class="row ">
+                         <div class="col-lg-6 " style="background-color: ; width:550px">
+                             <div class="total-order   max-widthauto m-auto mb-4">
+                                 <ul>
+                                     <li>
+                                         <h4>Order Tax</h4>
+                                         <h5 id="orderTaxDisplay"> 0.00%</h5>
+                                     </li>
+                                     <li>
+                                         <h4>Discount </h4>
+                                         <h5 id="discountDisplay"> 0.00 <?= $currency?></h5>
+                                     </li>
+                                 </ul>
+                             </div>
+                         </div>
+                         <div class="col-lg-6 ">
+                             <div class="total-order   max-widthauto m-auto mb-4">
+                                 <ul>
+                                     <li>
+                                         <h4>Shipping</h4>
+                                         <h5 id="shippingDisplay"> 0.00 <?=$currency?></h5>
+                                     </li>
+                                     <li class="total">
+                                         <h4>Grand Total</h4>
+                                         <h5 id="grandTotal"> 0.00 <?=$currency?></h5>
+                                     </li>
+                                 </ul>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-lg-12">
+                         <a href="javascript:void(0);" type="submit" class="btn btn-submit me-2">Submit</a>
+                         <a href="javascript:void(0);" class="btn btn-cancel">Cancel</a>
+                     </div>
+                 </div>
+             </form>
+         </div>
+     </div>
+ </div>
+
+
+ <?= $this->inlineScript()->prependFile($this->basePath('js/jquery-3.6.0.min.js'));?>
+
+ <?php  $this->inlineScript() 
+         ->appendFile($this->basePath('js/sales/scriptsales.js'));

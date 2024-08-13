@@ -12,6 +12,7 @@ use Application\Service\UserService;
 use Application\Service\SettingService;
 use Application\Service\DashboardService;
 use Application\Service\SalesService;
+use Application\Service\CustomersService;
 use Application\Middleware\AuthenticationMiddleware;
 use Laminas\Authentication\Storage\Session as SessionStorage;
 use Laminas\Authentication\Adapter\DbTable\CallbackCheckAdapter;
@@ -66,6 +67,14 @@ return [
                 $entityManager = $sm->get('doctrine.entitymanager.orm_default');
                 return new SalesService($entityManager);
             },
+
+             // CustomersService Service
+            CustomersService::class => function ($sm) {
+                $entityManager = $sm->get('doctrine.entitymanager.orm_default');
+                return new CustomersService($entityManager);
+            },
+
+
             //   Application\Service\CompanyService::class => function ($container) {
             //     $entityManager = $container->get('doctrine.entitymanager.orm_default');
             //     return new Application\Service\CompanyService($entityManager);
@@ -257,20 +266,35 @@ return [
                             ],
                         ],
                     ],
+            'salesActions__NOLAYOUT' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/salesajax[/:action[/:id]]',
+                            'defaults' => [
+                                'controller' => Controller\SalesController::class,
+                            ],
+                            'constraints' => [
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '[0-9]+',
+                            ],
+                        ],
+                    ],
 
-            //         'subcategory__NOLAYOUT' => [
-            //             'type' => Segment::class,
-            //             'options' => [
-            //                 'route' => '/ajaxsubcategory[/:action[/:id]]',
-            //                 'defaults' => [
-            //                     'controller' => Controller\AjaxSettingController::class,
-            //                 ],
-            //                 'constraints' => [
-            //                     'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-            //                     'id' => '[0-9]+',
-            //                 ],
-            //             ],
-            //         ],
+
+            //  Customers
+                    'customersActions' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/customers[/:action[/:id]]',
+                            'defaults' => [
+                                'controller' => Controller\CustomersController::class,
+                            ],
+                            'constraints' => [
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '[0-9]+',
+                            ],
+                        ],
+                    ],
 
 
         ],
@@ -285,6 +309,7 @@ return [
             Controller\SettingController::class => Controller\Factory\SettingControllerFactory::class,
             Controller\AjaxSettingController::class => Controller\Factory\AjaxSettingControllerFactory::class,
             Controller\SalesController::class => Controller\Factory\SalesControllerFactory::class,
+            Controller\CustomersController::class => Controller\Factory\CustomersControllerFactory::class,
             
         ],
     ],

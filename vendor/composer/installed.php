@@ -3,7 +3,7 @@
         'name' => 'laminas/laminas-mvc-skeleton',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'd7622b5851849217c12e68b07a7f96101397323b',
+        'reference' => '6f51962345b27578ee3bbb53bdf835833cc4a502',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -187,6 +187,17 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'kwn/number-to-words' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '0b29195ab64994a5abd24115730aa590c598d468',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../kwn/number-to-words',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
         'laminas/laminas-authentication' => array(
             'pretty_version' => '2.12.x-dev',
             'version' => '2.12.9999999.9999999-dev',
@@ -358,7 +369,7 @@
         'laminas/laminas-mvc-skeleton' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'd7622b5851849217c12e68b07a7f96101397323b',
+            'reference' => '6f51962345b27578ee3bbb53bdf835833cc4a502',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -785,6 +796,17 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/var-dumper',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'tecnickcom/tcpdf' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '951eabf0338ec2522bd0d5d9c79b08a3a3d36b36',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../tecnickcom/tcpdf',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
             'dev_requirement' => false,
         ),
         'webimpress/safe-writer' => array(

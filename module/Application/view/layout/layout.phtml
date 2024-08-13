@@ -345,11 +345,13 @@
                                         alt="img"><span>
                                         Sales</span> <span class="menu-arrow"></span></a>
                                 <ul>
-                                    <li><a href="saleslist.html">Sales List</a></li>
-                                    <li><a href="pos.html">POS</a></li>
-                                    <li><a href="pos.html">New Sales</a></li>
-                                    <li><a href="salesreturnlists.html">Sales Return List</a></li>
-                                    <li><a href="createsalesreturns.html">New Sales Return</a></li>
+                                    <li><a href="<?= $this->basePath('/sales/list') ?>">Sales List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">POS</a></li>
+                                    <li><a href="<?= $this->basePath('/sales/add') ?>">New Sales</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Sales Return List</a>
+                                    </li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">New Sales Return</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="submenu">
@@ -357,96 +359,107 @@
                                         src="<?= $this->basePath('img/icons/purchase1.svg') ?>" alt="img"><span>
                                         Purchase</span> <span class="menu-arrow"></span></a>
                                 <ul>
-                                    <li><a href="purchaselist.html">Purchase List</a></li>
-                                    <li><a href="addpurchase.html">Add Purchase</a></li>
-                                    <li><a href="importpurchase.html">Import Purchase</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Purchase List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Purchase</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Import Purchase</a>
+                                    </li>
                                 </ul>
                             </li>
-                            <li class="submenu">
+                            <!-- <li class="submenu">
                                 <a href="javascript:void(0);"><img
                                         src="<?= $this->basePath('img/icons/expense1.svg') ?>" alt="img"><span>
                                         Expense</span> <span class="menu-arrow"></span></a>
                                 <ul>
-                                    <li><a href="expenselist.html">Expense List</a></li>
-                                    <li><a href="createexpense.html">Add Expense</a></li>
-                                    <li><a href="expensecategory.html">Expense Category</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Expense List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Expense</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Expense Category</a>
+                                    </li>
                                 </ul>
-                            </li>
-                            <li class="submenu">
+                            </li> -->
+                            <!-- <li class="submenu">
                                 <a href="javascript:void(0);"><img
                                         src="<?= $this->basePath('img/icons/quotation1.svg') ?>" alt="img"><span>
                                         Quotation</span> <span class="menu-arrow"></span></a>
                                 <ul>
-                                    <li><a href="quotationList.html">Quotation List</a></li>
-                                    <li><a href="addquotation.html">Add Quotation</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Quotation List</a>
+                                    </li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Quotation</a></li>
                                 </ul>
-                            </li>
-                            <li class="submenu">
+                            </li> -->
+                            <!-- <li class="submenu">
                                 <a href="javascript:void(0);"><img
                                         src="<?= $this->basePath('img/icons/transfer1.svg') ?>" alt="img"><span>
                                         Transfer</span> <span class="menu-arrow"></span></a>
                                 <ul>
-                                    <li><a href="transferlist.html">Transfer List</a></li>
-                                    <li><a href="addtransfer.html">Add Transfer </a></li>
-                                    <li><a href="importtransfer.html">Import Transfer </a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Transfer List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Transfer </a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Import Transfer </a>
+                                    </li>
                                 </ul>
-                            </li>
-                            <li class="submenu">
+                            </li> -->
+                            <!-- <li class="submenu">
                                 <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/return1.svg') ?>"
                                         alt="img"><span>
                                         Return</span> <span class="menu-arrow"></span></a>
                                 <ul>
-                                    <li><a href="salesreturnlist.html">Sales Return List</a></li>
-                                    <li><a href="createsalesreturn.html">Add Sales Return </a></li>
-                                    <li><a href="purchasereturnlist.html">Purchase Return List</a></li>
-                                    <li><a href="createpurchasereturn.html">Add Purchase Return </a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Sales Return List</a>
+                                    </li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Sales Return </a>
+                                    </li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Purchase Return
+                                            List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Purchase Return
+                                        </a></li>
                                 </ul>
-                            </li>
-                            <li class="submenu">
+                            </li> -->
+                            <!-- <li class="submenu">
                                 <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/users1.svg') ?>"
                                         alt="img"><span>
                                         People</span> <span class="menu-arrow"></span></a>
                                 <ul>
-                                    <li><a href="customerlist.html">Customer List</a></li>
-                                    <li><a href="addcustomer.html">Add Customer </a></li>
-                                    <li><a href="supplierlist.html">Supplier List</a></li>
-                                    <li><a href="addsupplier.html">Add Supplier </a></li>
-                                    <li><a href="userlist.html">User List</a></li>
-                                    <li><a href="adduser.html">Add User</a></li>
-                                    <li><a href="storelist.html">Store List</a></li>
-                                    <li><a href="addstore.html">Add Store</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Customer List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Customer </a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Supplier List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Supplier </a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">User List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add User</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Store List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Store</a></li>
                                 </ul>
-                            </li>
-                            <li class="submenu">
+                            </li> -->
+                            <!-- <li class="submenu">
                                 <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/places.svg') ?>"
                                         alt="img"><span>
                                         Places</span> <span class="menu-arrow"></span></a>
                                 <ul>
-                                    <li><a href="newcountry.html">New Country</a></li>
-                                    <li><a href="countrieslist.html">Countries list</a></li>
-                                    <li><a href="newstate.html">New State </a></li>
-                                    <li><a href="statelist.html">State list</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">New Country</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Countries list</a>
+                                    </li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>l">New State </a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">State list</a></li>
                                 </ul>
-                            </li>
-                            <li>
-                                <a href="components.html"><i data-feather="layers"></i><span> Components</span> </a>
-                            </li>
-                            <li>
-                                <a href="blankpage.html"><i data-feather="file"></i><span> Blank Page</span> </a>
+                            </li> -->
+                            <!-- <li>
+                                <a href="<?= $this->basePath('/settings/subcategory') ?>"><i
+                                        data-feather="layers"></i><span> Components</span> </a>
+                            </li> -->
+                            <!-- <li>
+                                <a href="<?= $this->basePath('/settings/subcategory') ?>"><i
+                                        data-feather="file"></i><span> Blank Page</span> </a>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:void(0);"><i data-feather="alert-octagon"></i> <span> Error Pages
                                     </span> <span class="menu-arrow"></span></a>
                                 <ul>
-                                    <li><a href="error-404.html">404 Error </a></li>
-                                    <li><a href="error-500.html">500 Error </a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">404 Error </a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">500 Error </a></li>
                                 </ul>
-                            </li>
-                            <li class="submenu">
+                            </li> -->
+                            <!--    <li class="submenu">
                                 <a href="javascript:void(0);"><i data-feather="box"></i> <span>Elements </span> <span
                                         class="menu-arrow"></span></a>
                                 <ul>
-                                    <li><a href="sweetalerts.html">Sweet Alerts</a></li>
+                                     <li><a href="sweetalerts.html">Sweet Alerts</a></li>
                                     <li><a href="tooltip.html">Tooltip</a></li>
                                     <li><a href="popover.html">Popover</a></li>
                                     <li><a href="ribbon.html">Ribbon</a></li>
@@ -463,10 +476,10 @@
                                     <li><a href="lightbox.html">Lightbox</a></li>
                                     <li><a href="stickynote.html">Sticky Note</a></li>
                                     <li><a href="timeline.html">Timeline</a></li>
-                                    <li><a href="form-wizard.html">Form Wizard</a></li>
+                                    <li><a href="form-wizard.html">Form Wizard</a></li> 
                                 </ul>
-                            </li>
-                            <li class="submenu">
+                            </li>-->
+                            <!-- <li class="submenu">
                                 <a href="javascript:void(0);"><i data-feather="bar-chart-2"></i> <span> Charts </span>
                                     <span class="menu-arrow"></span></a>
                                 <ul>
@@ -476,12 +489,12 @@
                                     <li><a href="chart-flot.html">Flot Charts</a></li>
                                     <li><a href="chart-peity.html">Peity Charts</a></li>
                                 </ul>
-                            </li>
-                            <li class="submenu">
+                            </li> -->
+                            <!--    <li class="submenu">
                                 <a href="javascript:void(0);"><i data-feather="award"></i><span> Icons </span> <span
                                         class="menu-arrow"></span></a>
                                 <ul>
-                                    <li><a href="icon-fontawesome.html">Fontawesome Icons</a></li>
+                                 <li><a href="icon-fontawesome.html">Fontawesome Icons</a></li>
                                     <li><a href="icon-feather.html">Feather Icons</a></li>
                                     <li><a href="icon-ionic.html">Ionic Icons</a></li>
                                     <li><a href="icon-material.html">Material Icons</a></li>
@@ -490,24 +503,24 @@
                                     <li><a href="icon-themify.html">Themify Icons</a></li>
                                     <li><a href="icon-weather.html">Weather Icons</a></li>
                                     <li><a href="icon-typicon.html">Typicon Icons</a></li>
-                                    <li><a href="icon-flag.html">Flag Icons</a></li>
+                                    <li><a href="icon-flag.html">Flag Icons</a></li>  
                                 </ul>
-                            </li>
-                            <li class="submenu">
+                            </li>-->
+                            <!--  <li class="submenu">
                                 <a href="javascript:void(0);"><i data-feather="columns"></i> <span> Forms </span> <span
                                         class="menu-arrow"></span></a>
                                 <ul>
-                                    <li><a href="form-basic-inputs.html">Basic Inputs </a></li>
+                                   <li><a href="form-basic-inputs.html">Basic Inputs </a></li>
                                     <li><a href="form-input-groups.html">Input Groups </a></li>
                                     <li><a href="form-horizontal.html">Horizontal Form </a></li>
                                     <li><a href="form-vertical.html"> Vertical Form </a></li>
                                     <li><a href="form-mask.html">Form Mask </a></li>
                                     <li><a href="form-validation.html">Form Validation </a></li>
                                     <li><a href="form-select2.html">Form Select2 </a></li>
-                                    <li><a href="form-fileupload.html">File Upload </a></li>
+                                    <li><a href="form-fileupload.html">File Upload </a></li> 
                                 </ul>
-                            </li>
-                            <li class="submenu">
+                            </li>-->
+                            <!--  <li class="submenu">
                                 <a href="javascript:void(0);"><i data-feather="layout"></i> <span> Table </span> <span
                                         class="menu-arrow"></span></a>
                                 <ul>
@@ -547,14 +560,15 @@
                                     <li><a href="newuser.html">New User </a></li>
                                     <li><a href="userlists.html">Users List</a></li>
                                 </ul>
-                            </li>
+                            </li>-->
                             <li class="submenu">
                                 <a href="javascript:void(0);"><img
                                         src="<?= $this->basePath('img/icons/settings.svg') ?>" alt="img"><span>
                                         Settings</span> <span class="menu-arrow"></span></a>
                                 <ul>
                                     <li><a href="<?= $this->basePath('settings/edit') ?>">General Settings</a></li>
-                                    <li><a href="emailsettings.html">Email Settings</a></li>
+                                    <li><a href="<?= $this->basePath('settings/email') ?>">Email Settings</a></li>
+                                    <li><a href="<?= $this->basePath('settings/invoice') ?>">Invoice Settings</a></li>
                                     <li><a href="paymentsettings.html">Payment Settings</a></li>
                                     <li><a href="currencysettings.html">Currency Settings</a></li>
                                     <li><a href="grouppermissions.html">Group Permissions</a></li>

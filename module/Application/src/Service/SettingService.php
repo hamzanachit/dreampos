@@ -40,7 +40,7 @@
                 $query = $this->entityManager->createQueryBuilder()
                         ->from('Application\Entity\Setting','s')
                         ->innerJoin("Application\Entity\User", "u","WITH", "u.id = s.creator")
-                        ->select('s as setting,s.id,s.companyName,s.logo,s.language,s.skuFormat,s.ICE,s.darkMode,s.currency,s.country,s.companyCity,s.companyAddresse,s.companyPhone,s.companyEmail,s.companyStatus,s.creator,s.id as idcompany')
+                        ->select('s as setting,s.id,s.companyName,s.logo,s.language,s.skuFormat,s.ICE,s.darkMode,s.currency,s.country,s.companyCity,s.companyAddresse,s.companyPhone,s.companyEmail,s.companyStatus,s.creator,s.id as idcompany,s.invoiceformat,s.blformat')
                         ->addselect('u.fullname')
                         ->Where("s.creator = ".$userid)
                         ->Where("s.companyStatus = 'actif'");
@@ -119,7 +119,7 @@ public function ChangeCompany($userId, $idCompany){
 }
 
 
-        public function AddSetting($CompanyName, $Logo, $Language, $SkuFormat, $ICE, $DarkMode, $Currency,  $Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $CompanyStatus,$userid){
+        public function AddSetting($CompanyName, $Logo, $Language, $SkuFormat, $ICE, $DarkMode, $Currency,  $Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $CompanyStatus,$userid,$blformat ,$invoiceformat ){
              $setting = new Setting();
             $setting->setCompanyName($CompanyName);
             $setting->setLogo($Logo);
@@ -135,6 +135,8 @@ public function ChangeCompany($userId, $idCompany){
             $setting->setCompanyEmail($CompanyEmail);
             $setting->setCompanyStatus($CompanyStatus);
             $setting->setCreator($userid);
+            $setting->setBlformat($blformat);
+            $setting->setInvoiceformat($invoiceformat);
             $this->entityManager->persist($setting);
             $this->entityManager->flush();
             return $setting;
@@ -176,7 +178,7 @@ public function ChangeCompany($userId, $idCompany){
 
 
 
-    public function editSetting($CompanyName, $Logo, $Language, $SkuFormat, $ICE, $DarkMode, $Currency,  $Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail,$userid,$idcompany){
+    public function editSetting($CompanyName, $Logo, $Language, $SkuFormat, $ICE, $DarkMode, $Currency,  $Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail,$userid,$idcompany,$blformat ,$invoiceformat ){
         try {
 
             $setting = $this->entityManager->getRepository('Application\Entity\Setting')->find($idcompany);
@@ -188,6 +190,8 @@ public function ChangeCompany($userId, $idCompany){
             $setting->setLogo($Logo);
 
             }
+            // dd($blformat ,$invoiceformat ,$idcompany );
+
             $setting->setLanguage($Language);
             $setting->setSkuFormat($SkuFormat);
             $setting->setICE($ICE);
@@ -198,7 +202,9 @@ public function ChangeCompany($userId, $idCompany){
             $setting->setCompanyAddresse($CompanyAddress);
             $setting->setCompanyPhone($CompanyPhone);
             $setting->setCompanyEmail($CompanyEmail);
-             $setting->setCreator($userid);
+            $setting->setCreator($userid);
+            $setting->setBlformat($blformat);
+            $setting->setInvoiceformat($invoiceformat);
             $this->entityManager->persist($setting);
             $this->entityManager->flush();
 

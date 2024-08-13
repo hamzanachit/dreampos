@@ -42,6 +42,8 @@ class SettingController extends AbstractActionController{
             $CompanyPhone = htmlspecialchars($postdata['CompanyPhone'] ?? '');
             $CompanyEmail = htmlspecialchars($postdata['CompanyEmail'] ?? '');
             $CompanyStatus = htmlspecialchars($postdata['CompanyStatus'] ?? '');
+            $blformat = htmlspecialchars($postdata['blformat'] ?? '');
+            $invoiceformat = htmlspecialchars($postdata['invoiceformat'] ?? '');
             $uploadPath = 'public/img/logo/';
             if (!is_dir($uploadPath)) {
                 mkdir($uploadPath, 0777, true);
@@ -61,7 +63,7 @@ class SettingController extends AbstractActionController{
             // dd( $CheckCompanyExist);
             if(empty($CheckCompanyExist)){  
                                 
-                  $resultAdd = $this->settingService->AddSetting($CompanyName,$Logo,$Language, $SkuFormat, $ICE, $DarkMode, $Currency,$Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $CompanyStatus,$userid );
+                  $resultAdd = $this->settingService->AddSetting($CompanyName,$Logo,$Language, $SkuFormat, $ICE, $DarkMode, $Currency,$Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $CompanyStatus,$userid,$blformat ,$invoiceformat  );
                 if ($resultAdd != null){
                     $resultAdd = $this->settingService->AddCompany($CompanyName,$userid );
                 }
@@ -121,6 +123,8 @@ class SettingController extends AbstractActionController{
             $CompanyAddress = htmlspecialchars($postdata['CompanyAddress'] ?? '');
             $CompanyPhone = htmlspecialchars($postdata['CompanyPhone'] ?? '');
             $CompanyEmail = htmlspecialchars($postdata['CompanyEmail'] ?? '');
+            $blformat = htmlspecialchars($postdata['blformat'] ?? '');
+            $invoiceformat = htmlspecialchars($postdata['invoiceformat'] ?? '');
              $uploadPath = 'public/img/logo/';
             if (!is_dir($uploadPath)) {
                 mkdir($uploadPath, 0777, true);
@@ -136,8 +140,7 @@ class SettingController extends AbstractActionController{
                     return $this->redirect()->toRoute('settingActions', ['action' => 'edit']);
                 }
             } 
-            
-                $resultEdit = $this->settingService->editSetting($CompanyName,$Logo,$Language, $SkuFormat, $ICE, $DarkMode, $Currency,$Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $userid,$idcompany );
+                $resultEdit = $this->settingService->editSetting($CompanyName,$Logo,$Language, $SkuFormat, $ICE, $DarkMode, $Currency,$Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $userid,$idcompany,$blformat ,$invoiceformat  );
                 
                   if($resultEdit != null){
                          $resulteditcompany = $this->settingService->editCompany($CompanyName,$userid,$idcompany);
@@ -257,6 +260,34 @@ class SettingController extends AbstractActionController{
 
     }
 
+   public function invoiceAction(){
+         $auth = $this->plugin('auth');
+         $user = $auth->getUser();
+         $ActifCompany = $auth->ActifCompany();
+         $userid =$user['id'];
+     
+            // dd(  $ActifCompany[0]['idcompany']);
+          $idcompany = $ActifCompany[0]['idcompany'];
+          
+        //  if ($this->getRequest()->isPost()) {
+        //     $postdata = $this->params()->fromPost();
+        //      $idcompany = htmlspecialchars($postdata['idcompany'] ?? '');
+    
+         
+        //     // dd(  $ActifCompany );
+        //         $resultEdit = $this->settingService->Changecompany($userid,$idcompany);
+                
+             
+        // }
+        //  return $this->redirect()->toRoute('settingActions', ['action' => 'invoice']);
 
+    
+         $viewModel = new ViewModel([
+            // 'getAllcompany' =>$resultEdit,
+        ]);
+
+        // $viewModel->setTemplate('application/setting/in');  
+        // return $viewModel;
+    }
 
 }

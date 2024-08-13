@@ -33,6 +33,7 @@ return array(
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'PhpOffice\\PhpSpreadsheet\\' => array($vendorDir . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet'),
     'PhpMiddleware\\PhpDebugBar\\' => array($vendorDir . '/php-middleware/php-debug-bar/src'),
+    'NumberToWords\\' => array($vendorDir . '/kwn/number-to-words/src'),
     'MyCLabs\\Enum\\' => array($vendorDir . '/myclabs/php-enum/src'),
     'Matrix\\' => array($vendorDir . '/markbaker/matrix/classes/src'),
     'Laminas\\View\\' => array($vendorDir . '/laminas/laminas-view/src'),

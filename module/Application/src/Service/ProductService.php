@@ -155,23 +155,9 @@ class ProductService
 
 
 
-public function AddProduct(
-    $ProductName, $Category, $Minimum, $Quantity, $Tax, $Discount, 
-    $Price, $Status, $Image, $SubCategory, $PriceHt, $Unit, 
-    $creator, $companyid, $Description, $SKU, $CostPrice
-) {
-    echo $ProductName;
-    // Validate that required fields are not null
-    if (is_null($ProductName)) {
-        throw new \InvalidArgumentException("ProductName cannot be null");
-    }
-
-    // Perform similar checks for other required fields if necessary
-
-    // Create a new DateTime object for the current time
+    public function AddProduct($ProductName, $Category, $Minimum, $Quantity, $Tax, $Discount,$Price, $Status, $Image, $SubCategory, $PriceHt, $Unit, 
+    $creator, $companyid, $Description, $SKU, $CostPrice) {
     $dateTime = new \DateTime('2024-07-24 19:47:05');
-
-    // Create a new Product object
     $product = new Product();
     $product->setName($ProductName);
     $product->setCategory($Category);

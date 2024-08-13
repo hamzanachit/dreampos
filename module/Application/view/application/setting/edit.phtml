@@ -11,7 +11,11 @@
             <form id="formAddProduct" method="post" enctype="multipart/form-data">
 
                 <div class="row">
-                    <?php  foreach ($this->companyinfo as $setting){ ?>
+                    <?php  foreach ($this->companyinfo as $setting){ 
+                        // dd($setting);
+                        
+                        
+                        ?>
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Company Name</label>
@@ -38,6 +42,24 @@
                                 value="<?=  $setting['skuFormat']   ?>">
                         </div>
                     </div>
+
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>BL Format</label>
+                            <input type="text" name="blformat" id="blformat" value="<?=  $setting['blformat']   ?>">
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Invoice Format</label>
+                            <input type="text" name="invoiceformat" id="invoiceformat"
+                                value="<?=  $setting['invoiceformat'] ?>">
+                        </div>
+                    </div>
+
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>ICE</label>
