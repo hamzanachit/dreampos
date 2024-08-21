@@ -134,6 +134,69 @@ class Setting
      */
     private $invoiceformat;
     
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codepostal", type="string", length=65535, nullable=true)
+     */
+    private $codepostal;
+
+
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="CEO", type="string", length=65535, nullable=true)
+     */
+    private $CEO;
+    
+
+
+
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="cnss", type="string", length=65535, nullable=true)
+     */
+    private $cnss;
+    
+
+
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="Patent", type="string", length=65535, nullable=true)
+     */
+    private $Patent;
+    
+
+
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="RC", type="string", length=65535, nullable=true)
+     */
+    private $RC;
+    
+
+
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="NIF", type="string", length=65535, nullable=true)
+     */
+    private $NIF;
+    
+
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="legalEntityType", type="string", length=65535, nullable=true)
+     */
+    private $legalEntityType;
+    
+ 
     /**
      * Get the value of id
      *
@@ -525,6 +588,178 @@ class Setting
     public function setInvoiceformat(string $invoiceformat)
     {
         $this->invoiceformat = $invoiceformat;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of codepostal
+     *
+     * @return  string
+     */ 
+    public function getCodepostal()
+    {
+        return $this->codepostal;
+    }
+
+    /**
+     * Set the value of codepostal
+     *
+     * @param  string  $codepostal
+     *
+     * @return  self
+     */ 
+    public function setCodepostal(string $codepostal)
+    {
+        $this->codepostal = $codepostal;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of CEO
+     *
+     * @return  string
+     */ 
+    public function getCEO()
+    {
+        return $this->CEO;
+    }
+
+    /**
+     * Set the value of CEO
+     *
+     * @param  string  $CEO
+     *
+     * @return  self
+     */ 
+    public function setCEO(string $CEO)
+    {
+        $this->CEO = $CEO;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of cnss
+     *
+     * @return  string
+     */ 
+    public function getCnss()
+    {
+        return $this->cnss;
+    }
+
+    /**
+     * Set the value of cnss
+     *
+     * @param  string  $cnss
+     *
+     * @return  self
+     */ 
+    public function setCnss(string $cnss)
+    {
+        $this->cnss = $cnss;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Patent
+     *
+     * @return  string
+     */ 
+    public function getPatent()
+    {
+        return $this->Patent;
+    }
+
+    /**
+     * Set the value of Patent
+     *
+     * @param  string  $Patent
+     *
+     * @return  self
+     */ 
+    public function setPatent(string $Patent)
+    {
+        $this->Patent = $Patent;
+
+        return $this;
+    }
+
+    
+
+    /**
+     * Get the value of RC
+     *
+     * @return  string
+     */ 
+    public function getRC()
+    {
+        return $this->RC;
+    }
+
+    /**
+     * Set the value of RC
+     *
+     * @param  string  $RC
+     *
+     * @return  self
+     */ 
+    public function setRC(string $RC)
+    {
+        $this->RC = $RC;
+
+        return $this;
+    }
+
+    
+
+    /**
+     * Get the value of legalEntityType
+     *
+     * @return  string
+     */ 
+    public function getLegalEntityType()
+    {
+        return $this->legalEntityType;
+    }
+
+    /**
+     * Set the value of legalEntityType
+     *
+     * @param  string  $legalEntityType
+     *
+     * @return  self
+     */ 
+    public function setLegalEntityType(string $legalEntityType)
+    {
+        $this->legalEntityType = $legalEntityType;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of NIF
+     *
+     * @return  string
+     */ 
+    public function getNIF()
+    {
+        return $this->NIF;
+    }
+
+    /**
+     * Set the value of NIF
+     *
+     * @param  string  $NIF
+     *
+     * @return  self
+     */ 
+    public function setNIF(string $NIF)
+    {
+        $this->NIF = $NIF;
 
         return $this;
     }

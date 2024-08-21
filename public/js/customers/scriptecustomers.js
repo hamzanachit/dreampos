@@ -24,7 +24,10 @@ $(document).ready(function () {
             ICE: $('#ICE').val(),
             address: $('#address').val(),
             Bank: $('#Bank').val(),
-            Note: $('#Note').val()
+            Note: $('#Note').val(),
+            maxamount: $('#maxamount').val(),
+            customercode: $('#customercode').val(),
+            bankname: $('#bankname').val(),
         };
 
         sendFormData(formData);
@@ -47,6 +50,9 @@ $(document).ready(function () {
                         $('#address').val('');
                         $('#Bank').val('');
                         $('#Note').val('');
+                        $('#maxamount').val('');
+                        $('#customercode').val('');
+                        $('#bankname').val('');
                         Swal.fire({
                             title: 'Success',
                             text: response.message,
@@ -182,11 +188,14 @@ $(document).ready(function () {
         var name = $(this).data('item-name');
         var email = $(this).data('item-email');
         var phone = $(this).data('item-phone');
-        var ICE = $(this).data('item-ICE');
+        var ICE = $(this).data('item-ice');
         var address = $(this).data('item-address');
         var bank = $(this).data('item-bank');
         var note = $(this).data('item-note');
-
+        var bankname = $(this).data('item-bankname');
+        var customercode = $(this).data('item-customercode');
+        var maxamount = $(this).data('item-maxamount');
+        // console.log(ICE);
         // Populate modal form fields
         $('#customerId').val(id);
         $('#editName').val(name);
@@ -196,6 +205,9 @@ $(document).ready(function () {
         $('#editAddress').val(address);
         $('#editBank').val(bank);
         $('#editNote').val(note);
+        $('#editbankname').val(bankname);
+        $('#editcustomercode').val(customercode);
+        $('#editmaxamount').val(maxamount);
 
         // Show the modal
         $('#editCustomerModal').modal('show');
@@ -215,7 +227,10 @@ $(document).ready(function () {
             ICE: $('#editICE').val(),
             address: $('#editAddress').val(),
             Bank: $('#editBank').val(),
-            Note: $('#editNote').val()
+            Note: $('#editNote').val(),
+            maxamount: $('#editmaxamount').val(),
+            customercode: $('#editcustomercode').val(),
+            bankname: $('#editbankname').val(),
         };
 
         $.ajax({
@@ -235,6 +250,9 @@ $(document).ready(function () {
                     $('#editAddress').val('');
                     $('#editBank').val('');
                     $('#editNote').val('');
+                    $('#maxamount').val('');
+                    $('#customercode').val('');
+                    $('#bankname').val('');
 
                     Swal.fire({
                         title: 'Success',

@@ -120,6 +120,20 @@ class Customers
     private $note;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="bankname", type="string", nullable=true)
+     */
+    private $bankname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="customercode", type="string", nullable=true)
+     */
+    private $customercode;
+
+    /**
      * Get the value of id
      *
      * @return  int
@@ -464,6 +478,54 @@ class Customers
     public function setUpdatedBy(int $updatedBy)
     {
         $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of bankname
+     *
+     * @return  string
+     */ 
+    public function getBankname()
+    {
+        return $this->bankname;
+    }
+
+    /**
+     * Set the value of bankname
+     *
+     * @param  string  $bankname
+     *
+     * @return  self
+     */ 
+    public function setBankname(string $bankname)
+    {
+        $this->bankname = $bankname;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of customercode
+     *
+     * @return  string
+     */ 
+    public function getCustomercode()
+    {
+        return $this->customercode;
+    }
+
+    /**
+     * Set the value of customercode
+     *
+     * @param  string  $customercode
+     *
+     * @return  self
+     */ 
+    public function setCustomercode(string $customercode)
+    {
+        $this->customercode = $customercode;
 
         return $this;
     }

@@ -40,7 +40,7 @@
                 $query = $this->entityManager->createQueryBuilder()
                         ->from('Application\Entity\Setting','s')
                         ->innerJoin("Application\Entity\User", "u","WITH", "u.id = s.creator")
-                        ->select('s as setting,s.id,s.companyName,s.logo,s.language,s.skuFormat,s.ICE,s.darkMode,s.currency,s.country,s.companyCity,s.companyAddresse,s.companyPhone,s.companyEmail,s.companyStatus,s.creator,s.id as idcompany,s.invoiceformat,s.blformat')
+                        ->select('s as setting,s.id,s.companyName,s.logo,s.language,s.skuFormat,s.ICE,s.darkMode,s.currency,s.country,s.companyCity,s.companyAddresse,s.companyPhone,s.companyEmail,s.companyStatus,s.creator,s.id as idcompany,s.invoiceformat,s.blformat,s.NIF,s.RC,s.Patent,s.cnss,s.CEO,s.codepostal')
                         ->addselect('u.fullname')
                         ->Where("s.creator = ".$userid)
                         ->Where("s.companyStatus = 'actif'");
@@ -119,7 +119,7 @@ public function ChangeCompany($userId, $idCompany){
 }
 
 
-        public function AddSetting($CompanyName, $Logo, $Language, $SkuFormat, $ICE, $DarkMode, $Currency,  $Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $CompanyStatus,$userid,$blformat ,$invoiceformat ){
+        public function AddSetting($CompanyName, $Logo, $Language, $SkuFormat, $ICE, $DarkMode, $Currency,  $Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $CompanyStatus,$userid,$blformat ,$invoiceformat ,$legalEntityType, $NIF, $RC , $Patent,$cnss, $CEO, $codepostal ){
              $setting = new Setting();
             $setting->setCompanyName($CompanyName);
             $setting->setLogo($Logo);
@@ -137,6 +137,16 @@ public function ChangeCompany($userId, $idCompany){
             $setting->setCreator($userid);
             $setting->setBlformat($blformat);
             $setting->setInvoiceformat($invoiceformat);
+            
+
+            $setting->setCodepostal($codepostal);
+            $setting->setCEO($CEO);
+            $setting->setCnss($cnss);
+            $setting->setPatent($Patent);
+            $setting->setRC($RC);
+            $setting->setNIF($NIF);
+            $setting->setLegalEntityType($legalEntityType);
+
             $this->entityManager->persist($setting);
             $this->entityManager->flush();
             return $setting;
@@ -178,7 +188,7 @@ public function ChangeCompany($userId, $idCompany){
 
 
 
-    public function editSetting($CompanyName, $Logo, $Language, $SkuFormat, $ICE, $DarkMode, $Currency,  $Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail,$userid,$idcompany,$blformat ,$invoiceformat ){
+    public function editSetting($CompanyName, $Logo, $Language, $SkuFormat, $ICE, $DarkMode, $Currency,  $Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail,$userid,$idcompany,$blformat ,$invoiceformat ,$legalEntityType, $NIF, $RC , $Patent,$cnss, $CEO, $codepostal ){
         try {
 
             $setting = $this->entityManager->getRepository('Application\Entity\Setting')->find($idcompany);
@@ -205,6 +215,15 @@ public function ChangeCompany($userId, $idCompany){
             $setting->setCreator($userid);
             $setting->setBlformat($blformat);
             $setting->setInvoiceformat($invoiceformat);
+
+            $setting->setCodepostal($codepostal);
+            $setting->setCEO($CEO);
+            $setting->setCnss($cnss);
+            $setting->setPatent($Patent);
+            $setting->setRC($RC);
+            $setting->setNIF($NIF);
+            $setting->setLegalEntityType($legalEntityType);
+
             $this->entityManager->persist($setting);
             $this->entityManager->flush();
 
@@ -216,22 +235,29 @@ public function ChangeCompany($userId, $idCompany){
     }
 
 
-       public function editCompany($CompanyName, $userid, $idcompany){
-        try { 
-            $Company = $this->entityManager->getRepository('Application\Entity\Company')->find($idcompany);
-            if ($Company === null) {
-                throw new \Exception("Company with ID $idcompany not found");
-            }
+      public function editCompany($CompanyName, $userid, $idcompany) {
+    try {
+        $Company = $this->entityManager->getRepository('Application\Entity\Company')->find($idcompany);
+        
+        if ($Company === null) {
+             $Company = new Company();
             $Company->setCompanyName($CompanyName);
-            $Company->setUserId($userid);
-            $this->entityManager->persist($Company);
-            $this->entityManager->flush();
-            return $Company;
-            } catch (\Throwable $th) {
-                error_log($th->getMessage());
-                throw $th;
-            }
+            $Company->setUserId($userid);  
+        }
+        
+        $Company->setCompanyName($CompanyName);
+        $Company->setUserId($userid);
+        
+        $this->entityManager->persist($Company);
+        $this->entityManager->flush();
+        
+        return $Company;
+    } catch (\Throwable $th) {
+        error_log($th->getMessage());
+        throw $th;
     }
+}
+
  
 
     public function getAllCategorys(){

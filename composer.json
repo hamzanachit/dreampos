@@ -33,7 +33,9 @@
         "picqer/php-barcode-generator": "*",
         "phpoffice/phpspreadsheet": "*",
         "tecnickcom/tcpdf": "*",
-        "kwn/number-to-words": "*"
+        "kwn/number-to-words": "*",
+        "dompdf/dompdf": "*",
+        "laminas/laminas-i18n": "*"
     },
 
     "autoload": {

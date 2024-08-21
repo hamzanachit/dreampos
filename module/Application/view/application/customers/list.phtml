@@ -96,14 +96,17 @@
                     </td>
 
                     <td>
-                        <a href="#" class="editbtn" data-item-id="<?= $row->getId() ?>"
+                        <a class="editbtn" data-item-id="<?= $row->getId() ?>"
                             data-item-name="<?= htmlspecialchars($row->getName()) ?>"
                             data-item-email="<?= htmlspecialchars($row->getEmail()) ?>"
                             data-item-phone="<?= htmlspecialchars($row->getPhone()) ?>"
-                            data-item-ICE="<?= htmlspecialchars($row->getICE()) ?>"
+                            data-item-ice="<?= htmlspecialchars($row->getICE()) ?>"
                             data-item-address="<?= htmlspecialchars($row->getAddress()) ?>"
                             data-item-bank="<?= htmlspecialchars($row->getBank()) ?>"
-                            data-item-note="<?= htmlspecialchars($row->getNote()) ?>">
+                            data-item-note="<?= htmlspecialchars($row->getNote()) ?>"
+                            data-item-customercode="<?= htmlspecialchars($row->getCustomercode()) ?>"
+                            data-item-bankname="<?= htmlspecialchars($row->getBankname()) ?>"
+                            data-item-maxamount="<?= htmlspecialchars($row->getMaxPurchaseAmount()) ?>">
                             <img src="<?= $this->basePath('img/icons/edit.svg') ?>" alt="Edit">
                         </a>
 
@@ -201,6 +204,39 @@
                             </div>
                         </div>
 
+
+                        <div class="col-lg-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label>Bank Name</label>
+                                <div class="input-group">
+                                    <input type="text" name="bankname" id="bankname" placeholder="Customer Bank Name"
+                                        class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label>Customer Code</label>
+                                <input type="text" name="Bank" id="Bank" placeholder="Customer Code">
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-lg-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label>Max Amount</label>
+                                <div class="input-group">
+                                    <input type="text" name="maxamount" id="maxamount" placeholder="Max Purchase Amount"
+                                        class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>Note</label>
@@ -274,6 +310,39 @@
                                     class="form-control">
                             </div>
                         </div>
+
+
+
+                        <div class="col-lg-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label>Bank Name</label>
+                                <div class="input-group">
+                                    <input type="text" name="bankname" id="editbankname"
+                                        placeholder="Customer Bank Name" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label>Customer Code</label>
+                                <input type="text" name="customercode" id="editcustomercode"
+                                    placeholder="Customer Code">
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-lg-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label>Max Amount</label>
+                                <div class="input-group">
+                                    <input type="text" name="maxamount" id="editmaxamount"
+                                        placeholder="Max Purchase Amount" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>Note</label>

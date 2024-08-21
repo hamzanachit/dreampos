@@ -254,18 +254,19 @@ return [
 
             // sales
             'salesActions' => [
-                        'type' => Segment::class,
-                        'options' => [
-                            'route' => '/sales[/:action[/:id]]',
-                            'defaults' => [
-                                'controller' => Controller\SalesController::class,
-                            ],
-                            'constraints' => [
-                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'id' => '[0-9]+',
-                            ],
-                        ],
+                'type' => Segment::class,
+                'options' => [
+                    'route' => '/sales[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => Controller\SalesController::class,
                     ],
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ],
+                ],
+            ],
+
             'salesActions__NOLAYOUT' => [
                         'type' => Segment::class,
                         'options' => [

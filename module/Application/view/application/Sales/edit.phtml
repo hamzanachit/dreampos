@@ -1,0 +1,220 @@
+<div class="content" style="margin-top:80px;">
+    <input type="text" id="basePath" style="display:none;" value="<?= $this->basePath() ?>">
+    <input type="text" id="hiddencurrency" style="display:none;" value="<?= $currency ?>">
+    <input type="text" id="hiddenorderId" style="display:none;" value="<?= $orderId ?>">
+
+    <div class="page-header">
+        <div class="page-title">
+            <h4>Edit Sale</h4>
+            <h6>Edit your sale</h6>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="card-body">
+            <!-- Form action URL -->
+            <form method="post">
+                <div class="row">
+                    <!-- Customer Field -->
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="customer">Customer</label>
+                            <div class="row">
+                                <div class="col-lg-10 col-sm-10 col-10">
+                                    <select id="customer" name="customer" class="form-control">
+                                        <option>Choose</option>
+                                        <?php foreach ($this->customers as $row): 
+                                          
+                                            ?>
+                                        <option value="<?= $row->getId(); ?>"
+                                            <?= $order['customer_id'] == $row->getId() ? 'selected' : '' ?>>
+                                            <?= $row->getName(); ?>
+                                        </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="col-lg-2 col-sm-2 col-2 ps-0">
+                                    <div class="add-icon">
+                                        <span><img src="<?= $this->basePath('img/icons/plus1.svg') ?>" alt="Add"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Date Field -->
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="orderDate">Date</label>
+                            <div class="input-groupicon">
+                                <input type="date" id="orderDate" name="orderDate"
+                                    value="<?= isset($order['date']) ? $order['date']->format('Y-m-d') : '' ?>"
+                                    placeholder="Choose Date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Supplier Field (Hidden) -->
+                    <div class="col-lg-3 col-sm-6 col-12" style="display:none;">
+                        <div class="form-group">
+                            <label for="supplier">Supplier</label>
+                            <select id="supplier" name="supplier" class="form-control">
+                                <option value="">Choose</option>
+                                <option selected value="1">Supplier</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Type Field -->
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="type">Type</label>
+                            <select id="type" name="type" class="form-control" required>
+                                <option value="SL" <?= $order['type'] == 'SL' ? 'selected' : '' ?>>Invoice</option>
+                                <option value="BL" <?= $order['type'] == 'BL' ? 'selected' : '' ?>>Bond Delivery
+                                </option>
+                                <option value="ES" <?= $order['type'] == 'ES' ? 'selected' : '' ?>>Estimate</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Product Search Field -->
+                    <div class="col-lg-12 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="productSearch">Product Name</label>
+                            <div class="input-groupicon">
+                                <input type="text" id="productSearch" class="form-control"
+                                    placeholder="Please type product code and select...">
+                                <div class="addonset">
+                                    <img src="<?= $this->basePath('img/icons/scanners.svg') ?>" alt="Scanner">
+                                </div>
+                                <div id="productSearchResults" class="list-group mt-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                // Make sure the PHP array is safely encoded into a JSON string
+                var orderData = <?php echo json_encode($order); ?>;
+                var currency = <?php echo json_encode($currency); ?>;
+
+                console.log(orderData);
+                </script>
+                <!-- Sales Table -->
+                <div class="row">
+                    <div class="table-responsive mb-3">
+                        <table class="table" id="salesTable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th style="display:none;">#</th>
+                                    <th style="display:none;">#</th>
+                                    <th>Product Name</th>
+                                    <th>QTY</th>
+                                    <th>Price</th>
+                                    <th>Discount</th>
+                                    <th>Tax</th>
+                                    <th>Subtotal</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="salesTableBody">
+                                <!-- Product rows will be added dynamically here -->
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Totals and Submit -->
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="orderTax">Order Tax</label>
+                            <input type="text" id="orderTax" name="orderTax" value="<?= $order['orderTax'] ?>"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="discount">Discount</label>
+                            <input type="text" id="discount" name="discount" value="<?= $order['discount'] ?>"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="shipping">Shipping</label>
+                            <input type="text" id="shipping" name="shipping" value="<?= $order['shipping'] ?>"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select id="status" name="status" class="form-control">
+                                <option value="">Choose Status</option>
+                                <option value="completed" <?= $order['status'] == 'completed' ? 'selected' : '' ?>>
+                                    Completed</option>
+                                <option value="inprogress" <?= $order['status'] == 'inprogress' ? 'selected' : '' ?>>In
+                                    Progress</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total Summary -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="total-order max-widthauto m-auto mb-4">
+                            <ul>
+                                <li>
+                                    <h4>Order Tax</h4>
+                                    <h5 id="orderTaxDisplay"><?= $order['orderTax'] ?>%</h5>
+                                </li>
+                                <li>
+                                    <h4>Discount</h4>
+                                    <h5 id="discountDisplay"><?= $order['discount'] ?> <?= $currency ?></h5>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="total-order max-widthauto m-auto mb-4">
+                            <ul>
+                                <li>
+                                    <h4>Shipping</h4>
+                                    <h5 id="shippingDisplay"><?= $order['shipping'] ?> <?= $currency ?></h5>
+                                </li>
+                                <li class="total">
+                                    <h4>Grand Total</h4>
+                                    <h5 id="grandTotal"><?= $order['grandTotal'] ?> <?= $currency ?></h5>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Buttons -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-submit">Save Changes</button>
+                            <a class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<?php 
+     $this->inlineScript()
+        ->appendFile($this->basePath('js/jquery-3.6.0.min.js'))
+        ->appendFile($this->basePath('js/sales/scripteditbl.js'))
+  
+        ?>

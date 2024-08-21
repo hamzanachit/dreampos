@@ -54,7 +54,9 @@ class CustomersController extends AbstractActionController
                 $address = htmlspecialchars($postData['address'] ?? '');
                 $bank =( int) htmlspecialchars($postData['Bank'] ?? '');
                 $note = htmlspecialchars($postData['Note'] ?? '');
-
+                $maxamount = htmlspecialchars($postData['maxamount'] ?? '');
+                $customercode = htmlspecialchars($postData['customercode'] ?? '');
+                $bankname = htmlspecialchars($postData['bankname'] ?? '');
                 // Retrieve user and company information
                 $auth = $this->plugin('auth');
                 $user = $auth->getUser();
@@ -63,7 +65,7 @@ class CustomersController extends AbstractActionController
                 $idCompany = $company[0]['id']; // Ensure company[0]['id'] exists
 
                 // Save customer data
-                $resultAdd = $this->CustomersService->addCustomer($name, $email, $phone, $ICE, $address, $bank, $note, $userId, $idCompany);
+                $resultAdd = $this->CustomersService->addCustomer($name, $email, $phone, $ICE, $address, $bank, $note, $userId, $idCompany,$bankname, $customercode, $maxamount);
 
                 // Return JSON response
                 if ($resultAdd) {
@@ -107,6 +109,9 @@ class CustomersController extends AbstractActionController
                 $address = htmlspecialchars($postData['address'] ?? '');
                 $bank = htmlspecialchars($postData['Bank'] ?? '');
                 $note = htmlspecialchars($postData['Note'] ?? '');
+                $maxamount = htmlspecialchars($postData['maxamount'] ?? '');
+                $customercode = htmlspecialchars($postData['customercode'] ?? '');
+                $bankname = htmlspecialchars($postData['bankname'] ?? '');
                 $image = $postData['image'] ?? ''; // Base64 encoded image data
 
                 // Retrieve user and company information
@@ -117,7 +122,7 @@ class CustomersController extends AbstractActionController
                 $idCompany = $company[0]['id']; // Ensure company[0]['id'] exists
 
                 // Update customer data
-                $resultEdit = $this->CustomersService->editCustomer($id, $name, $email, $phone, $ICE, $address, $bank, $note, $userId, $idCompany, $image);
+                $resultEdit = $this->CustomersService->editCustomer($id, $name, $email, $phone, $ICE, $address, $bank, $note, $userId, $idCompany, $image, $bankname, $customercode, $maxamount);
 
                 // Return JSON response
                 if ($resultEdit) {

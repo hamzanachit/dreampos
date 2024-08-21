@@ -3,7 +3,7 @@ $(document).ready(function () {
         var query = $(this).val();
         var basePath = $('#basePath').val();
 
-        if (query.length < 3) {
+        if (query.length < 1) {
             $('#productSearchResults').empty();
             return;
         }
@@ -12,7 +12,8 @@ $(document).ready(function () {
             url: basePath + '/sales/get-products',
             type: 'GET',
             data: {
-                query: query
+                query: query,
+                searchBy: 'name_or_reference'
             },
             success: function (response) {
                 if (response.success) {

@@ -44,6 +44,16 @@ class SettingController extends AbstractActionController{
             $CompanyStatus = htmlspecialchars($postdata['CompanyStatus'] ?? '');
             $blformat = htmlspecialchars($postdata['blformat'] ?? '');
             $invoiceformat = htmlspecialchars($postdata['invoiceformat'] ?? '');
+
+
+            $codepostal = htmlspecialchars($postdata['codepostal'] ?? '');
+            $CEO = htmlspecialchars($postdata['CEO'] ?? '');
+            $cnss = htmlspecialchars($postdata['cnss'] ?? '');
+            $Patent = htmlspecialchars($postdata['Patent'] ?? '');
+            $RC = htmlspecialchars($postdata['RC'] ?? '');
+            $NIF = htmlspecialchars($postdata['IF'] ?? '');
+            $legalEntityType = htmlspecialchars($postdata['legalEntityType'] ?? '');
+
             $uploadPath = 'public/img/logo/';
             if (!is_dir($uploadPath)) {
                 mkdir($uploadPath, 0777, true);
@@ -63,7 +73,7 @@ class SettingController extends AbstractActionController{
             // dd( $CheckCompanyExist);
             if(empty($CheckCompanyExist)){  
                                 
-                  $resultAdd = $this->settingService->AddSetting($CompanyName,$Logo,$Language, $SkuFormat, $ICE, $DarkMode, $Currency,$Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $CompanyStatus,$userid,$blformat ,$invoiceformat  );
+                  $resultAdd = $this->settingService->AddSetting($CompanyName,$Logo,$Language, $SkuFormat, $ICE, $DarkMode, $Currency,$Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $CompanyStatus,$userid,$blformat ,$invoiceformat,$legalEntityType, $NIF, $RC , $Patent,$cnss, $CEO, $codepostal );
                 if ($resultAdd != null){
                     $resultAdd = $this->settingService->AddCompany($CompanyName,$userid );
                 }
@@ -99,6 +109,7 @@ class SettingController extends AbstractActionController{
          $user = $auth->getUser();
         $userid =$user['id'];
         $companyinfo = $this->settingService->getactifcompany($userid);
+        // dd( $companyinfo);
         if ($companyinfo == null){
                    return $this->redirect()->toRoute('settingActions', ['action' => 'addcompanyinfo']);
             }
@@ -125,6 +136,14 @@ class SettingController extends AbstractActionController{
             $CompanyEmail = htmlspecialchars($postdata['CompanyEmail'] ?? '');
             $blformat = htmlspecialchars($postdata['blformat'] ?? '');
             $invoiceformat = htmlspecialchars($postdata['invoiceformat'] ?? '');
+            $codepostal = htmlspecialchars($postdata['codepostal'] ?? '');
+            $CEO = htmlspecialchars($postdata['CEO'] ?? '');
+            $cnss = htmlspecialchars($postdata['cnss'] ?? '');
+            $Patent = htmlspecialchars($postdata['Patent'] ?? '');
+            $RC = htmlspecialchars($postdata['RC'] ?? '');
+            $NIF = htmlspecialchars($postdata['IF'] ?? '');
+            $legalEntityType = htmlspecialchars($postdata['legalEntityType'] ?? '');
+
              $uploadPath = 'public/img/logo/';
             if (!is_dir($uploadPath)) {
                 mkdir($uploadPath, 0777, true);
@@ -140,14 +159,28 @@ class SettingController extends AbstractActionController{
                     return $this->redirect()->toRoute('settingActions', ['action' => 'edit']);
                 }
             } 
-                $resultEdit = $this->settingService->editSetting($CompanyName,$Logo,$Language, $SkuFormat, $ICE, $DarkMode, $Currency,$Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $userid,$idcompany,$blformat ,$invoiceformat  );
+
+
+
+              $CheckCompanyExist = $this->settingService->CheckCompanyExist($CompanyName,$userid);
+            // dd( $CheckCompanyExist);
+            if(empty($CheckCompanyExist)){ 
+
+                $resultEdit = $this->settingService->editSetting($CompanyName,$Logo,$Language, $SkuFormat, $ICE, $DarkMode, $Currency,$Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $userid,$idcompany,$blformat ,$invoiceformat ,$legalEntityType, $NIF, $RC , $Patent,$cnss, $CEO, $codepostal );
                 
                   if($resultEdit != null){
                          $resulteditcompany = $this->settingService->editCompany($CompanyName,$userid,$idcompany);
                  return $this->redirect()->toRoute('settingActions', ['action' => 'edit']);
 
                     }
+              } else{
+                  echo '<script type="text/javascript">';
+                    echo 'alert("Company with this name already exist");';
+                    echo '</script>'; 
+             
+                }
         }
+
  
           return new ViewModel([
             'companyinfo' => $companyinfo,

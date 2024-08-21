@@ -28,7 +28,7 @@ class CustomersService{
 }
 
  
-    public function AddCustomer($name, $email, $phone, $ICE, $address, $bank, $note, $userId, $idCompany) {
+    public function AddCustomer($name, $email, $phone, $ICE, $address, $bank, $note, $userId, $idCompany,$bankname, $customercode, $maxamount) {
             $dateTime = new \DateTime('2024-07-24 19:47:05');
             $Customers = new Customers();
             $Customers->setName($name);
@@ -41,12 +41,15 @@ class CustomersService{
             $Customers->setCreatedBy($userId);
             $Customers->setCreatedAt($dateTime);
             $Customers->setICE($ICE);
+            $Customers->setCustomercode($customercode);
+            $Customers->setBankname($bankname);
+            $Customers->setMaxPurchaseAmount($maxamount);
         $this->entityManager->persist($Customers);
         $this->entityManager->flush();
     return $Customers;
 }
 
- public function editCustomer($id, $name, $email, $phone, $ICE, $address, $bank, $note, $userId, $idCompany, $image = null) {
+ public function editCustomer($id, $name, $email, $phone, $ICE, $address, $bank, $note, $userId, $idCompany, $image = null,$bankname, $customercode, $maxamount) {
     // Retrieve the customer entity by its ID
     $customer = $this->entityManager->getRepository(Customers::class)->find($id);
     
@@ -65,15 +68,15 @@ class CustomersService{
     $customer->setIdcompany($idCompany);
     $customer->setICE($ICE);
     $customer->setUpdatedBy($userId);
-    $customer->setUpdatedAt($dateTime); // Set current date and time for update
-
-    // Optional: Handle image update if provided
-    if ($image) {
+    $customer->setUpdatedAt($dateTime); 
+    $customer->setCustomercode($customercode);
+    $customer->setBankname($bankname);
+    $customer->setMaxPurchaseAmount($maxamount);
+     if ($image) {
         $customer->setImage($image); // Assuming you have a method for handling the image
     }
 
-    // Persist the changes to the database
-        $this->entityManager->persist($customer);
+         $this->entityManager->persist($customer);
         $this->entityManager->flush();
 
         return $customer;

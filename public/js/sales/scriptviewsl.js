@@ -7,11 +7,11 @@ $(document).on('click', '.downloadpdf', function () {
 
 
 
-    var invoiceUrl = basePath + '/sales/generatePdf/' + orderId;
+    var invoiceUrl = basePath + '/sales/generate-pdf-sl/' + orderId;
     console.log(invoiceUrl);
     $('#invoiceFrame').attr('src', invoiceUrl);
     $.ajax({
-        url: basePath + '/sales/get-order-details',
+        url: basePath + '/sales/get-order-details-sl',
         type: 'GET',
         data: {
             id: orderId

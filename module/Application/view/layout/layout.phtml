@@ -54,14 +54,32 @@
             <div class="whirly-loader"> </div>
         </div>
         <?php if (!empty($_SESSION["user"])){?>
-        <style>
+        <!-- <style>
         .logo-text {
-            font-size: 2em;
+            font-size: auto;
             font-weight: bold;
             color: #343a40;
             /* Dark color for text */
             font-family: 'Arial', sans-serif;
-            /* Font style */
+
+        }
+        </style> -->
+        <style>
+        .logo-container {
+            display: inline-block;
+        }
+
+        .logo-text {
+            font-size: auto;
+            font-size: 1rem;
+            font-weight: bold;
+            /* color: #343a40; */
+            color: #ff9f4;
+            font-family: 'Arial', sans-serif;
+            padding: 5px;
+            width: auto;
+            height: auto;
+
         }
         </style>
         <div class="main-wrapper">
@@ -345,7 +363,9 @@
                                         alt="img"><span>
                                         Sales</span> <span class="menu-arrow"></span></a>
                                 <ul>
-                                    <li><a href="<?= $this->basePath('/sales/list') ?>">Sales List</a></li>
+                                    <li><a href="<?= $this->basePath('/sales/list') ?>">Bond delivery</a></li>
+                                    <li><a href="<?= $this->basePath('/sales/listsales') ?>">Sales List</a></li>
+                                    <li><a href="<?= $this->basePath('/sales/list-estimate') ?>">List Estimate</a></li>
                                     <li><a href="<?= $this->basePath('/settings/subcategory') ?>">POS</a></li>
                                     <li><a href="<?= $this->basePath('/sales/add') ?>">New Sales</a></li>
                                     <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Sales Return List</a>
@@ -354,7 +374,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="submenu">
+                            <!-- <li class="submenu">
                                 <a href="javascript:void(0);"><img
                                         src="<?= $this->basePath('img/icons/purchase1.svg') ?>" alt="img"><span>
                                         Purchase</span> <span class="menu-arrow"></span></a>
@@ -364,7 +384,7 @@
                                     <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Import Purchase</a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> -->
                             <!-- <li class="submenu">
                                 <a href="javascript:void(0);"><img
                                         src="<?= $this->basePath('img/icons/expense1.svg') ?>" alt="img"><span>
@@ -412,21 +432,21 @@
                                         </a></li>
                                 </ul>
                             </li> -->
-                            <!-- <li class="submenu">
+                            <li class="submenu">
                                 <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/users1.svg') ?>"
                                         alt="img"><span>
                                         People</span> <span class="menu-arrow"></span></a>
                                 <ul>
-                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Customer List</a></li>
-                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Customer </a></li>
+                                    <li><a href="<?= $this->basePath('/customers/list') ?>">Customer List</a></li>
+                                    <!-- <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Customer </a></li>
                                     <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Supplier List</a></li>
                                     <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Supplier </a></li>
                                     <li><a href="<?= $this->basePath('/settings/subcategory') ?>">User List</a></li>
                                     <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add User</a></li>
                                     <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Store List</a></li>
-                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Store</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Store</a></li> -->
                                 </ul>
-                            </li> -->
+                            </li>
                             <!-- <li class="submenu">
                                 <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/places.svg') ?>"
                                         alt="img"><span>
@@ -567,12 +587,15 @@
                                         Settings</span> <span class="menu-arrow"></span></a>
                                 <ul>
                                     <li><a href="<?= $this->basePath('settings/edit') ?>">General Settings</a></li>
-                                    <li><a href="<?= $this->basePath('settings/email') ?>">Email Settings</a></li>
+                                    <li><a href="<?= $this->basePath('settings/addcompanyinfo') ?>">New company</a></li>
                                     <li><a href="<?= $this->basePath('settings/invoice') ?>">Invoice Settings</a></li>
+                                    <!-- <li><a href="<?= $this->basePath('settings/email') ?>">Email Settings</a></li>
+                                 
+
                                     <li><a href="paymentsettings.html">Payment Settings</a></li>
                                     <li><a href="currencysettings.html">Currency Settings</a></li>
                                     <li><a href="grouppermissions.html">Group Permissions</a></li>
-                                    <li><a href="taxrates.html">Tax Rates</a></li>
+                                    <li><a href="taxrates.html">Tax Rates</a></li> -->
                                 </ul>
                             </li>
                         </ul>

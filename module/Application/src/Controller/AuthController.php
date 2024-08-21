@@ -88,7 +88,7 @@ class AuthController extends AbstractActionController
                 $viewModel->setVariable('error', 'Invalid credentials.');
             }
         }
-
+        $viewModel->setTerminal(true);
         $viewModel->setTemplate('application/auth/login');
         return $viewModel;
     }

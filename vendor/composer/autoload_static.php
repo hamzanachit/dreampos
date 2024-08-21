@@ -46,7 +46,9 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
             'Symfony\\Component\\VarDumper\\' => 28,
             'Symfony\\Component\\String\\' => 25,
             'Symfony\\Component\\Console\\' => 26,
+            'Svg\\' => 4,
             'StellaMaris\\Clock\\' => 18,
+            'Sabberworm\\CSS\\' => 15,
         ),
         'P' => 
         array (
@@ -71,6 +73,7 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
         array (
             'MyCLabs\\Enum\\' => 13,
             'Matrix\\' => 7,
+            'Masterminds\\' => 12,
         ),
         'L' => 
         array (
@@ -110,8 +113,13 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
         array (
             'GuzzleHttp\\Psr7\\' => 16,
         ),
+        'F' => 
+        array (
+            'FontLib\\' => 8,
+        ),
         'D' => 
         array (
+            'Dompdf\\' => 7,
             'Doctrine\\Persistence\\' => 21,
             'Doctrine\\ORM\\' => 13,
             'Doctrine\\Laminas\\Hydrator\\' => 26,
@@ -200,9 +208,17 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Svg\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/php-svg-lib/src/Svg',
+        ),
         'StellaMaris\\Clock\\' => 
         array (
             0 => __DIR__ . '/..' . '/stella-maris/clock/src',
+        ),
+        'Sabberworm\\CSS\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
         ),
         'Psr\\SimpleCache\\' => 
         array (
@@ -265,6 +281,10 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
         'Matrix\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
+        ),
+        'Masterminds\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/masterminds/html5/src',
         ),
         'Laminas\\View\\' => 
         array (
@@ -382,6 +402,14 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
+        'FontLib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/php-font-lib/src/FontLib',
+        ),
+        'Dompdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
+        ),
         'Doctrine\\Persistence\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence',
@@ -475,6 +503,7 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Datamatrix' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/datamatrix.php',
+        'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'PDF417' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/pdf417.php',
