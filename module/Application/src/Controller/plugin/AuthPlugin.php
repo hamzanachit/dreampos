@@ -36,22 +36,21 @@ class AuthPlugin extends AbstractPlugin
 
         $user = $this->getUser();
         $userid = "";
-        if ($user) {
-            $userid = $user["id"];
-            $companies = $this->SettingService->getAllSettings($userid);    
-            // dd($companies);
+            // dd($user);
              $company = "";
+
+        if ($user) {
+            $userid = (int) $user["id"];  
+            $company = $this->SettingService->getactifcompany($userid);    
             if (session_status() == PHP_SESSION_NONE) {     
                  session_start();
             }
-            $company = $this->ActifCompany();
-            if(isset($company)){
-                // dd($company);
-                $_SESSION['companyName'] = $company[0]['companyName'];
-
+             if(isset($company)){
+                 $_SESSION['companyName'] = $company[0]['companyName'];
+            }else{
+                 $_SESSION['companyName'] = "";
             }
-                // dd( $_SESSION['companyName']);
-                return !empty($companies);
+                 return !empty($company);
             }
              return false;
     }
@@ -76,12 +75,14 @@ class AuthPlugin extends AbstractPlugin
         if ($user) {
              if (session_status() == PHP_SESSION_NONE) {
                       session_start();
-                  }
+             }
+
             $userid = $user["id"];
             $companies = $this->SettingService->getactifcompany($userid);
+
          }
             $_SESSION['company'] = $companies;
-            // dd( $_SESSION['companies']);
+            // dd($companies ,  $userid  );
 
         return $companies;
     }

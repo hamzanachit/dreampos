@@ -55,7 +55,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: basePath + '/sales/get-products',
+            url: basePath + '/sales/get-products-sl',
             type: 'GET',
             data: {
                 query: query,
@@ -173,11 +173,11 @@ $(document).ready(function () {
         var basePath = $('#basePath').val();
 
         $.ajax({
-            url: basePath + '/sales/delete-order-item', // Adjust the URL to match your endpoint
+            url: basePath + '/sales/delete-order-item',
             type: 'POST',
             data: JSON.stringify({
                 itemId: itemId
-            }), // Send the item ID to be deleted
+            }),
             contentType: 'application/json',
             success: function (response) {
                 if (response.success) {
@@ -189,7 +189,6 @@ $(document).ready(function () {
                         buttonsStyling: false
                     });
 
-                    // Remove the row from the table after successful deletion
                     row.remove();
                     updateRowIndices();
                     updateTotals();
@@ -308,11 +307,12 @@ $(document).ready(function () {
         });
 
         $.ajax({
-            url: $('#basePath').val() + '/sales/update-order',
+            url: $('#basePath').val() + '/sales/update-order-sl',
             type: 'POST',
             contentType: 'application/json', // Ensure the server knows we're sending JSON
             data: JSON.stringify(orderData), // Convert the JavaScript object to a JSON string
             success: function (response) {
+                console.log(response);
                 if (response.success) {
                     Swal.fire({
                         title: 'Success',
@@ -321,9 +321,12 @@ $(document).ready(function () {
                         confirmButtonClass: 'btn btn-success',
                         buttonsStyling: false
                     }).then(function () {
-                        // location.reload();
+                        // location.reload();  
                         // window.location.href = $('#basePath').val() + "/sales/list";
+
                         window.history.back();
+
+
                     });
                 } else {
                     Swal.fire({

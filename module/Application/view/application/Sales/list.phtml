@@ -138,9 +138,8 @@
                     <td><?= $order['customername']; ?></td>
                     <td><?= $order['createdAt']->format('d-m-Y'); ?></td>
                     <td> <?= $order['type']; ?><?= $order['id']; ?> </td>
-                    <!-- <td><span class="badges bg-lightgreen">Completed</span></td> -->
-                    <td class="text-red"> <?= $order['grandTotal']; ?></td>
-                    <td class="text-red"> <?=   number_format( $totalttc, 2, '.', ' '); ?> <?=   $currency?>
+                    <td class="text-red"> <?= $order['HtTotal']; ?></td>
+                    <td class="text-red"> <?=   number_format(   $totalttc , 2, '.', ' '); ?> <?=   $currency?>
                     </td>
                     <td> <?= $order['fullname']; ?></td>
                     <td><span class="badges bg-lightgreen">in progress </span></td>
@@ -163,7 +162,7 @@
                                     Detail</a>
                             </li>
                             <li>
-                                <a href="<?= $this->url('salesActions', ['action' => 'edit', 'id' => $order['id']]) ?>"
+                                <a href="<?= $this->url('salesActions', ['action' => 'editbl', 'id' => $order['id']]) ?>"
                                     class="dropdown-item">
                                     <img src="<?= $this->basePath('img/icons/edit.svg') ?>" class="me-2"
                                         alt="Edit Icon">Edit Sale
@@ -171,14 +170,7 @@
 
 
                             </li>
-                            <li>
 
-
-
-
-
-
-                            </li>
                             <li>
                                 <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal"
                                     data-bs-target="#createpayment"><img
@@ -338,10 +330,10 @@ iframe {
         event.preventDefault(); // Prevent the default link behavior
         $('#myModal').modal('show');
         const orderId = $(this).data('order-id');
-        const baseUrl = '<?= $this->basePath('sales/generatePdf/') ?>'; // Base URL for your invoice
+        const baseUrl = '<?= $this->basePath('sales/generate-pdf-bl/') ?>'; // Base URL for your invoice
         const fullUrl = `${baseUrl}${orderId}`;
         var basePath = $('#basePath').val();
-        var invoiceUrl = basePath + '/sales/generatePdf/' + orderId;
+        var invoiceUrl = basePath + '/sales/generate-pdf-bl/' + orderId;
         $('#invoiceFrame').attr('src', invoiceUrl);
         fetch(fullUrl)
             .then(response => response.text())
@@ -359,10 +351,10 @@ iframe {
         event.preventDefault(); // Prevent the default link behavior
 
         const orderId = $(this).data('order-id');
-        const baseUrl = '<?= $this->basePath('sales/generatePdf/') ?>'; // Base URL for your invoice
+        const baseUrl = '<?= $this->basePath('sales/generate-pdf-bl/') ?>'; // Base URL for your invoice
         const fullUrl = `${baseUrl}${orderId}`;
         var basePath = $('#basePath').val();
-        var invoiceUrl = basePath + '/sales/generatePdf/' + orderId;
+        var invoiceUrl = basePath + '/sales/generate-pdf-bl/' + orderId;
         $('#invoiceFrame').attr('src', invoiceUrl);
         fetch(fullUrl)
             .then(response => response.text())

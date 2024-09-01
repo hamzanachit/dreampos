@@ -141,14 +141,16 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="sales-details.html" class="dropdown-item"><img
-                                        src="<?= $this->basePath('img/icons/eye1.svg') ?>" class="me-2" alt="img">Sale
-                                    Detail</a>
+                                <a href="<?= $this->url('salesActions', ['action' => 'editsl', 'id' => $order['id']]) ?>"
+                                    class="dropdown-item">
+                                    <img src="<?= $this->basePath('img/icons/edit.svg') ?>" class="me-2"
+                                        alt="Edit Icon">Edit Sale
+                                </a>
                             </li>
                             <li>
-                                <a href="edit-sales.html" class="dropdown-item"><img
+                                <!-- <a href="edit-sales.html" class="dropdown-item"><img
                                         src="<?= $this->basePath('img/icons/edit.svg') ?>" class="me-2" alt="img">Edit
-                                    Sale</a>
+                                    Sale</a> -->
                             </li>
                             <li>
 

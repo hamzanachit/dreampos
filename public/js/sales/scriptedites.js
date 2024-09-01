@@ -1,20 +1,16 @@
 $(document).ready(function () {
-    // Function to initialize the totals on page load
     function initializeTotals() {
         $('#salesTableBody tr').each(function () {
-            // Ensure existing rows have the correct subtotal
             updateRowSubtotal($(this));
         });
         updateTotals();
     }
 
-    // Function to load old products into the table
     function loadOldProducts(products, currency) {
         var tableBody = $('#salesTableBody');
         var rowCount = tableBody.find('tr').length;
         products.forEach(function (product, index) {
             var rowIndex = rowCount + index + 1;
-            // console.log(product.productId);
 
             var newRow = `
                         <tr>
@@ -173,7 +169,7 @@ $(document).ready(function () {
         var basePath = $('#basePath').val();
 
         $.ajax({
-            url: basePath + '/sales/delete-order-item', // Adjust the URL to match your endpoint
+            url: basePath + '/sales/delete-order-item',
             type: 'POST',
             data: JSON.stringify({
                 itemId: itemId
@@ -321,9 +317,11 @@ $(document).ready(function () {
                         confirmButtonClass: 'btn btn-success',
                         buttonsStyling: false
                     }).then(function () {
-                        // location.reload();
+                        // location.reload();  
                         // window.location.href = $('#basePath').val() + "/sales/list";
                         window.history.back();
+
+
                     });
                 } else {
                     Swal.fire({

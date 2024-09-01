@@ -189,12 +189,28 @@ class Setting
     private $NIF;
     
 
-      /**
+    /**
      * @var string
      *
      * @ORM\Column(name="legalEntityType", type="string", length=65535, nullable=true)
      */
     private $legalEntityType;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Esformat", type="string", length=65535, nullable=true)
+     */
+    private $Esformat;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Tax", type="string", length=65535, nullable=true)
+     */
+    private $Tax;
     
  
     /**
@@ -760,6 +776,54 @@ class Setting
     public function setNIF(string $NIF)
     {
         $this->NIF = $NIF;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Esformat
+     *
+     * @return  string
+     */ 
+    public function getEsformat()
+    {
+        return $this->Esformat;
+    }
+
+    /**
+     * Set the value of Esformat
+     *
+     * @param  string  $Esformat
+     *
+     * @return  self
+     */ 
+    public function setEsformat(string $Esformat)
+    {
+        $this->Esformat = $Esformat;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Tax
+     *
+     * @return  string
+     */ 
+    public function getTax()
+    {
+        return $this->Tax;
+    }
+
+    /**
+     * Set the value of Tax
+     *
+     * @param  string  $Tax
+     *
+     * @return  self
+     */ 
+    public function setTax(string $Tax)
+    {
+        $this->Tax = $Tax;
 
         return $this;
     }

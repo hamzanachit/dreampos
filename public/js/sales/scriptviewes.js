@@ -1,17 +1,10 @@
 $(document).on('click', '.downloadpdf', function () {
     var orderId = $(this).data('order-id');
     var basePath = $('#basePath').val();
-
-
-    console.log(orderId);
-
-
-
-    var invoiceUrl = basePath + '/sales/generate-pdf-bl/' + orderId;
-    console.log(invoiceUrl);
+    var invoiceUrl = basePath + '/sales/generate-pdf-es/' + orderId;
     $('#invoiceFrame').attr('src', invoiceUrl);
     $.ajax({
-        url: basePath + '/sales/get-order-details-bl',
+        url: basePath + '/sales/get-order-details-es',
         type: 'GET',
         data: {
             id: orderId

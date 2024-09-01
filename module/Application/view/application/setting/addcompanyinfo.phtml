@@ -2,177 +2,177 @@
     <div class="page-header">
         <div class="page-title">
             <h4>Add Company</h4>
-            <h6>Company info</h6>
+            <h6>Company Info</h6>
         </div>
     </div>
 
     <div class="card">
         <div class="card-body">
-            <form id="formAddProduct" method="post" enctype="multipart/form-data">
+            <form id="formAddCompany" method="post" enctype="multipart/form-data">
 
                 <div class="row">
 
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Company Name</label>
-                            <input type="text" name="CompanyName" id="CompanyName">
+                            <input type="text" name="CompanyName" id="CompanyName" class="form-control" required>
                         </div>
                     </div>
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Logo</label>
                             <input type="file" class="form-control" name="Logo" id="Logo">
                         </div>
                     </div>
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Language</label>
-
-                            <select class="form-control" name="Language" id="Language">
-                                <option value="English">English</option>
-                            </select>
-
+                            <input type="text" name="Language" id="Language" class="form-control">
                         </div>
                     </div>
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>SKU Format</label title="SKU Format is a unique identifier used to track products.">
-                            <input name="SkuFormat" id="SkuFormat" class="form-control"
-                                title="SKU Format is a unique identifier used to track products.">
+                            <label>SKU Format</label>
+                            <input type="text" name="SkuFormat" id="SkuFormat" class="form-control">
                         </div>
                     </div>
+
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>BL Format</label>
+                            <input type="text" name="blformat" id="blformat" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Invoice Format</label>
+                            <input type="text" name="invoiceformat" id="invoiceformat" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Estimate Format</label>
+                            <input type="text" name="Esformat" id="Esformat" class="form-control">
+                        </div>
+                    </div>
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>ICE</label>
-                            <input class="form-control" type="text" name="ICE" id="ICE">
+                            <input type="text" name="ICE" id="ICE" class="form-control">
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>Tva</label>
-                            <input class="form-control" type="text" name="Tva" id="Tva">
+                            <label>Tax in (%)</label>
+                            <input type="text" name="TAX" id="TAX" class="form-control">
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Dark Mode</label>
-
                             <select class="form-control" name="DarkMode" id="DarkMode">
-                                <option value="off">Desable</option>
-                                <option value="on">Actif</option>
+                                <option value="off">Off</option>
+                                <option value="on">On</option>
                             </select>
-
-
-
-                            <!-- <input type="text" name="DarkMode" id="DarkMode">: -->
                         </div>
                     </div>
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Currency</label>
-
-                            <select class="form-control" name="Currency" id="Currency">
-                                <option value="MAD">Dirham</option>
-                                <option value="USD">USD</option>
-                            </select>
-
-
-                            <!-- <input name="Currency" id="Currency" class="form-control"> -->
+                            <input type="text" name="Currency" id="Currency" class="form-control">
                         </div>
                     </div>
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Country</label>
-                            <input name="Country" id="Country" class="form-control">
+                            <input type="text" name="Country" id="Country" class="form-control">
                         </div>
                     </div>
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Company City</label>
-                            <input name="CompanyCity" id="CompanyCity" class="form-control">
+                            <input type="text" name="CompanyCity" id="CompanyCity" class="form-control">
                         </div>
                     </div>
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Company Address</label>
-                            <input name="CompanyAddress" id="CompanyAddress" class="form-control">
+                            <input type="text" name="CompanyAddress" id="CompanyAddress" class="form-control">
                         </div>
                     </div>
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Company Phone</label>
-                            <input type="text" name="CompanyPhone" id="CompanyPhone">
+                            <input type="text" name="CompanyPhone" id="CompanyPhone" class="form-control">
                         </div>
                     </div>
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Company Email</label>
-                            <input class="form-control" type="email" name="CompanyEmail" id="CompanyEmail">
+                            <input type="email" name="CompanyEmail" id="CompanyEmail" class="form-control">
                         </div>
                     </div>
-
-
-
-
-
-
 
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Code Postal</label>
-                            <input type="text" name="codepostal" id="codepostal">
+                            <input type="text" name="codepostal" id="codepostal" class="form-control">
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>President And CEO </label>
-                            <input class="form-control" type="text" placeholder="PDG" name="CEO" id="CEO">
-                        </div>
-                    </div>
-
-
-
 
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>Id.Prof (C.N.S.S.)</label>
-                            <input type="text" name="cnss" id="cnss">
+                            <label>President And CEO</label>
+                            <input type="text" name="CEO" id="CEO" class="form-control" placeholder="PDG">
                         </div>
                     </div>
+
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Id. Prof (C.N.S.S.)</label>
+                            <input type="text" name="cnss" id="cnss" class="form-control">
+                        </div>
+                    </div>
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Id. Prof (Patent)</label>
-                            <input class="form-control" type="text" name="Patent" id="Patent">
+                            <input type="text" name="Patent" id="Patent" class="form-control">
                         </div>
                     </div>
-
-
-
-
-
-
-
-
 
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Id. prof (R.C.)</label>
-                            <input type="text" name="RC" id="RC">
+                            <input type="text" name="RC" id="RC" class="form-control">
                         </div>
                     </div>
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Prof (I.F.)</label>
-                            <input class="form-control" type="text" name="IF" id="IF">
+                            <input type="text" name="IF" id="IF" class="form-control">
                         </div>
                     </div>
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label> Legal entity type</label>
-
-                            <select name="legalEntityType" class="form-control" id="legalEntityType">
+                            <label>Legal Entity Type</label>
+                            <select name="legalEntityType" id="legalEntityType" class="form-control">
                                 <option value="sarl">SARL (Limited Liability Company)</option>
                                 <option value="sarl_a">SARL-AU (Single-Member Limited Liability Company)</option>
                                 <option value="sa">SA (Public Limited Company)</option>
@@ -184,32 +184,35 @@
                         </div>
                     </div>
 
-
-
-
-
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Company Status</label>
-                            <?php if($this->idcompany = null ){  ?>
-                            <input type="text" disabled name="CompanyStatus" value="actif" id="CompanyStatus">
+                            <?php if(empty($this->idcompany) ){  ?>
+                            <input type="text" class="hidden" name="CompanyStatus" value="actif" id="CompanyStatus">
+                            <input type="text" disabled value="actif">
                             <?php }else{ ?>
-                            <input type="text" disabled name="CompanyStatus" value="desable" id="CompanyStatus">
+                            <input type="text" class="hidden" name="CompanyStatus" value="desable" id="CompanyStatus">
+                            <input type="text" disabled value="desable">
                             <?php } ?>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>Created By :</label>
-                            <input disabled value="<?php echo $this->creator; ?>" type="text" name="creator"
-                                id="creator">
+                            <label>Created By</label>
+                            <input type="text" disabled name="creator" id="creator"
+                                value="<?php echo $this->creator; ?>" class="form-control ">
+
+                            <input type="text" name="creator" id="creator" value="<?php echo $this->creator; ?>"
+                                class="form-control hidden">
                         </div>
                     </div>
+
                     <div class="col-lg-12">
                         <button type="submit" class="btn btn-submit me-2">Submit</button>
-                        <a href="productlist.html" class="btn btn-cancel">Cancel</a>
+                        <a href="companylist.html" class="btn btn-cancel">Cancel</a>
                     </div>
+
                 </div>
 
             </form>
@@ -218,6 +221,7 @@
 
 </div>
 
+<!-- <?= $this->inlineScript()->appendFile($this->basePath('js/setting/scriptsetting.js')); ?> -->
 
 <?= $this->inlineScript()
                

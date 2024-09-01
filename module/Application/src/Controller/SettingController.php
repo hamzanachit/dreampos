@@ -18,14 +18,17 @@ class SettingController extends AbstractActionController{
       public function addcompanyinfoAction(){
          $auth = $this->plugin('auth');
          $user = $auth->getUser();
+         
         $userid = $user['id'] ;
+        $userId = $user['id'] ;
         $creator = $user['fullName'] ;
         $companyinfo = $this->settingService->getAllSettings($userid);
-        $userId = 2;
+        
         $idcompany  ="";
+        if (!empty($companyinfo[0]["companyName"])){ 
         $oldcompanyname = $companyinfo[0]["companyName"];
         $getCompaniesByUserId = $this->settingService->getCompaniesByUserId($userId);
-        // jdbc:mysql://188.42.42.14:3306/admin_montreal?noAccessToProcedureBodies=true
+       }
          if ($this->getRequest()->isPost()) {
             $postdata = $this->params()->fromPost();
             $files = $this->getRequest()->getFiles();
@@ -41,17 +44,17 @@ class SettingController extends AbstractActionController{
             $CompanyAddress = htmlspecialchars($postdata['CompanyAddress'] ?? '');
             $CompanyPhone = htmlspecialchars($postdata['CompanyPhone'] ?? '');
             $CompanyEmail = htmlspecialchars($postdata['CompanyEmail'] ?? '');
-            $CompanyStatus = htmlspecialchars($postdata['CompanyStatus'] ?? '');
             $blformat = htmlspecialchars($postdata['blformat'] ?? '');
             $invoiceformat = htmlspecialchars($postdata['invoiceformat'] ?? '');
-
-
             $codepostal = htmlspecialchars($postdata['codepostal'] ?? '');
             $CEO = htmlspecialchars($postdata['CEO'] ?? '');
             $cnss = htmlspecialchars($postdata['cnss'] ?? '');
             $Patent = htmlspecialchars($postdata['Patent'] ?? '');
             $RC = htmlspecialchars($postdata['RC'] ?? '');
             $NIF = htmlspecialchars($postdata['IF'] ?? '');
+            $Esformat = htmlspecialchars($postdata['Esformat'] ?? '');
+            $TAX = htmlspecialchars($postdata['TAX'] ?? '');
+            $CompanyStatus = htmlspecialchars($postdata['CompanyStatus'] ?? '');
             $legalEntityType = htmlspecialchars($postdata['legalEntityType'] ?? '');
 
             $uploadPath = 'public/img/logo/';
@@ -69,11 +72,11 @@ class SettingController extends AbstractActionController{
                     return $this->redirect()->toRoute('dashboard', ['action' => 'list']);
                 }
             }
-            $CheckCompanyExist = $this->settingService->CheckCompanyExist($CompanyName,$userid);
+            $CheckCompanyExist = $this->settingService->CheckCompanyExistadd($CompanyName,$userid);
             // dd( $CheckCompanyExist);
             if(empty($CheckCompanyExist)){  
                                 
-                  $resultAdd = $this->settingService->AddSetting($CompanyName,$Logo,$Language, $SkuFormat, $ICE, $DarkMode, $Currency,$Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $CompanyStatus,$userid,$blformat ,$invoiceformat,$legalEntityType, $NIF, $RC , $Patent,$cnss, $CEO, $codepostal );
+                  $resultAdd = $this->settingService->AddSetting($CompanyName,$Logo,$Language, $SkuFormat, $ICE, $DarkMode, $Currency,$Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $userid,$idcompany,$blformat ,$invoiceformat ,$legalEntityType, $NIF, $RC , $Patent,$cnss, $CEO, $codepostal, $TAX,$Esformat,$CompanyStatus );
                 if ($resultAdd != null){
                     $resultAdd = $this->settingService->AddCompany($CompanyName,$userid );
                 }
@@ -88,6 +91,7 @@ class SettingController extends AbstractActionController{
             }
             // return $this->redirect()->toRoute('/dashboard');
         }
+        // dd( $idcompany);
            return new ViewModel([
             'companyinfo' => $companyinfo,
             'idcompany' => $idcompany,
@@ -97,11 +101,6 @@ class SettingController extends AbstractActionController{
             $viewModel->setTemplate('application/setting/add'); 
             return $viewModel;
     }
-
-
-
-
-
 
 
     public function editAction(){
@@ -142,6 +141,8 @@ class SettingController extends AbstractActionController{
             $Patent = htmlspecialchars($postdata['Patent'] ?? '');
             $RC = htmlspecialchars($postdata['RC'] ?? '');
             $NIF = htmlspecialchars($postdata['IF'] ?? '');
+            $Esformat = htmlspecialchars($postdata['Esformat'] ?? '');
+            $TAX = htmlspecialchars($postdata['TAX'] ?? '');
             $legalEntityType = htmlspecialchars($postdata['legalEntityType'] ?? '');
 
              $uploadPath = 'public/img/logo/';
@@ -162,17 +163,19 @@ class SettingController extends AbstractActionController{
 
 
 
-              $CheckCompanyExist = $this->settingService->CheckCompanyExist($CompanyName,$userid);
-            // dd( $CheckCompanyExist);
-            if(empty($CheckCompanyExist)){ 
+              $CheckCompanyExist = $this->settingService->CheckCompanyExist($CompanyName,$userid,$idcompany);
+            // dd( $CheckCompanyExist );
+            if(!empty($CheckCompanyExist) &&  $idcompany === $CheckCompanyExist[0]['id'] ){ 
 
-                $resultEdit = $this->settingService->editSetting($CompanyName,$Logo,$Language, $SkuFormat, $ICE, $DarkMode, $Currency,$Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $userid,$idcompany,$blformat ,$invoiceformat ,$legalEntityType, $NIF, $RC , $Patent,$cnss, $CEO, $codepostal );
+                $resultEdit = $this->settingService->editSetting($CompanyName,$Logo,$Language, $SkuFormat, $ICE, $DarkMode, $Currency,$Country, $CompanyCity, $CompanyAddress, $CompanyPhone, $CompanyEmail, $userid,$idcompany,$blformat ,$invoiceformat ,$legalEntityType, $NIF, $RC , $Patent,$cnss, $CEO, $codepostal, $TAX,$Esformat );
                 
                   if($resultEdit != null){
+
                          $resulteditcompany = $this->settingService->editCompany($CompanyName,$userid,$idcompany);
                  return $this->redirect()->toRoute('settingActions', ['action' => 'edit']);
 
                     }
+
               } else{
                   echo '<script type="text/javascript">';
                     echo 'alert("Company with this name already exist");';

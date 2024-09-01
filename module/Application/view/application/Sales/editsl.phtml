@@ -5,8 +5,8 @@
 
     <div class="page-header">
         <div class="page-title">
-            <h4>Edit Bond Delivery</h4>
-            <h6>Edit your Bond Delivery</h6>
+            <h4>Edit Sale</h4>
+            <h6>Edit your sale</h6>
         </div>
     </div>
 
@@ -70,7 +70,8 @@
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label for="type">Type</label>
-                            <select id="type" name="type" class="form-control" required>
+                            <select id="type" name="type" class="form-control"
+                                <?= $order['type'] == 'SL' ? 'disabled' : '' ?> required>
                                 <option value="SL" <?= $order['type'] == 'SL' ? 'selected' : '' ?>>Invoice</option>
                                 <option value="BL" <?= $order['type'] == 'BL' ? 'selected' : '' ?>>Bond Delivery
                                 </option>
@@ -95,11 +96,8 @@
                     </div>
                 </div>
                 <script>
-                // Make sure the PHP array is safely encoded into a JSON string
                 var orderData = <?php echo json_encode($order); ?>;
                 var currency = <?php echo json_encode($currency); ?>;
-
-                console.log(orderData);
                 </script>
                 <!-- Sales Table -->
                 <div class="row">
@@ -120,7 +118,6 @@
                                 </tr>
                             </thead>
                             <tbody id="salesTableBody">
-                                <!-- Product rows will be added dynamically here -->
 
                             </tbody>
                         </table>
@@ -153,9 +150,10 @@
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <select id="status" name="status" class="form-control">
+                            <select id="status" name="status" class="form-control" disabled>
                                 <option value="">Choose Status</option>
-                                <option value="completed" <?= $order['status'] == 'completed' ? 'selected' : '' ?>>
+                                <option selected value="completed"
+                                    <?= $order['status'] == 'completed' ? 'selected' : '' ?>>
                                     Completed</option>
                                 <option value="inprogress" <?= $order['status'] == 'inprogress' ? 'selected' : '' ?>>In
                                     Progress</option>
@@ -215,6 +213,6 @@
 <?php 
      $this->inlineScript()
         ->appendFile($this->basePath('js/jquery-3.6.0.min.js'))
-        ->appendFile($this->basePath('js/sales/scripteditbl.js'))
+        ->appendFile($this->basePath('js/sales/scripteditsl.js'))
   
         ?>
