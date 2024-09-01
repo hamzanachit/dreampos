@@ -54,6 +54,7 @@ return array(
     'Laminas\\Loader\\' => array($vendorDir . '/laminas/laminas-loader/src'),
     'Laminas\\Json\\' => array($vendorDir . '/laminas/laminas-json/src'),
     'Laminas\\InputFilter\\' => array($vendorDir . '/laminas/laminas-inputfilter/src'),
+    'Laminas\\I18n\\' => array($vendorDir . '/laminas/laminas-i18n/src'),
     'Laminas\\Hydrator\\' => array($vendorDir . '/laminas/laminas-hydrator/src'),
     'Laminas\\Http\\' => array($vendorDir . '/laminas/laminas-http/src'),
     'Laminas\\Form\\' => array($vendorDir . '/laminas/laminas-form/src'),
@@ -88,5 +89,4 @@ return array(
     'Complex\\' => array($vendorDir . '/markbaker/complex/classes/src'),
     'Brick\\VarExporter\\' => array($vendorDir . '/brick/varexporter/src'),
     'Application\\' => array($baseDir . '/module/Application/src'),
-    'ApplicationTest\\' => array($baseDir . '/module/Application/test'),
 );
