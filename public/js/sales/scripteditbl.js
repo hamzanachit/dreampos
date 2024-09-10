@@ -23,11 +23,11 @@ $(document).ready(function () {
                              <td  class="productid" style="display:none" data-product-id="${product.productId}">${product.productId}</td>
                            
                                <td class="productname" data-productname="${product.productName}">${product.productName}</td>
-                            <td><input type="number" class="form-control quantity" value="${product.quantity}" min="1" step="0.01" /></td>
-                            <td><input type="number" class="form-control price" value="${parseFloat(product.productPrice).toFixed(2)}" min="0" step="0.01" /></td>
-                            <td><input type="number" class="form-control discount" value="${parseFloat(product.discount).toFixed(2)}" min="0" step="0.01" /></td>
-                            <td><input type="number" class="form-control tax" value="${parseFloat(product.TAX).toFixed(2)}" min="0" step="0.01" /></td>
-                            <td><input type="number" class="form-control subtotal" value="${parseFloat(product.subtotal).toFixed(2)}" min="0" step="0.01" readonly /></td>
+                            <td><input type="number" class="form-control quantity" value="${product.quantity}" min="1" step="1.00" /></td>
+                            <td><input type="number" class="form-control price" value="${parseFloat(product.productPrice).toFixed(2)}" min="0" step="1.00" /></td>
+                            <td><input type="number" class="form-control discount" value="${parseFloat(product.discount).toFixed(2)}" min="0" step="1.00" /></td>
+                            <td><input type="number" class="form-control tax" value="${parseFloat(product.TAX).toFixed(2)}" min="0" step="1.00" /></td>
+                            <td><input type="number" class="form-control subtotal" value="${parseFloat(product.subtotal).toFixed(2)}" min="0" step="1.00" readonly /></td>
                             <td>
                                 <a href="javascript:void(0);" class="btn btn-danger btn-remove">
                                     <img src="${$('#basePath').val()}/img/icons/delete.svg" alt="delete icon">
@@ -111,10 +111,10 @@ $(document).ready(function () {
             <td  class="productid" style="display:none" data-product-id="${productId}">${productId}</td>
 
             <td><input type="number" class="form-control quantity" value="1" min="1" /></td>
-            <td><input type="number" class="form-control price" value="${productPrice.toFixed(2)}" min="0" step="0.01" /> </td>
-            <td><input type="number" class="form-control discount" value="0" min="0" step="0.01" /></td>
-            <td><input type="number" class="form-control tax" value="0" min="0" step="0.01" /></td>
-            <td><input type="number" class="form-control subtotal" value="${productPrice.toFixed(2)}" min="0" step="0.01" readonly /> </td>
+            <td><input type="number" class="form-control price" value="${productPrice.toFixed(2)}" min="0" step="1.00" /> </td>
+            <td><input type="number" class="form-control discount" value="0" min="0" step="1.00" /></td>
+            <td><input type="number" class="form-control tax" value="0" min="0" step="1.00" /></td>
+            <td><input type="number" class="form-control subtotal" value="${productPrice.toFixed(2)}" min="0" step="1.00" readonly /> </td>
             <td>
                 <a href="javascript:void(0);" class="btn btn-danger btn-remove">
                     <img src="${$('#basePath').val()}/img/icons/delete.svg" alt="delete icon">
@@ -288,6 +288,7 @@ $(document).ready(function () {
             orderTax: $('#orderTax').val(),
             discount: $('#discount').val(),
             shipping: $('#shipping').val(),
+            orderType: $('#orderType').val(),
             type: $('#type').val(),
             products: []
         };

@@ -22,7 +22,7 @@
                             <label for="customer">Customer</label>
                             <div class="row">
                                 <div class="col-lg-10 col-sm-10 col-10">
-                                    <select id="customer" name="customer" class="form-control">
+                                    <select disabled class="form-control">
                                         <option>Choose</option>
                                         <?php foreach ($this->customers as $row): 
                                           
@@ -33,6 +33,8 @@
                                         </option>
                                         <?php endforeach; ?>
                                     </select>
+                                    <input type="text" id="customer" name="customer"
+                                        value="<?=$order['customer_id'] ?   : '' ?>" class="form-control hidden">
                                 </div>
                                 <div class="col-lg-2 col-sm-2 col-2 ps-0">
                                     <div class="add-icon">
@@ -49,8 +51,11 @@
                             <label for="orderDate">Date</label>
                             <div class="input-groupicon">
                                 <input type="date" id="orderDate" name="orderDate"
-                                    value="<?= isset($order['date']) ? $order['date']->format('Y-m-d') : '' ?>"
-                                    placeholder="Choose Date" class="form-control">
+                                    value="<?= isset($order['createdAt']) ? $order['createdAt']->format('Y-m-d') : '' ?>"
+                                    class="form-control hidden">
+                                <input type="text" disabled
+                                    value="<?= $order['createdAt'] ? $order['createdAt']->format('d/m/Y') : '' ?>"
+                                    class="form-control">
                             </div>
                         </div>
                     </div>

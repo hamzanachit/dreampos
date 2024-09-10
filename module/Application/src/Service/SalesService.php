@@ -769,9 +769,12 @@
     public function updateOrder(int $orderId, array $orderData, $idcompany, $createdBy)
     {
         try {
-            $oldOrderType = $this->determineOrderType($orderId);
-            $oldOrder = $this->getOrderById($orderId, $oldOrderType);
 
+            $ordertype = $orderData['orderType'];
+// dd( $ordertype);
+
+            $oldOrderType = $this->determineOrderType($orderId, $ordertype);
+            $oldOrder = $this->getOrderById($orderId, $oldOrderType);
 
             if (!$oldOrder) {
                 throw new \Exception("Order not found");
@@ -806,18 +809,16 @@
     //     throw new \Exception("Unable to determine order type for ID: $orderId");
     // }
 
-
-    private function determineOrderType(int $orderId): string
-{
+    private function determineOrderType(int $orderId, $ordertype): string{
     $foundTypes = [];
 
-    if ($this->entityManager->find(BL::class, $orderId)) {
+    if ($this->entityManager->find(BL::class, $orderId) &&  $ordertype == "BL") {
         $foundTypes[] = 'BL';
     }
-    if ($this->entityManager->find(Estimates::class, $orderId)) {
+    if ($this->entityManager->find(Estimates::class, $orderId)&&  $ordertype == "ES") {
         $foundTypes[] = 'ES';
     }
-    if ($this->entityManager->find(Orders::class, $orderId)) {
+    if ($this->entityManager->find(Orders::class, $orderId)&&  $ordertype == "SL") {
         $foundTypes[] = 'SL';
     }
 

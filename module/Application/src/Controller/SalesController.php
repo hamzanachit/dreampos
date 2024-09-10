@@ -506,6 +506,7 @@ class SalesController extends AbstractActionController{
         $customers = $this->salesservice->getcustomers($companyId);
          $orderDetails = $this->salesservice->getOrderDetailsBL($orderId, $companyId);
          $orderData = !empty($orderDetails) ? $orderDetails[0] : [];
+        //  dd($orderData);
         return new ViewModel([
             'order' => $orderData,
             'currency' => $currency,
@@ -520,6 +521,7 @@ class SalesController extends AbstractActionController{
     public function updateOrderAction(){
         $request = $this->getRequest();
         if ($request->isPost()) {
+            
             $orderData = json_decode($request->getContent(), true);
             $orderId = $orderData['orderid']; 
             if (!$orderId) {
@@ -535,6 +537,8 @@ class SalesController extends AbstractActionController{
                 $createdBy = $user['id'];
                 $company = $auth->ActifCompany();
                 $idcompany = $company[0]['id'];
+// dd( $orderData );
+
                 $order = $this->salesservice->updateOrder($orderId, $orderData, $idcompany, $createdBy);
             //     $oldType = $result['oldType'];
             //     $newType = $order['newType'];
@@ -542,7 +546,6 @@ class SalesController extends AbstractActionController{
             //     $response['oldType'] = $oldType;
             //     $response['newType'] = $newType;
             // }
-// dd( $order->getType());
                 return new JsonModel([
                     'success' => true,
                     'orderId' => $order->getId()
