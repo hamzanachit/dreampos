@@ -17,6 +17,7 @@ use Application\Middleware\AuthenticationMiddleware;
 use Laminas\Authentication\Storage\Session as SessionStorage;
 use Laminas\Authentication\Adapter\DbTable\CallbackCheckAdapter;
 use Laminas\Db\Adapter\Adapter;
+use Application\Helper\TranslationHelper;
 
 return [
     'service_manager' => [
@@ -39,73 +40,66 @@ return [
             },
 
             // User Service
-            UserService::class => function ($sm) {
-                $entityManager = $sm->get('doctrine.entitymanager.orm_default');
+            UserService::class => function ($container) {
+                $entityManager = $container->get('doctrine.entitymanager.orm_default');
                 return new UserService($entityManager);
             },
 
             // Dashboard Service
-            DashboardService::class => function ($sm) {
-                $entityManager = $sm->get('doctrine.entitymanager.orm_default');
+            DashboardService::class => function ($container) {
+                $entityManager = $container->get('doctrine.entitymanager.orm_default');
                 return new DashboardService($entityManager);
             },
 
             // Product Service
-            'Application\Service\ProductService' => function ($sm) {
-                $entityManager = $sm->get('doctrine.entitymanager.orm_default');
+            'Application\Service\ProductService' => function ($container) {
+                $entityManager = $container->get('doctrine.entitymanager.orm_default');
                 return new \Application\Service\ProductService($entityManager);
             },
 
             // Setting Service
-            SettingService::class => function ($sm) {
-                $entityManager = $sm->get('doctrine.entitymanager.orm_default');
+            SettingService::class => function ($container) {
+                $entityManager = $container->get('doctrine.entitymanager.orm_default');
                 return new SettingService($entityManager);
             },
 
             // SalesService Service
-            SalesService::class => function ($sm) {
-                $entityManager = $sm->get('doctrine.entitymanager.orm_default');
+            SalesService::class => function ($container) {
+                $entityManager = $container->get('doctrine.entitymanager.orm_default');
                 return new SalesService($entityManager);
             },
 
-             // CustomersService Service
-            CustomersService::class => function ($sm) {
-                $entityManager = $sm->get('doctrine.entitymanager.orm_default');
+            // CustomersService Service
+            CustomersService::class => function ($container) {
+                $entityManager = $container->get('doctrine.entitymanager.orm_default');
                 return new CustomersService($entityManager);
             },
 
+            // DbAdapter
+            Adapter::class => 'Laminas\Db\Adapter\AdapterServiceFactory',
 
-            //   Application\Service\CompanyService::class => function ($container) {
-            //     $entityManager = $container->get('doctrine.entitymanager.orm_default');
-            //     return new Application\Service\CompanyService($entityManager);
-            // },
+            // TranslationHelper
+            TranslationHelper::class => function ($container) {
+                return new TranslationHelper(
+                    $container->get(Adapter::class)
+                );
+            },
 
+            // AuthPlugin
+            Controller\Plugin\AuthPlugin::class => function ($container) {
+                return new \Application\Controller\Plugin\AuthPlugin(
+                    $container->get(AuthenticationService::class),
+                    $container->get(SettingService::class),
+                    $container->get(TranslationHelper::class) // Inject TranslationHelper
+                );
+            },
+
+            // AuthenticationMiddleware
             AuthenticationMiddleware::class => function ($container) {
                 return new AuthenticationMiddleware(
                     $container->get(AuthenticationService::class)
                 );
             },
-            
-        ],
-    ],
-
-    'controller_plugins' => [
-        'aliases' => [
-            'auth' => Controller\Plugin\AuthPlugin::class,
-            'flashMessenger' => 'FlashMessenger',
-        ],
-        'factories' => [
-            Controller\Plugin\AuthPlugin::class => Controller\Plugin\AuthPluginFactory::class,
-            'FlashMessenger' => \Laminas\Mvc\Controller\Plugin\FlashMessengerFactory::class,
-        ],
-    ],
-
-     'middleware_pipeline' => [
-        'always' => [
-            [
-                'middleware' => AuthenticationMiddleware::class,
-                'priority' => 100,
-            ],
         ],
     ],
 
@@ -194,7 +188,8 @@ return [
                     ],
                 ],
             ],
-              'ajaxproduct' => [
+
+            'ajaxproduct' => [
                 'type' => Segment::class,
                 'options' => [
                     'route' => '/ajaxproduct[/:action[/:id]]',
@@ -207,13 +202,25 @@ return [
                     ],
                 ],
             ],
-       
-
 
             'settingActions' => [
                 'type' => Segment::class,
                 'options' => [
                     'route' => '/settings[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => Controller\SettingController::class,
+                    ],
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ],
+                ],
+            ],
+
+            'langueActions' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route' => '/langue[/:action[/:id]]',
                     'defaults' => [
                         'controller' => Controller\SettingController::class,
                     ],
@@ -252,7 +259,6 @@ return [
                 ],
             ],
 
-            // sales
             'salesActions' => [
                 'type' => Segment::class,
                 'options' => [
@@ -268,40 +274,79 @@ return [
             ],
 
             'salesActions__NOLAYOUT' => [
-                        'type' => Segment::class,
-                        'options' => [
-                            'route' => '/salesajax[/:action[/:id]]',
-                            'defaults' => [
-                                'controller' => Controller\SalesController::class,
-                            ],
-                            'constraints' => [
-                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'id' => '[0-9]+',
-                            ],
-                        ],
+                'type' => Segment::class,
+                'options' => [
+                    'route' => '/salesajax[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => Controller\SalesController::class,
                     ],
-
-
-            //  Customers
-                    'customersActions' => [
-                        'type' => Segment::class,
-                        'options' => [
-                            'route' => '/customers[/:action[/:id]]',
-                            'defaults' => [
-                                'controller' => Controller\CustomersController::class,
-                            ],
-                            'constraints' => [
-                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'id' => '[0-9]+',
-                            ],
-                        ],
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
                     ],
+                ],
+            ],
 
+            'invoiceActions' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route' => '/invoices[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => Controller\InvoiceController::class,
+                    ],
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ],
+                ],
+            ],
 
+            'partnerCapital' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route' => '/partnercapital[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => Controller\PartnerCapitalController::class,
+                    ],
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ],
+                ],
+            ],
+
+            'subfolderActions' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route' => '/subfolder[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => Controller\SubfolderController::class,
+                    ],
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ],
+                ],
+            ],
+
+            'productOrder' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route' => '/productorder[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => Controller\ProductOrderController::class,
+                    ],
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ],
+                ],
+            ],
         ],
     ],
-      'controllers' => [
-        'factories' => [
+
+    'controllers' => [
+       'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
             Controller\UserController::class => Controller\Factory\UserControllerFactory::class,
             Controller\AuthController::class => Controller\Factory\AuthControllerFactory::class,
@@ -314,9 +359,38 @@ return [
             
         ],
     ],
- 
 
-    'view_manager' => [
+   'controller_plugins' => [
+        'aliases' => [
+            'auth' => Controller\Plugin\AuthPlugin::class,
+            'flashMessenger' => 'FlashMessenger',
+        ],
+        'factories' => [
+            Controller\Plugin\AuthPlugin::class => Controller\Plugin\AuthPluginFactory::class,
+            'FlashMessenger' => \Laminas\Mvc\Controller\Plugin\FlashMessengerFactory::class,
+                        'MvcTranslator' => Laminas\I18n\Translator\TranslatorServiceFactory::class,
+
+        ],
+    ],
+
+
+
+
+    'middleware_pipeline' => [
+    'always' => [
+        [
+            'middleware' => AuthenticationMiddleware::class,
+            'priority' => 100,
+        ],
+     ],
+    ],
+    'view_helpers' => [
+        'factories' => [
+            TranslationHelper::class => InvokableFactory::class,
+        ],
+    ],
+    
+      'view_manager' => [
         'display_not_found_reason' => true,
         'display_exceptions' => true,
         'doctype' => 'HTML5',
@@ -335,4 +409,5 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+   
 ];

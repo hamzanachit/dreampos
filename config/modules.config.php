@@ -19,5 +19,6 @@ return [
     'Laminas\Validator',
     'DoctrineModule',
     'DoctrineORMModule',
-    'Application',
+    'Application', 
+    
 ];

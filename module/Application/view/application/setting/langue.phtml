@@ -1,0 +1,190 @@
+<div class="content" style="margin-top:80px;">
+    <input type="text" id="basePath" style="display:none;" value="<?= $this->basePath() ?>">
+    <div class="page-header">
+        <div class="page-title">
+            <h4>Translation List <?php   $translate = $auth->translate('Translation List'); ?></h4>
+            <h6>Manage your translations</h6>
+        </div>
+        <div class="page-btn">
+            <a class="btn btn-added addTranslation" id="addTranslation">
+                <img src="<?= $this->basePath('img/icons/plus.svg') ?>" alt="img" class="me-1">Add New Translation</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-top">
+                <div class="search-set">
+                    <div class="search-path">
+                        <a class="btn btn-filter" id="filter_search">
+                            <img src="<?= $this->basePath('img/icons/filter.svg') ?>" alt="img">
+                            <span><img src="<?= $this->basePath('img/icons/closes.svg') ?>" alt="img"></span>
+                        </a>
+                    </div>
+                    <div class="search-input">
+                        <a class="btn btn-searchset"><img src="<?= $this->basePath('img/icons/search-white.svg') ?>"
+                                alt="img"></a>
+                    </div>
+                </div>
+                <div class="wordset">
+                    <ul>
+                        <li><a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf"><img
+                                    src="<?= $this->basePath('img/icons/pdf.svg') ?>" alt="img"></a></li>
+                        <li><a data-bs-toggle="tooltip" data-bs-placement="top" title="excel"><img
+                                    src="<?= $this->basePath('img/icons/excel.svg') ?>" alt="img"></a></li>
+                        <li><a data-bs-toggle="tooltip" data-bs-placement="top" title="print"><img
+                                    src="<?= $this->basePath('img/icons/printer.svg') ?>" alt="img"></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Filters section, if applicable to translations -->
+            <div class="card mb-0" id="filter_inputs">
+                <div class="card-body pb-0">
+                    <div class="row">
+                        <!-- Add any filter options related to translations here if needed -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table datanew">
+                    <thead>
+                        <tr>
+                            <th>
+                                <label class="checkboxs">
+                                    <input type="checkbox" id="select-all">
+                                    <span class="checkmarks"></span>
+                                </label>
+                            </th>
+                            <th>Origin</th>
+                            <th>French</th>
+                            <th>Arabic</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($translations as $row ) { ?>
+                        <tr>
+                            <td>
+                                <label class="checkboxs">
+                                    <input type="checkbox">
+                                    <span class="checkmarks"></span>
+                                </label>
+                            </td>
+                            <td class="translation-origin"><?= $row['origin'] ?></td>
+                            <td><?= $row['fr'] ?></td>
+                            <td><?= $row['ar'] ?></td>
+                            <td>
+                                <a id="editbtn" class="mr-3 editbtn" data-item-id="<?= $row['id'] ?>"
+                                    data-item-origin="<?= $row['origin'] ?>" data-item-french="<?= $row['fr'] ?>"
+                                    data-item-arabic="<?= $row['ar'] ?>">
+                                    <img src="<?= $this->basePath('img/icons/edit.svg') ?>" alt="img">
+                                </a>
+
+                                <a class="deletebtn" data-item-id="<?= $row['id'] ?>">
+                                    <img src="<?= $this->basePath('img/icons/delete.svg') ?>" alt="img">
+                                </a>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Translation Modal -->
+<div class="modal fade" id="addTranslationModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Translation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="addTranslationForm">
+                <div class="modal-body">
+                    <label for="origin">Origin</label>
+                    <input type="text" class="form-control" id="origin" required>
+                    <label for="french">French</label>
+                    <input type="text" class="form-control" id="french" required>
+                    <label for="arabic">Arabic</label>
+                    <input type="text" class="form-control" id="arabic">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="closeBtnAddTranslation">Close</button>
+                    <button type="submit" class="btn btn-primary" onclick="validateForm()"
+                        id="saveTranslationBtn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Translation Modal -->
+<div class="modal fade" id="editTranslationModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Translation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="editTranslationForm">
+                <div class="modal-body">
+                    <label for="originEdit">Origin</label>
+                    <input type="text" class="form-control" id="originEdit">
+                    <input type="text" class="form-control hidden" id="translationId">
+                    <label for="frenchEdit">French</label>
+                    <input type="text" class="form-control" id="frenchEdit">
+                    <label for="arabicEdit">Arabic</label>
+                    <input type="text" class="form-control" id="arabicEdit">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="closeBtnEditTranslation">Close</button>
+                    <button type="submit" class="btn btn-primary" onclick="validateForm()"
+                        id="saveTranslationBtn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Translation Modal -->
+<div class="modal fade" id="deleteTranslationModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Translation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="deleteTranslationForm">
+                <div class="modal-body">
+                    <input type="text" class="form-control hidden" id="translationIdDelete">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="closeBtnDeleteTranslation">Close</button>
+                    <button type="button" class="btn btn-primary" id="confirmDeleteTranslation">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<?= $this->inlineScript()->prependFile($this->basePath('js/jquery-3.6.0.min.js'))  
+                         ->appendFile($this->basePath('js/setting/scriptAddTranslation.js'));              
+
+?>

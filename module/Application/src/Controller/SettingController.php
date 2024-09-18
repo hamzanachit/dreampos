@@ -326,4 +326,40 @@ class SettingController extends AbstractActionController{
         // return $viewModel;
     }
 
+    
+
+
+
+
+   // langue section 
+
+
+       public function langueAction() {
+        $auth = $this->plugin('auth');
+        $user = $auth->getUser();
+        $translate = $auth->translate('Translation');
+        // dd()
+        $userid =$user['id'];
+        $getAllcompany = '';
+        $getAllcompany = $this->settingService->getAllSettings($userid);
+        $languages = $this->settingService->getlanguages($userid);
+         if ($getAllcompany === null ){
+            $getAllcompany = '';
+        }
+        $viewModel = new ViewModel([
+            'translations' =>$languages,
+            'getAllcompany' =>$getAllcompany,
+            'auth' =>$this->plugin('auth'),
+            
+        ]);
+
+        $viewModel->setTemplate('application/setting/langue');  
+        return $viewModel;
+    }
+
+
+
+
+
+
 }

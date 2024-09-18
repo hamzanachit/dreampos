@@ -1,7 +1,29 @@
-laminas:
-  build: .
-  dockerfile: Dockerfile
-  ports:
-   - "8080:80"
-  volumes:
-   - .:/var/www
+services:
+  mysql_database:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234 
+      MYSQL_DATABASE: erp
+     
+    volumes:
+      - mysql:/var/lib/mysql
+      - ./apache-config.conf:/etc/apache2/conf-available/servername.conf
+
+  erp:
+    depends_on:
+      - mysql_database
+    build: .
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      ERP_DB_HOST: mysql_database
+      ERP_DB_USER: root
+      ERP_DB_PASSWORD: 1234
+      ERP_DB_NAME: erp
+    volumes:
+      - .:/var/www/html
+
+volumes:
+  mysql:

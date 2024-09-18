@@ -6,6 +6,7 @@ use Laminas\Mvc\Exception;
 use Laminas\Mvc\MvcEvent;
 use Laminas\View\Model\ViewModel;
 
+
 /**
  * Basic action controller
  */
@@ -57,9 +58,7 @@ abstract class AbstractActionController extends AbstractController
     $currentRoute = $routeMatch ? $routeMatch->getMatchedRouteName() : null;
     // dd($_SESSION['company']);
 
-        // if(isset($_SESSION['company'])){
-        //      $_SESSION['companyName'] = $_SESSION['company'][0]['companyName'];
-        // }  
+         
     // Authentication check
     if (!$authService->hasIdentity()){
         if ($currentRoute !== 'login' && $currentRoute !== 'register') {

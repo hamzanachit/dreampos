@@ -31,7 +31,17 @@
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Language</label>
-                            <input type="text" name="Language" id="Language" value="<?=  $setting['language']   ?>">
+                            <select class="form-control" name="Language" id="Language">
+                                <option value="French"
+                                    <?php if($setting['language']  =='French' ){echo'selected';}    ?>>French</option>
+                                <option value="English"
+                                    <?php if($setting['language']  =='English' ){echo'selected';}    ?>>English</option>
+                                <option value="Arabe" <?php if($setting['language']  =='Arabe' ){echo'selected';}    ?>>
+                                    Arabe
+                                </option>
+
+                            </select>
+                            <!-- <input type="text" name="Language" id="Language" value="<?=  $setting['language']   ?>"> -->
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">

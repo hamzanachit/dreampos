@@ -8,6 +8,7 @@
     use Application\Entity\Category;
     use Application\Entity\SubCategory;
     use Application\Entity\Company; 
+    use Application\Entity\Translations; 
 
     class SettingService{
         
@@ -413,6 +414,94 @@ public function ChangeCompany($userId, $idCompany){
             $this->entityManager->flush();
             return true;
     }
+
+
+
+
+   // languages section 
+
+        public function getlanguages(){
+            try {
+                $query = $this->entityManager->createQueryBuilder()
+                        ->from('Application\Entity\Translations','t')  
+                        ->select('t as tr , t.ar,t.origin,t.fr,t.id')  ;
+                $data = $query->getQuery()->getResult();
+                return $data;
+            } catch (\Throwable $th) {
+                throw $th;
+                return 'null';
+            }
+        }
+
+
+        public function addTranslation($origin, $french, $arabic) {
+    // Validate input data
+    // if (empty($origin) || empty($french) || empty($arabic)) {
+    //     return false; // or throw an exception
+    // }
+
+    // Create a new Translation entity
+    $translation = new Translations();
+    $translation->setOrigin($origin);
+    $translation->setFr($french);
+    $translation->setAr($arabic);
+
+    try {
+        // Persist the new translation to the database
+        $this->entityManager->persist($translation);
+        $this->entityManager->flush();
+
+        return $translation; // Return the created translation entity
+    } catch (\Exception $e) {
+        // Handle any exceptions
+        // Optionally log the exception or handle it accordingly
+        return false;
+    }
+}
+
+public function editTranslation($id, $origin, $french, $arabic) {
+    try {
+        // Find the translation entity by its ID
+        $translation = $this->entityManager->getRepository(Translations::class)->find($id);
+        // if (!$translation) {
+        //     return false; // or throw an exception
+        // }
+
+        // Update the translation entity
+        $translation->setOrigin($origin);
+        $translation->setFr($french);
+        $translation->setAr($arabic);
+
+        // Persist changes to the database
+        $this->entityManager->persist($translation);
+        $this->entityManager->flush();
+
+        return $translation; // Return the updated translation entity
+    } catch (\Exception $e) {
+        // Handle any exceptions
+        // Optionally log the exception or handle it accordingly
+        return false;
+    }
+}
+public function deleteTranslation($id) {
+    try {
+        // Find the translation entity by its ID
+        $translation = $this->entityManager->getRepository(Translations::class)->find($id);
+        if (!$translation) {
+            return false; // or throw an exception
+        }
+
+        // Remove the translation entity
+        $this->entityManager->remove($translation);
+        $this->entityManager->flush();
+
+        return true; // Indicate successful deletion
+    } catch (\Exception $e) {
+        // Handle any exceptions
+        // Optionally log the exception or handle it accordingly
+        return false;
+    }
+}
 
 
 }

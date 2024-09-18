@@ -224,6 +224,107 @@ class AjaxSettingController extends AbstractActionController
 
 
 
+        public function addtranslationAction() {
+            $request = $this->getRequest();
+            if ($request->isPost()) {
+                $postdata = $_POST; // Extract POST data directly
+                $origin = htmlspecialchars($postdata['origin'] ?? '');
+                $french = htmlspecialchars($postdata['french'] ?? '');
+                $arabic = htmlspecialchars($postdata['arabic'] ?? '');
+
+                // Call the service to add the translation
+                $resultAdd = $this->settingService->addTranslation($origin, $french, $arabic);
+
+                if ($resultAdd) {
+            return new JsonModel([
+                'success' => true,
+                'message' => 'translation added successfully'
+            ]);
+        } else {
+            return new JsonModel([
+                'success' => false,
+                'message' => 'Failed to add translation'
+            ]);
+        }
+      }
+    }
+
+
+
+
+       
+
+        public function edittranslationAction() {
+                $request = $this->getRequest();
+                if ($request->isPost()) {
+                    $postdata = $_POST; // Extract POST data directly
+                    $id = htmlspecialchars($postdata['id'] ?? '');
+                    $origin = htmlspecialchars($postdata['origin'] ?? '');
+                    $french = htmlspecialchars($postdata['french'] ?? '');
+                    $arabic = htmlspecialchars($postdata['arabic'] ?? '');
+
+                    // Call the service to edit the translation
+                    $resultEdit = $this->settingService->editTranslation($id, $origin, $french, $arabic);
+
+                         if ($resultEdit) {
+                            return new JsonModel([
+                                'success' => true,
+                                'message' => 'translation edited successfully'
+                            ]);
+                        } else {
+                            return new JsonModel([
+                                'success' => false,
+                                'message' => 'Failed to edited translation'
+                            ]);
+                        }
+                    }
+                    }
+
+        
+            public function deletetranslationAction() {
+                $request = $this->getRequest();
+                if ($request->isPost()) {
+                    $postdata = $_POST; // Extract POST data directly
+                    $id = htmlspecialchars($postdata['id'] ?? '');
+
+                    // Call the service to delete the translation
+                    $resultDelete = $this->settingService->deleteTranslation($id);
+
+                 if ($resultDelete) {
+                            return new JsonModel([
+                                'success' => true,
+                                'message' => 'translation deleted successfully'
+                            ]);
+                        } else {
+                            return new JsonModel([
+                                'success' => false,
+                                'message' => 'Failed to delete translation'
+                            ]);
+                        }
+                    }
+                    }
+
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

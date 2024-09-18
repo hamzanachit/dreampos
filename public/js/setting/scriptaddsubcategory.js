@@ -1,224 +1,160 @@
 $(document).ready(function () {
-    // console.log('Document ready function executed');
+    const basePath = $('#basePath').val();
 
-    // modal add
-    $('#addcategory').on('click', function (e) {
+    // Show the Add Translation Modal
+    $('#addTranslation').click(function () {
+        $('#addTranslationModal').modal('show');
+    });
+
+    // Show the Edit Translation Modal with data
+    $(document).on('click', '.editbtn', function () {
+        const id = $(this).data('item-id');
+        const origin = $(this).data('item-origin');
+        const french = $(this).data('item-french');
+        const arabic = $(this).data('item-arabic');
+
+        $('#translationId').val(id);
+        $('#originEdit').val(origin);
+        $('#frenchEdit').val(french);
+        $('#arabicEdit').val(arabic);
+
+        $('#editTranslationModal').modal('show');
+    });
+
+    // Show the Delete Translation Modal with data
+    $(document).on('click', '.deletebtn', function () {
+        const id = $(this).data('item-id');
+        $('#translationIdDelete').val(id);
+
+        $('#deleteTranslationModal').modal('show');
+    });
+
+    // Add Translation Form Submit
+    $('#addTranslationForm').submit(function (e) {
         e.preventDefault();
-        $('#addcategoryModal').modal('show');
-    });
 
-    // modal edit
-    $('.editbtn').on('click', function (e) {
-        // e.preventDefault();
-        $('#editcategoryModal').modal('show');
-        var idsubcategory = $(this).attr('data-item-id');
-        var categoryname = $(this).attr('data-item-categoryname');
-        var SubCategoryName = $(this).attr('data-item-SubCategoryName');
-        var description = $(this).attr('data-item-description');
-        // console.log(categoryname);
-        $('#idcategoryedit').val(idsubcategory);
-        $('#categoryNameedit').val(categoryname);
-        $('#SubCategoryNameedit').val(SubCategoryName);
-        $('#descriptionedit').val(description);
-        $('#idsubcategory').val(idsubcategory);
-    });
+        const origin = $('#origin').val();
+        const french = $('#french').val();
+        const arabic = $('#arabic').val();
 
-
-    // Bind the form submission to the AJAX request
-    $('#addsubcategoryForm').on('submit', function (event) {
-        event.preventDefault();
-        var basePath = $('#basePath').val();
-        var formData = {
-            subcategoryname: $('#subcategoryname').val(),
-            categoryname: $('#categoryname').val(),
-            description: $('#description').val(),
-        };
-        sendFormData(formData);
-
-        function sendFormData(formData) {
-            $.ajax({
-                url: basePath + '/ajaxcategory/addsubcategory',
-                type: 'POST',
-                data: JSON.stringify(formData),
-                contentType: 'application/json',
-                success: function (response, textStatus, xhr) {
-                    console.log('AJAX request success');
-                    if (xhr.status === 200) {
-                        $('#addcategoryModal').modal('hide');
-                        $('#subcategoryname').val('');
-                        $('#description').val('');
-                        $('#idcategory').val('');
-                        Swal.fire({
-                            title: 'Success',
-                            text: 'Sub Category added successfully!',
-                            icon: 'success',
-                            confirmButtonClass: 'btn btn-success',
-                            buttonsStyling: false
-                        }).then(function () {
-                            location.reload();
-                        });
-                    } else {
-                        Swal.fire({
-                            title: 'Error',
-                            text: 'Failed to add sub category',
-                            icon: 'error',
-                            confirmButtonClass: 'btn btn-danger',
-                            buttonsStyling: false
-                        });
-                    }
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    console.log('AJAX request error');
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'An error occurred: ' + xhr.status + ': ' + xhr.statusText,
-                        icon: 'error',
-                        confirmButtonClass: 'btn btn-danger',
-                        buttonsStyling: false
-                    });
-                }
-            });
-        }
-    });
-
-
-
-    // edit sub category
-    $('#editsubcategoryForm').on('submit', function (event) {
-        event.preventDefault();
-        var basePath = $('#basePath').val();
-        var formData = {
-            idsubcategory: $('#idsubcategory').val(),
-            categoryNameedit: $('#categoryNameedit').val(),
-            SubCategoryNameedit: $('#SubCategoryNameedit').val(),
-            description: $('#descriptionedit').val(),
-        };
-        sendFormData(formData);
-
-        function sendFormData(formData) {
-            $.ajax({
-                url: basePath + '/ajaxcategory/editsubcategory',
-                type: 'POST',
-                data: JSON.stringify(formData),
-                contentType: 'application/json',
-                success: function (response, textStatus, xhr) {
-                    console.log('AJAX request success');
-                    if (xhr.status === 200) {
-                        $('#addcategoryModal').modal('hide');
-                        $('#categoryNameedit').val('');
-                        $('#categoryCodeedit').val('');
-                        $('#descriptionedit').val('');
-                        $('#image').val('');
-
-                        Swal.fire({
-                            title: 'Success',
-                            text: 'Sub Category edited successfully!',
-                            icon: 'success',
-                            confirmButtonClass: 'btn btn-success',
-                            buttonsStyling: false
-                        }).then(function () {
-                            location.reload();
-                        });
-                    } else {
-                        Swal.fire({
-                            title: 'Error',
-                            text: 'Failed to edited Sub category',
-                            icon: 'error',
-                            confirmButtonClass: 'btn btn-danger',
-                            buttonsStyling: false
-                        });
-                    }
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    console.log('AJAX request error');
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'An error occurred: ' + xhr.status + ': ' + xhr.statusText,
-                        icon: 'error',
-                        confirmButtonClass: 'btn btn-danger',
-                        buttonsStyling: false
-                    });
-                }
-            });
-        }
-    });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    $('.deletebtn').on('click', function (e) {
-        e.preventDefault();
-        $('#deletecategoryModal').modal('show');
-        //  var idcategory = deleteBtn.attr('data-item-id');
-        var idsubcategorydelete = $(this).attr('data-item-id');
-        // console.log(idsubcategorydelete);
-        $('#idsubcategorydelete').val(idsubcategorydelete);
-
-    });
-
-    $('#confirm').on('click', function () {
-        var basePath = $('#basePath').val();
-        var deleteBtn = $(this);
-        var idsubcategorydelete = $('#idsubcategorydelete').val();
-        console.log(idsubcategorydelete);
         $.ajax({
-            url: basePath + '/ajaxcategory/deleteSubCategory',
             type: 'POST',
-            data: JSON.stringify(idsubcategorydelete),
-            contentType: 'application/json',
-            success: function (response, textStatus, xhr) {
-                console.log('AJAX request success');
-                if (xhr.status === 200) {
-                    $('#deletecategoryModal').modal('hide');
-                    $('#idsubcategorydelete').val('');
-
-                    Swal.fire({
-                        title: 'Success',
-                        text: 'Sub Category deleted successfully!',
-                        icon: 'success',
-                        confirmButtonClass: 'btn btn-success',
-                        buttonsStyling: false
-                    }).then(function () {
-                        location.reload(); // Reload the page after closing Swal
-                    });
-                } else {
-                    Swal.fire({
-                        title: 'Error',
-                        text: response.message,
-                        icon: 'error',
-                        confirmButtonClass: 'btn btn-danger',
-                        buttonsStyling: false
-                    });
-                }
+            url: `${basePath}/ajaxcategory/addtranslation`,
+            data: {
+                origin,
+                french,
+                arabic
             },
-            error: function (xhr) {
-                console.log('AJAX request error');
+            success: function (response) {
                 Swal.fire({
-                    title: 'Error',
-                    text: 'An error occurred: ' + xhr.status + ': ' + xhr.statusText,
+                    title: 'Success!',
+                    text: 'Translation added successfully.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    $('#addTranslationModal').modal('hide');
+                    location.reload(); // Reload the page to update the table
+                });
+            },
+            error: function () {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Failed to add translation.',
                     icon: 'error',
-                    confirmButtonClass: 'btn btn-danger',
-                    buttonsStyling: false
+                    confirmButtonText: 'OK'
                 });
             }
         });
     });
 
+    // Edit Translation Form Submit
+    $('#editTranslationForm').submit(function (e) {
+        e.preventDefault();
 
+        const id = $('#translationId').val();
+        const origin = $('#originEdit').val();
+        const french = $('#frenchEdit').val();
+        const arabic = $('#arabicEdit').val();
+
+        $.ajax({
+            type: 'POST',
+            url: `${basePath}/ajaxcategory/edittranslation`,
+            data: {
+                id,
+                origin,
+                french,
+                arabic
+            },
+            success: function (response) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Translation edited successfully.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    $('#editTranslationModal').modal('hide');
+                    location.reload(); // Reload the page to update the table
+                });
+            },
+            error: function () {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Failed to update translation.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+    });
+
+    // Confirm Delete Translation
+    $('#confirmDeleteTranslation').click(function () {
+        const id = $('#translationIdDelete').val();
+
+        $.ajax({
+            type: 'POST',
+            url: `${basePath}/ajaxcategory/deletetranslation`,
+            data: {
+                id
+            },
+            success: function (response) {
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: 'Translation deleted successfully.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    $('#deleteTranslationModal').modal('hide');
+                    location.reload(); // Reload the page to update the table
+                });
+            },
+            error: function () {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Failed to delete translation.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+    });
+
+    // Select/Deselect All Checkboxes
+    $('#select-all').click(function () {
+        $('tbody input[type="checkbox"]').prop('checked', this.checked);
+    });
+
+    // Validate Form (Optional - you can add more validation as needed)
+    function validateForm() {
+        let valid = true;
+        $('.form-control').each(function () {
+            if ($(this).val() === '') {
+                valid = false;
+                $(this).addClass('is-invalid');
+            } else {
+                $(this).removeClass('is-invalid');
+            }
+        });
+        return valid;
+    }
 });

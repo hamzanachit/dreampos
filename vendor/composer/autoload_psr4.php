@@ -89,4 +89,5 @@ return array(
     'Complex\\' => array($vendorDir . '/markbaker/complex/classes/src'),
     'Brick\\VarExporter\\' => array($vendorDir . '/brick/varexporter/src'),
     'Application\\' => array($baseDir . '/module/Application/src'),
+    'ApplicationTest\\' => array($baseDir . '/module/Application/test'),
 );

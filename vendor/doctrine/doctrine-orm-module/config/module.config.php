@@ -192,6 +192,8 @@ $result = [
             // DBAL commands
             'doctrine.dbal_cmd.runsql' => Service\RunSqlCommandFactory::class,
             'doctrine.dbal_cmd.reserved_words'  => Service\ReservedWordsCommandFactory::class,
+                    'MvcTranslator' => Laminas\I18n\Translator\TranslatorServiceFactory::class,
+
         ],
         'invokables' => [
             // ORM Commands

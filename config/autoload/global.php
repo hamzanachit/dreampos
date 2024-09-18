@@ -1,19 +1,19 @@
 <?php
+
 use Doctrine\DBAL\Types\Type;
-use App\Doctrine\DBAL\Types\EnumType;
+use Application\Doctrine\Type\EnumType;
+
 /**
- * Global Configuration Override
+ * Local Configuration Override
  *
- * You can use this file for overriding configuration values from modules, etc.
- * You would place values in here that are agnostic to the environment and not
- * sensitive to security.
+ * This configuration override file is for overriding environment-specific and
+ * security-sensitive configuration information. Copy this file without the
+ * .dist extension at the end and populate values as needed.
  *
- * NOTE: In practice, this file will typically be INCLUDED in your source
- * control, so do not include passwords or other sensitive information in this
- * file.
+ * NOTE: This file is ignored from Git by default with the .gitignore included
+ * in laminas-mvc-skeleton. This is a good practice, as it prevents sensitive
+ * credentials from accidentally being committed into version control.
  */
- 
- 
 return [
     'doctrine' => [
         'connection' => [
@@ -54,10 +54,18 @@ return [
     'service_manager' => [
         'factories' => [
             Laminas\Db\Adapter\Adapter::class => Laminas\Db\Adapter\AdapterServiceFactory::class,
+             'auth' => Application\Controller\Plugin\Factory\AuthPluginFactory::class,
+             
+        ],
+    ],
+    
+       'controller_plugins' => [
+        'factories' => [
+            'AuthPlugin' => Application\Controller\Plugin\Factory\AuthPluginFactory::class,
         ],
     ],
      'session_config' => [
-        'cookie_lifetime' => 60 * 60 * 1, // 1 hour
+        'cookie_lifetime' => 60 * 60 * 24, // 1 hour
         'gc_maxlifetime' => 60 * 60 * 24 * 30, // 30 days
     ],
     'session_manager' => [
@@ -68,6 +76,9 @@ return [
     ],
     'session_storage' => [
         'type' => \Laminas\Session\Storage\SessionArrayStorage::class,
+         'options' => [
+        'name' => 'my_session',
+    ],
     ],
     'session_containers' => [
         'UserSession',
@@ -76,4 +87,3 @@ return [
 
 // Register the custom enum type
 Type::addType('enum', EnumType::class);
-Type::addType(EnumType::ENUM_TYPE, EnumType::class);

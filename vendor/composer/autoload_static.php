@@ -148,6 +148,7 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
         'A' => 
         array (
             'Application\\' => 12,
+            'ApplicationTest\\' => 16,
         ),
     );
 
@@ -486,6 +487,10 @@ class ComposerStaticInit5458ba1a0b83794c69a0ba4e3053ba80
         'Application\\' => 
         array (
             0 => __DIR__ . '/../..' . '/module/Application/src',
+        ),
+        'ApplicationTest\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/module/Application/test',
         ),
     );
 
