@@ -3,7 +3,7 @@
         'name' => 'laminas/laminas-mvc-skeleton',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '8cf38af71070acca1f97b1e723983a5c19710a83',
+        'reference' => 'c58769f879333edd3e508f52fc4f83358af4fd99',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -28,7 +28,7 @@
         'doctrine/annotations' => array(
             'pretty_version' => '1.14.x-dev',
             'version' => '1.14.9999999.9999999-dev',
-            'reference' => '50f9235edd3a3b0fc509d458eaf469f2f5cad932',
+            'reference' => '253dca476f70808a5aeed3a47cc2cc88c5cab915',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/annotations',
             'aliases' => array(),
@@ -37,7 +37,7 @@
         'doctrine/cache' => array(
             'pretty_version' => '1.13.x-dev',
             'version' => '1.13.9999999.9999999-dev',
-            'reference' => '56cd022adb5514472cb144c087393c1821911d09',
+            'reference' => '963398973a4656020d904a28b2304f0c25933d55',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/cache',
             'aliases' => array(),
@@ -145,7 +145,7 @@
         'doctrine/orm' => array(
             'pretty_version' => '2.20.x-dev',
             'version' => '2.20.9999999.9999999-dev',
-            'reference' => '7d01f1966769c926f835437bb522ee25673af646',
+            'reference' => '74ef28295a90360671d8631d09b778ee57d9ec49',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/orm',
             'aliases' => array(),
@@ -163,7 +163,7 @@
         'dompdf/dompdf' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '4bb9e4a5d061870a24805c386037b0c9fe850eb0',
+            'reference' => 'e83283715efe39806b64d3bdae7974d4400f711a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../dompdf/dompdf',
             'aliases' => array(
@@ -198,6 +198,24 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'guzzlehttp/guzzle' => array(
+            'pretty_version' => '7.8.x-dev',
+            'version' => '7.8.9999999.9999999-dev',
+            'reference' => 'f4152d9eb85c445fe1f992001d1748e8bec070d2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../guzzlehttp/guzzle',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'guzzlehttp/promises' => array(
+            'pretty_version' => '2.0.x-dev',
+            'version' => '2.0.9999999.9999999-dev',
+            'reference' => '6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../guzzlehttp/promises',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'guzzlehttp/psr7' => array(
             'pretty_version' => '1.9.x-dev',
             'version' => '1.9.9999999.9999999-dev',
@@ -219,7 +237,7 @@
         'kwn/number-to-words' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '0b29195ab64994a5abd24115730aa590c598d468',
+            'reference' => '2144ba025d9f6f0ff850049fa43ba3bf47220460',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kwn/number-to-words',
             'aliases' => array(
@@ -407,7 +425,7 @@
         'laminas/laminas-mvc-skeleton' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '8cf38af71070acca1f97b1e723983a5c19710a83',
+            'reference' => 'c58769f879333edd3e508f52fc4f83358af4fd99',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -477,8 +495,8 @@
             'dev_requirement' => false,
         ),
         'laminas/laminas-validator' => array(
-            'pretty_version' => '2.25.x-dev',
-            'version' => '2.25.9999999.9999999-dev',
+            'pretty_version' => '2.25.0',
+            'version' => '2.25.0.0',
             'reference' => '42de39b78e73b321db7d948cf8530a2764f8b9aa',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laminas/laminas-validator',
@@ -533,11 +551,11 @@
         'maximebf/debugbar' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'c9cb28d5ee6f657fcc48440f38db8bbd140bef83',
+            'reference' => '689720d724c771ac4add859056744b7b3f2406da',
             'type' => 'library',
             'install_path' => __DIR__ . '/../maximebf/debugbar',
             'aliases' => array(
-                0 => '1.22.x-dev',
+                0 => '1.23.x-dev',
             ),
             'dev_requirement' => false,
         ),
@@ -553,7 +571,7 @@
         'nikic/php-parser' => array(
             'pretty_version' => '4.x-dev',
             'version' => '4.9999999.9999999.9999999-dev',
-            'reference' => '4d36e9c16f4820c2ed9360bc818982f3c02a08f5',
+            'reference' => '6de6ede1cb2fdff2837c5c92bc13263b5cb42d9e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nikic/php-parser',
             'aliases' => array(),
@@ -569,9 +587,9 @@
             'dev_requirement' => false,
         ),
         'phpoffice/phpspreadsheet' => array(
-            'pretty_version' => '1.29.0',
-            'version' => '1.29.0.0',
-            'reference' => 'fde2ccf55eaef7e86021ff1acce26479160a0fa0',
+            'pretty_version' => '1.29.1',
+            'version' => '1.29.1.0',
+            'reference' => '59ee38f7480904cd6487e5cbdea4d80ff2758719',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpoffice/phpspreadsheet',
             'aliases' => array(),
@@ -635,6 +653,12 @@
                 0 => '1.0.x-dev',
             ),
             'dev_requirement' => false,
+        ),
+        'psr/http-client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0',
+            ),
         ),
         'psr/http-factory' => array(
             'pretty_version' => '1.1.0',
@@ -731,7 +755,7 @@
         'sabberworm/php-css-parser' => array(
             'pretty_version' => 'v8.x-dev',
             'version' => '8.9999999.9999999.9999999-dev',
-            'reference' => 'd2fb94a9641be84d79c7548c6d39bbebba6e9a70',
+            'reference' => 'df0ac7c8e57833fab5a53f212435a4f87e9dd085',
             'type' => 'library',
             'install_path' => __DIR__ . '/../sabberworm/php-css-parser',
             'aliases' => array(),
@@ -749,7 +773,7 @@
         'symfony/console' => array(
             'pretty_version' => '5.4.x-dev',
             'version' => '5.4.9999999.9999999-dev',
-            'reference' => '6473d441a913cb997123b59ff2dbe3d1cf9e11ba',
+            'reference' => '5b5a0aa66e3296e303e22490f90f521551835a83',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/console',
             'aliases' => array(),
@@ -767,7 +791,7 @@
         'symfony/polyfill-ctype' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => '0424dff1c58f028c451efff2045f5d92410bd540',
+            'reference' => 'a3cc8b044a6ea513310cbd48ef7333b384945638',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-ctype',
             'aliases' => array(),
@@ -776,7 +800,7 @@
         'symfony/polyfill-intl-grapheme' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => '64647a7c30b2283f5d49b874d84a18fc22054b7a',
+            'reference' => 'b9123926e3b7bc2f98c02ad54f6a4b02b91a8abe',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-intl-grapheme',
             'aliases' => array(),
@@ -785,7 +809,7 @@
         'symfony/polyfill-intl-normalizer' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => 'a95281b0be0d9ab48050ebd988b967875cdb9fdb',
+            'reference' => '3833d7255cc303546435cb650316bff708a1c75c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-intl-normalizer',
             'aliases' => array(),
@@ -794,7 +818,7 @@
         'symfony/polyfill-mbstring' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => '8740a072b86292957feb42703edde77fcfca84fb',
+            'reference' => '2369cb908b33d7b7518cce042615de430142497f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-mbstring',
             'aliases' => array(),
@@ -803,16 +827,16 @@
         'symfony/polyfill-php72' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => 'e5670122fdf3e86a1f6dee9f043893e70c343b34',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../symfony/polyfill-php72',
+            'reference' => 'fa2ae56c44f03bed91a39bfc9822e31e7c5c38ce',
+            'type' => 'metapackage',
+            'install_path' => null,
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'symfony/polyfill-php73' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => 'ec444d3f3f6505bb28d11afa41e75faadebc10a1',
+            'reference' => '0f68c03565dcaaf25a890667542e8bd75fe7e5bb',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-php73',
             'aliases' => array(),
@@ -821,7 +845,7 @@
         'symfony/polyfill-php80' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => '77fa7995ac1b21ab60769b7323d600a991a90433',
+            'reference' => '60328e362d4c2c802a54fcbf04f9d3fb892b4cf8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-php80',
             'aliases' => array(),
@@ -839,7 +863,7 @@
         'symfony/string' => array(
             'pretty_version' => '5.4.x-dev',
             'version' => '5.4.9999999.9999999-dev',
-            'reference' => '42cb3f3e135163ce5abc9ca2d1a45820559023ef',
+            'reference' => '832caa16b6d9aac6bf11747315225f5aba384c24',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/string',
             'aliases' => array(),
@@ -848,7 +872,7 @@
         'symfony/var-dumper' => array(
             'pretty_version' => '5.4.x-dev',
             'version' => '5.4.9999999.9999999-dev',
-            'reference' => 'af8868a6e9d6082dfca11f1a1f205ae93a8b6d93',
+            'reference' => '6be6a6a8af4818564e3726fc65cf936f34743cef',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/var-dumper',
             'aliases' => array(),

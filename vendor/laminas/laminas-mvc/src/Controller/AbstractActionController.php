@@ -56,7 +56,7 @@ abstract class AbstractActionController extends AbstractController
     $authService = $this->plugin('auth');
     $routeMatch = $e->getRouteMatch();
     $currentRoute = $routeMatch ? $routeMatch->getMatchedRouteName() : null;
-    // dd($_SESSION['company']);
+    // dd($authService);
 
          
     // Authentication check

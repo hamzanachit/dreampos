@@ -21,7 +21,7 @@
         "laminas/laminas-db": "^2.15",
         "laminas/laminas-servicemanager": "^3.17",
         "doctrine/dbal": "2.*",
-        "laminas/laminas-session": "^2.13",
+        "laminas/laminas-session": "2.13.x-dev",
         "doctrine/orm": "^2.10", 
         "doctrine/doctrine-laminas-hydrator": "^3.0",
         "doctrine/doctrine-module": "^5.3",
@@ -35,7 +35,8 @@
         "tecnickcom/tcpdf": "*",
         "kwn/number-to-words": "*",
         "dompdf/dompdf": "*",
-        "laminas/laminas-i18n": "2.17.x-dev"
+        "laminas/laminas-i18n": "2.17.x-dev",
+        "guzzlehttp/guzzle": "7.8.x-dev"
     },
 
     "autoload": {

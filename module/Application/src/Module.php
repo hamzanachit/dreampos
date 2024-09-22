@@ -11,7 +11,22 @@ use Laminas\Session\Config\SessionConfig;
 
 class Module implements ConfigProviderInterface
 {
-    public function onBootstrap(MvcEvent $e)
+// public function onBootstrap(MvcEvent $e)
+// {
+//     $serviceManager = $e->getApplication()->getServiceManager();
+//     $sessionManager = $serviceManager->get(SessionManager::class);
+    
+//     // Check if the session manager is already started
+//     // if (!$sessionManager->getId()) {
+//     //     $sessionManager->start();
+//     // }
+    
+//     Container::setDefaultManager($sessionManager);
+// }
+
+
+
+  public function onBootstrap(MvcEvent $e)
     {
         $serviceManager = $e->getApplication()->getServiceManager();
 
@@ -19,8 +34,14 @@ class Module implements ConfigProviderInterface
         $sessionManager = $serviceManager->get(SessionManager::class);
         $this->initializeSession($sessionManager);
         Container::setDefaultManager($sessionManager);
-    }
 
+        // Get the Auth plugin from the ControllerPluginManager
+        $authPlugin = $serviceManager->get('ControllerPluginManager')->get('auth');
+
+        // Inject the Auth plugin into the global ViewModel
+        $viewModel = $e->getViewModel();
+        $viewModel->auth = $authPlugin;
+    }
     public function getServiceConfig()
     {
         return [

@@ -93,16 +93,16 @@ class AuthPlugin extends AbstractPlugin
             $lang = $actif[0]['language'];
             
             if ($lang == 'English') {
-                $locale = 'us';
+                $locale = 'origin';
             } elseif ($lang == 'French') {
                 $locale = 'fr';
             } elseif ($lang == 'Arabe') {
                 $locale = 'ar';
             } else {
-                 $locale = 'us';
+                 $locale = 'origin';
             }
         } else {
-            $locale = 'us';
+            $locale = 'origin';
         }
 
         return $this->translationHelper->getTranslation($key, $locale);

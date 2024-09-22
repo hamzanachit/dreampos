@@ -2,12 +2,13 @@
     <input type="text" id="basePath" style="display:none;" value="<?= $this->basePath() ?>">
     <div class="page-header">
         <div class="page-title">
-            <h4>Translation List <?php   $translate = $auth->translate('Translation List'); ?></h4>
-            <h6>Manage your translations</h6>
+            <h4><?= $auth->translate('Translation List'); ?></h4>
+            <h6> <?= $auth->translate('Manage your translations'); ?></h6>
         </div>
         <div class="page-btn">
             <a class="btn btn-added addTranslation" id="addTranslation">
-                <img src="<?= $this->basePath('img/icons/plus.svg') ?>" alt="img" class="me-1">Add New Translation</a>
+                <img src="<?= $this->basePath('img/icons/plus.svg') ?>" alt="img" class="me-1">
+                <?= $auth->translate('Add New Translation'); ?></a>
         </div>
     </div>
 
@@ -57,10 +58,10 @@
                                     <span class="checkmarks"></span>
                                 </label>
                             </th>
-                            <th>Origin</th>
-                            <th>French</th>
-                            <th>Arabic</th>
-                            <th>Action</th>
+                            <th> <?= $auth->translate('Origin'); ?></th>
+                            <th> <?= $auth->translate('French'); ?></th>
+                            <th> <?= $auth->translate('Arabic'); ?></th>
+                            <th> <?= $auth->translate('Action'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -101,25 +102,25 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Translation</h5>
+                <h5 class="modal-title"> <?= $auth->translate('Add Translation'); ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form id="addTranslationForm">
                 <div class="modal-body">
-                    <label for="origin">Origin</label>
+                    <label for="origin"> <?= $auth->translate('Origin'); ?></label>
                     <input type="text" class="form-control" id="origin" required>
-                    <label for="french">French</label>
+                    <label for="french"> <?= $auth->translate('French'); ?></label>
                     <input type="text" class="form-control" id="french" required>
-                    <label for="arabic">Arabic</label>
+                    <label for="arabic"> <?= $auth->translate('Arabic'); ?></label>
                     <input type="text" class="form-control" id="arabic">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        id="closeBtnAddTranslation">Close</button>
-                    <button type="submit" class="btn btn-primary" onclick="validateForm()"
-                        id="saveTranslationBtn">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeBtnAddTranslation">
+                        <?= $auth->translate('Close'); ?></button>
+                    <button type="submit" class="btn btn-primary" onclick="validateForm()" id="saveTranslationBtn">
+                        <?= $auth->translate('Save'); ?></button>
                 </div>
             </form>
         </div>
@@ -132,26 +133,26 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Update Translation</h5>
+                <h5 class="modal-title"> <?= $auth->translate('Update Translation'); ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form id="editTranslationForm">
                 <div class="modal-body">
-                    <label for="originEdit">Origin</label>
+                    <label for="originEdit"> <?= $auth->translate('Origin'); ?></label>
                     <input type="text" class="form-control" id="originEdit">
                     <input type="text" class="form-control hidden" id="translationId">
-                    <label for="frenchEdit">French</label>
+                    <label for="frenchEdit"> <?= $auth->translate('French'); ?></label>
                     <input type="text" class="form-control" id="frenchEdit">
-                    <label for="arabicEdit">Arabic</label>
+                    <label for="arabicEdit"> <?= $auth->translate('Arabic'); ?></label>
                     <input type="text" class="form-control" id="arabicEdit">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        id="closeBtnEditTranslation">Close</button>
-                    <button type="submit" class="btn btn-primary" onclick="validateForm()"
-                        id="saveTranslationBtn">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeBtnEditTranslation">
+                        <?= $auth->translate('Close'); ?></button>
+                    <button type="submit" class="btn btn-primary" onclick="validateForm()" id="saveTranslationBtn">
+                        <?= $auth->translate('Save'); ?></button>
                 </div>
             </form>
         </div>
@@ -164,7 +165,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Delete Translation</h5>
+                <h5 class="modal-title"> <?= $auth->translate('Delete Translation'); ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -174,9 +175,10 @@
                     <input type="text" class="form-control hidden" id="translationIdDelete">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        id="closeBtnDeleteTranslation">Close</button>
-                    <button type="button" class="btn btn-primary" id="confirmDeleteTranslation">Confirm</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeBtnDeleteTranslation">
+                        <?= $auth->translate('Close'); ?></button>
+                    <button type="button" class="btn btn-primary" id="confirmDeleteTranslation">
+                        <?= $auth->translate('Confirm'); ?></button>
                 </div>
             </form>
         </div>

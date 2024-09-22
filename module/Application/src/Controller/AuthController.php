@@ -60,6 +60,7 @@ class AuthController extends AbstractActionController
                 if ($user) {
                     $session = new Container('user_session');
                     $session->user = $user;
+
                     $_SESSION["user"] =$user;
 
                     $this->authService->getStorage()->write($user);
@@ -142,16 +143,25 @@ class AuthController extends AbstractActionController
         return $viewModel;
     }
 
-    public function logoutAction()
-    {
-        $this->authService->clearIdentity();
+    // public function logoutAction()
+    // {
+    //     $this->authService->clearIdentity();
 
-        $session = new Container('user_session');
-        $session->getManager()->destroy();
-        $_SESSION["user"] = "";
-        // $session = new Container('company_session');
-        $session->company = "";
-        $_SESSION["company"] = "";
-        return $this->redirect()->toRoute('login');
+    //     $session = new Container('user_session');
+    //     $session->getManager()->destroy();
+    //     $_SESSION["user"] = "";
+    //     // $session = new Container('company_session');
+    //     $session->company = "";
+    //     $_SESSION["company"] = "";
+    //     return $this->redirect()->toRoute('login');
+    // }
+
+    public function logoutAction(){
+            $this->authService->clearIdentity(); 
+            $session = new Container('user_session');
+            $session->getManager()->destroy();
+            $session->company = ""; 
+         return $this->redirect()->toRoute('login');
     }
+
 }

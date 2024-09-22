@@ -38,13 +38,13 @@ class Translations
     /**
      * @var string
      *
-     * @ORM\Column(name="ar", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="ar", type="text", length=65535, nullable=true)
      */
     private $ar;
     /**
      * @var string
      *
-     * @ORM\Column(name="us", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="us", type="text", length=65535, nullable=true)
      */
     private $us;
 

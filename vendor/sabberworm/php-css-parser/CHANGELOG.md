@@ -7,13 +7,24 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Add support for PHP 8.4 (#675, #701)
+
 ### Changed
 
+- Mark parsing-internal classes and methods as `@internal` (#711)
+- Block installations on unsupported higher PHP versions (#691)
+
 ### Deprecated
+
+- Deprecate the expansion of shorthand properties (#719)
+- Deprecate `Parser::setCharset()` and `Parser::getCharset()` (#703)
 
 ### Removed
 
 ### Fixed
+
+- Fix type errors in PHP strict mode (#695)
+- Fix comment parsing to support multiple comments (#671)
 
 ## 8.6.0
 

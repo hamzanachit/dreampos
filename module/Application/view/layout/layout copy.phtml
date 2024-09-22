@@ -1,0 +1,729 @@
+<?php
+/**
+ * @var Laminas\View\Renderer\PhpRenderer $this
+ */
+?>
+<?= $this->doctype();?>
+
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <?= $this->headTitle('Inventory')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+    <!-- <?= $this->basePath('img/laminas-logo.svg') ?> -->
+    <?= $this->headLink([
+                        'rel' => 'shortcut icon',
+                        'type' => 'image/vnd.microsoft.icon',
+                        'href' => $this->basePath() . '/img/logo-small.png'
+                    ])
+            ->prependStylesheet($this->basePath('css/style.css'))
+            ->appendStylesheet($this->basePath('css/bootstrap.min.css'))
+            ->appendStylesheet($this->basePath('css/animate.css'))
+            ->appendStylesheet($this->basePath('plugins/fontawesome/css/fontawesome.min.css'))
+            ->appendStylesheet($this->basePath('plugins/fontawesome/css/all.min.css')) 
+            ->appendStylesheet($this->basePath('css/dataTables.bootstrap4.min.css'))
+            ->appendStylesheet($this->basePath('plugins/select2/css/select2.min.css'))
+            ->appendStylesheet($this->basePath('plugins/owlcarousel/owl.carousel.min.css'))
+            ->appendStylesheet($this->basePath('css/dashboard.css'))
+            ->appendStylesheet($this->basePath('css/costumalert.css'))
+            ?>
+</head>
+
+<body>
+    <!-- Custom alert box -->
+    <div id="overlay"></div>
+    <div id="customAlert" style="background-color:  rgba(0,0,0,0.0);">
+        <a onclick="closeCustomAlert()">
+
+            <img style="height:300px; width:300px" id="customAlertMessage"
+                src="<?= $this->basePath('img/sucess.gif') ?>" alt="">
+
+        </a>
+        <!-- <button>Close</button> -->
+    </div>
+    <div class="container" style="background-color:   ; margin-left:20%;">
+        <?= $this->content ?>
+
+        <div id="global-loader">
+            <div class="whirly-loader"> </div>
+        </div>
+        <?php if (!empty($_SESSION["user"])){?>
+        <!-- <style>
+        .logo-text {
+            font-size: auto;
+            font-weight: bold;
+            color: #343a40;
+            /* Dark color for text */
+            font-family: 'Arial', sans-serif;
+
+        }
+        </style> -->
+        <style>
+        .logo-container {
+            display: inline-block;
+        }
+
+        .logo-text {
+            font-size: auto;
+            font-size: 1rem;
+            font-weight: bold;
+            /* color: #343a40; */
+            color: #ff9f4;
+            font-family: 'Arial', sans-serif;
+            padding: 5px;
+            width: auto;
+            height: auto;
+
+        }
+        </style>
+        <div class="main-wrapper">
+            <div class="header" style="background-color:#fff">
+                <div class="header-left active" style="background-color:#fff">
+                    <a href="<?= $this->basePath('/') ?>" class="logo" style="background-color:#fff">
+                        <div class="logo-container">
+                            <div class="logo-text">
+                                <?php  
+                                    if (isset($_SESSION['company'])) {
+                                        echo htmlspecialchars($_SESSION['companyName'], ENT_QUOTES, 'UTF-8');
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                        <!-- <img src="<?= $this->basePath('img/logo.png') ?>" alt=""> -->
+                    </a>
+                    <a href="javascript:void(0);" class="logo-small">
+                        <!-- <img src="<?= $this->basePath('img/logo-small.png') ?>" alt=""> -->
+                    </a>
+                    <a id="toggle_btn" href="javascript:void(0);">
+                    </a>
+                </div>
+
+                <a id="mobile_btn" class="mobile_btn" href="#sidebar">
+                    <span class="bar-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </a>
+
+                <ul class="nav user-menu">
+
+                    <li class="nav-item">
+                        <div class="top-nav-search">
+                            <a href="javascript:void(0);" class="responsive-search">
+                                <i class="fa fa-search"></i>
+                            </a>
+                            <form action="#">
+                                <div class="searchinputs">
+                                    <input type="text" placeholder="Search Here ...">
+                                    <div class="search-addon">
+                                        <span><img src="<?= $this->basePath('img/icons/closes.svg') ?>"
+                                                alt="img"></span>
+                                    </div>
+                                </div>
+                                <a class="btn" id="searchdiv"><img src="<?= $this->basePath('img/icons/search.svg') ?>"
+                                        alt="img"></a>
+                            </form>
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item dropdown has-arrow flag-nav">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);"
+                            role="button">
+                            <img src="<?= $this->basePath('img/flags/us1.png') ?>" alt="" height="20">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="javascript:void(0);" class="dropdown-item">
+                                <img src="<?= $this->basePath('img/flags/us.png') ?>" alt="" height="16">
+                                <?= $auth->translate('English'); ?>
+                            </a>
+                            <a href="javascript:void(0);" class="dropdown-item">
+                                <img src="<?= $this->basePath('img/flags/fr.png') ?>" alt="" height="16">
+                                <?= $auth->translate('French'); ?>
+                            </a>
+                            <a href="javascript:void(0);" class="dropdown-item">
+                                <img src="<?= $this->basePath('img/flags/es.png') ?>" alt="" height="16">
+                                <?= $auth->translate('Spanish'); ?>
+                            </a>
+                            <a href="javascript:void(0);" class="dropdown-item">
+                                <img src="<?= $this->basePath('img/flags/de.png') ?>" alt="" height="16">
+                                <?= $auth->translate('German'); ?>
+                            </a>
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                            <img src="<?= $this->basePath('img/icons/notification-bing.svg') ?>" alt="img"> <span
+                                class="badge rounded-pill">4</span>
+                        </a>
+                        <div class="dropdown-menu notifications">
+                            <div class="topnav-dropdown-header">
+                                <span class="notification-title"> <?= $auth->translate('Notifications'); ?></span>
+                                <a href="javascript:void(0)" class="clear-noti"> <?= $auth->translate('Clear All'); ?>
+                                </a>
+                            </div>
+                            <div class="noti-content">
+                                <ul class="notification-list">
+                                    <li class="notification-message">
+                                        <a href="activities.html">
+                                            <div class="media d-flex">
+                                                <span class="avatar flex-shrink-0">
+                                                    <img alt=""
+                                                        src="<?= $this->basePath('img/profiles/avatar-02.jpg') ?>">
+                                                </span>
+                                                <div class="media-body flex-grow-1">
+                                                    <p class="noti-details"><span class="noti-title">
+                                                            <?php    // dd($_SESSION['company']);
+                                                                if (isset($_SESSION['company'])) {
+                                                                    echo htmlspecialchars($_SESSION['fullname'], ENT_QUOTES, 'UTF-8');
+                                                                }
+                                                                ?></span> <?= $auth->translate(' added new task'); ?>
+                                                        <span class="noti-title">
+                                                            <?= $auth->translate('Patient appointment
+                                                            booking'); ?></span>
+                                                    </p>
+                                                    <p class="noti-time"><span class="notification-time">
+                                                            <?= $auth->translate('4 mins
+                                                            ago'); ?></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="notification-message">
+                                        <a href="activities.html">
+                                            <div class="media d-flex">
+                                                <span class="avatar flex-shrink-0">
+                                                    <img alt=""
+                                                        src="<?= $this->basePath('img/profiles/avatar-03.jpg') ?>">
+                                                </span>
+                                                <div class="media-body flex-grow-1">
+                                                    <p class="noti-details"><span class="noti-title">
+                                                            <?= $auth->translate('Tarah Shropshire'); ?>
+                                                        </span> <?= $auth->translate('changed the task name'); ?>
+                                                        <span class="noti-title">
+                                                            <?= $auth->translate('Appointment booking with payment gateway'); ?></span>
+                                                    </p>
+                                                    <p class="noti-time"><span class="notification-time">
+                                                            <?= $auth->translate('6 mins ago'); ?></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="notification-message">
+                                        <a href="activities.html">
+                                            <div class="media d-flex">
+                                                <span class="avatar flex-shrink-0">
+                                                    <img alt=""
+                                                        src="<?= $this->basePath('img/profiles/avatar-06.jpg') ?>">
+                                                </span>
+                                                <div class="media-body flex-grow-1">
+                                                    <p class="noti-details"><span class="noti-title">
+                                                            <?= $auth->translate('Misty Tison'); ?></span>
+                                                        <?= $auth->translate('added'); ?><span class="noti-title">
+                                                            <?= $auth->translate('Domenic Houston'); ?></span>
+                                                        <?= $auth->translate('and'); ?> <span class="noti-title">
+                                                            <?= $auth->translate('Claire Mapes'); ?></span>
+                                                        <span class="noti-title">
+                                                            <?= $auth->translate('Doctor available module'); ?>
+                                                        </span>
+                                                    </p>
+                                                    <p class="noti-time"><span class="notification-time">
+                                                            <?= $auth->translate(''); ?>8 mins
+                                                            ago</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="notification-message">
+                                        <a href="activities.html">
+                                            <!-- <div class="media d-flex">
+                                                <span class="avatar flex-shrink-0">
+                                                    <img alt=""
+                                                        src="<?= $this->basePath('img/profiles/avatar-17.jpg') ?>">
+                                                </span>
+                                                <div class="media-body flex-grow-1">
+                                                    <p class="noti-details"><span class="noti-title">
+                                                            <?= $auth->translate('Rolland Webber'); ?></span>
+                                                        completed task <span class="noti-title">
+                                                            <?= $auth->translate(''); ?>Patient and Doctor video
+                                                            conferencing</span></p>
+                                                    <p class="noti-time"><span class="notification-time">
+                                                            <?= $auth->translate(''); ?>12 mins
+                                                            ago</span>
+                                                    </p>
+                                                </div>
+                                            </div> -->
+                                        </a>
+                                    </li>
+                                    <li class="notification-message">
+                                        <!-- <a href="activities.html">
+                                            <div class="media d-flex">
+                                                <span class="avatar flex-shrink-0">
+                                                    <img alt=""
+                                                        src="<?= $this->basePath('img/profiles/avatar-13.jpg') ?>">
+                                                </span>
+                                                <div class="media-body flex-grow-1">
+                                                    <p class="noti-details"><span class="noti-title">
+                                                            <?= $auth->translate(''); ?>Bernardo
+                                                            Galaviz</span> <?= $auth->translate(''); ?>
+                                                        added new task <span class="noti-title">
+                                                            <?= $auth->translate(''); ?>Private chat
+                                                            module</span>
+                                                    </p>
+                                                    <p class="noti-time"><span class="notification-time">
+                                                            <?= $auth->translate(''); ?>2 days
+                                                            ago</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a> -->
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="topnav-dropdown-footer">
+                                <a href="activities.html"> <?= $auth->translate('View all Notifications'); ?></a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown has-arrow main-drop">
+                        <a href="javascript:void(0);" class="dropdown-toggle nav-link userset"
+                            data-bs-toggle="dropdown">
+                            <span class="user-img"><img src="<?= $this->basePath('img/profiles/avator1.jpg') ?>" alt="">
+                                <span class="status online"></span></span>
+                        </a>
+                        <div class="dropdown-menu menu-drop-user">
+                            <div class="profilename">
+                                <div class="profileset">
+                                    <span class="user-img"><img src="<?= $this->basePath('img/profiles/avator1.jpg') ?>"
+                                            alt="">
+                                        <span class="status online"></span></span>
+                                    <div class="profilesets">
+                                        <h6> <?php    // dd($_SESSION['company']);
+                                                if (isset($_SESSION['company'])) {
+                                                    echo htmlspecialchars($_SESSION['company'][0]['fullname'], ENT_QUOTES, 'UTF-8');
+                                                }
+                                                ?></h6>
+                                        <h5> <?= $auth->translate(''); ?>Admin</h5>
+                                    </div>
+                                </div>
+                                <hr class="m-0">
+                                <a class="dropdown-item" href="profile.html"> <i class="me-2" data-feather="user"></i>
+                                    <?= $auth->translate('My Profile'); ?>
+                                </a>
+                                <a class="dropdown-item" href="<?= $this->basePath('settings/edit') ?>"><i class="me-2"
+                                        data-feather="settings"></i> <?= $auth->translate('Settings'); ?></a>
+
+                                <a class="dropdown-item " href="<?= $this->basePath('settings/selectcompany') ?>">
+                                    <img src="<?= $this->basePath('img/icons/reversedark.svg') ?>" class="me-2"
+                                        alt="img">
+                                    <?= $auth->translate(' Change Company '); ?>
+                                </a>
+
+                                <hr class="m-0">
+                                <a class="dropdown-item logout pb-0" href="<?= $this->url('logout') ?>"><img
+                                        src="<?= $this->basePath('img/icons/log-out.svg') ?>" class="me-2" alt="img">
+                                    <?= $auth->translate('Logout'); ?></a>
+
+
+
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+
+                <div class="dropdown mobile-user-menu">
+                    <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="profile.html"> <?= $auth->translate('My Profile'); ?></a>
+                        <a class="dropdown-item" href="generalsettings.html"> <?= $auth->translate('Settings'); ?></a>
+                        <a class="dropdown-item" href="signin.html"> <?= $auth->translate('Logout'); ?></a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+                    <div id="sidebar-menu" class="sidebar-menu">
+                        <ul>
+                            <li class="active">
+                                <a href="<?= $this->basePath('/') ?>"><img
+                                        src="<?= $this->basePath('img/icons/dashboard.svg') ?>" alt="img"><span>
+                                        <?= $auth->translate('Dashboard'); ?></span> </a>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/product.svg') ?>"
+                                        alt="img"><span> <?= $auth->translate('Products'); ?></span> <span
+                                        class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="<?= $this->basePath('/products/list') ?>">
+                                            <?= $auth->translate('Product List'); ?></a></li>
+                                    <li><a href="<?= $this->basePath('/products/add') ?>">
+                                            <?= $auth->translate('Add Product'); ?></a></li>
+                                    <li><a href="<?= $this->basePath('/category/list') ?>">
+                                            <?= $auth->translate('Category'); ?></a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">
+                                            <?= $auth->translate('Sub Category List'); ?></a>
+                                    </li>
+                                    <li><a href="<?= $this->basePath('/settings/brand') ?>">
+                                            <?= $auth->translate('Brand List'); ?></a>
+                                    </li>
+                                    <li><a href="<?= $this->basePath('/products/import') ?>">
+                                            <?= $auth->translate('Import Products'); ?>
+                                        </a></li>
+                                    <li><a href="<?= $this->basePath('/products/codebare') ?>">
+                                            <?= $auth->translate('Print Barcode'); ?></a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/sales1.svg') ?>"
+                                        alt="img"><span> <?= $auth->translate('Sales'); ?></span> <span
+                                        class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="<?= $this->basePath('/sales/list') ?>">
+                                            <?= $auth->translate('Bond delivery'); ?></a></li>
+                                    <li><a href="<?= $this->basePath('/sales/listsales') ?>">
+                                            <?= $auth->translate('Sales List'); ?></a></li>
+                                    <li><a href="<?= $this->basePath('/sales/list-estimate') ?>">
+                                            <?= $auth->translate('List Estimate'); ?></a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">
+                                            <?= $auth->translate('POS'); ?></a></li>
+                                    <li><a href="<?= $this->basePath('/sales/add') ?>">
+                                            <?= $auth->translate('New Sales'); ?></a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">
+                                            <?= $auth->translate('Sales Return List'); ?></a>
+                                    </li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">
+                                            <?= $auth->translate('New Sales Return'); ?></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- <li class="submenu">
+                                <a href="javascript:void(0);"><img
+                                        src="<?= $this->basePath('img/icons/purchase1.svg') ?>" alt="img"><span>
+                                        Purchase</span> <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Purchase List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Purchase</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Import Purchase</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                            <!-- <li class="submenu">
+                                <a href="javascript:void(0);"><img
+                                        src="<?= $this->basePath('img/icons/expense1.svg') ?>" alt="img"><span>
+                                        Expense</span> <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Expense List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Expense</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Expense Category</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                            <!-- <li class="submenu">
+                                <a href="javascript:void(0);"><img
+                                        src="<?= $this->basePath('img/icons/quotation1.svg') ?>" alt="img"><span>
+                                        Quotation</span> <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Quotation List</a>
+                                    </li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Quotation</a></li>
+                                </ul>
+                            </li> -->
+                            <!-- <li class="submenu">
+                                <a href="javascript:void(0);"><img
+                                        src="<?= $this->basePath('img/icons/transfer1.svg') ?>" alt="img"><span>
+                                        Transfer</span> <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Transfer List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Transfer </a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Import Transfer </a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                            <!-- <li class="submenu">
+                                <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/return1.svg') ?>"
+                                        alt="img"><span>
+                                        Return</span> <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Sales Return List</a>
+                                    </li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Sales Return </a>
+                                    </li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Purchase Return
+                                            List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Purchase Return
+                                        </a></li>
+                                </ul>
+                            </li> -->
+                            <li class="submenu">
+                                <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/users1.svg') ?>"
+                                        alt="img"><span>
+                                        <?= $auth->translate('People'); ?></span> <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="<?= $this->basePath('/customers/list') ?>">
+                                            <?= $auth->translate('Customer List'); ?></a></li>
+                                    <!-- <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Customer </a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Supplier List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Supplier </a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">User List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add User</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Store List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Store</a></li> -->
+                                </ul>
+                            </li>
+                            <!-- <li class="submenu">
+                                <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/places.svg') ?>"
+                                        alt="img"><span>
+                                        Places</span> <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">New Country</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Countries list</a>
+                                    </li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>l">New State </a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">State list</a></li>
+                                </ul>
+                            </li> -->
+                            <!-- <li>
+                                <a href="<?= $this->basePath('/settings/subcategory') ?>"><i
+                                        data-feather="layers"></i><span> Components</span> </a>
+                            </li> -->
+                            <!-- <li>
+                                <a href="<?= $this->basePath('/settings/subcategory') ?>"><i
+                                        data-feather="file"></i><span> Blank Page</span> </a>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);"><i data-feather="alert-octagon"></i> <span> Error Pages
+                                    </span> <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">404 Error </a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">500 Error </a></li>
+                                </ul>
+                            </li> -->
+                            <!--    <li class="submenu">
+                                <a href="javascript:void(0);"><i data-feather="box"></i> <span>Elements </span> <span
+                                        class="menu-arrow"></span></a>
+                                <ul>
+                                     <li><a href="sweetalerts.html">Sweet Alerts</a></li>
+                                    <li><a href="tooltip.html">Tooltip</a></li>
+                                    <li><a href="popover.html">Popover</a></li>
+                                    <li><a href="ribbon.html">Ribbon</a></li>
+                                    <li><a href="clipboard.html">Clipboard</a></li>
+                                    <li><a href="drag-drop.html">Drag & Drop</a></li>
+                                    <li><a href="rangeslider.html">Range Slider</a></li>
+                                    <li><a href="rating.html">Rating</a></li>
+                                    <li><a href="toastr.html">Toastr</a></li>
+                                    <li><a href="text-editor.html">Text Editor</a></li>
+                                    <li><a href="counter.html">Counter</a></li>
+                                    <li><a href="scrollbar.html">Scrollbar</a></li>
+                                    <li><a href="spinner.html">Spinner</a></li>
+                                    <li><a href="notification.html">Notification</a></li>
+                                    <li><a href="lightbox.html">Lightbox</a></li>
+                                    <li><a href="stickynote.html">Sticky Note</a></li>
+                                    <li><a href="timeline.html">Timeline</a></li>
+                                    <li><a href="form-wizard.html">Form Wizard</a></li> 
+                                </ul>
+                            </li>-->
+                            <!-- <li class="submenu">
+                                <a href="javascript:void(0);"><i data-feather="bar-chart-2"></i> <span> Charts </span>
+                                    <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="chart-apex.html">Apex Charts</a></li>
+                                    <li><a href="chart-js.html">Chart Js</a></li>
+                                    <li><a href="chart-morris.html">Morris Charts</a></li>
+                                    <li><a href="chart-flot.html">Flot Charts</a></li>
+                                    <li><a href="chart-peity.html">Peity Charts</a></li>
+                                </ul>
+                            </li> -->
+                            <!--    <li class="submenu">
+                                <a href="javascript:void(0);"><i data-feather="award"></i><span> Icons </span> <span
+                                        class="menu-arrow"></span></a>
+                                <ul>
+                                 <li><a href="icon-fontawesome.html">Fontawesome Icons</a></li>
+                                    <li><a href="icon-feather.html">Feather Icons</a></li>
+                                    <li><a href="icon-ionic.html">Ionic Icons</a></li>
+                                    <li><a href="icon-material.html">Material Icons</a></li>
+                                    <li><a href="icon-pe7.html">Pe7 Icons</a></li>
+                                    <li><a href="icon-simpleline.html">Simpleline Icons</a></li>
+                                    <li><a href="icon-themify.html">Themify Icons</a></li>
+                                    <li><a href="icon-weather.html">Weather Icons</a></li>
+                                    <li><a href="icon-typicon.html">Typicon Icons</a></li>
+                                    <li><a href="icon-flag.html">Flag Icons</a></li>  
+                                </ul>
+                            </li>-->
+                            <!--  <li class="submenu">
+                                <a href="javascript:void(0);"><i data-feather="columns"></i> <span> Forms </span> <span
+                                        class="menu-arrow"></span></a>
+                                <ul>
+                                   <li><a href="form-basic-inputs.html">Basic Inputs </a></li>
+                                    <li><a href="form-input-groups.html">Input Groups </a></li>
+                                    <li><a href="form-horizontal.html">Horizontal Form </a></li>
+                                    <li><a href="form-vertical.html"> Vertical Form </a></li>
+                                    <li><a href="form-mask.html">Form Mask </a></li>
+                                    <li><a href="form-validation.html">Form Validation </a></li>
+                                    <li><a href="form-select2.html">Form Select2 </a></li>
+                                    <li><a href="form-fileupload.html">File Upload </a></li> 
+                                </ul>
+                            </li>-->
+                            <!--  <li class="submenu">
+                                <a href="javascript:void(0);"><i data-feather="layout"></i> <span> Table </span> <span
+                                        class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="tables-basic.html">Basic Tables </a></li>
+                                    <li><a href="data-tables.html">Data Table </a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/product.svg') ?>"
+                                        alt="img"><span>
+                                        Application</span> <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="chat.html">Chat</a></li>
+                                    <li><a href="calendar.html">Calendar</a></li>
+                                    <li><a href="email.html">Email</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/time.svg') ?>"
+                                        alt="img"><span>
+                                        Report</span> <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="purchaseorderreport.html">Purchase order report</a></li>
+                                    <li><a href="inventoryreport.html">Inventory Report</a></li>
+                                    <li><a href="salesreport.html">Sales Report</a></li>
+                                    <li><a href="invoicereport.html">Invoice Report</a></li>
+                                    <li><a href="purchasereport.html">Purchase Report</a></li>
+                                    <li><a href="supplierreport.html">Supplier Report</a></li>
+                                    <li><a href="customerreport.html">Customer Report</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/users1.svg') ?>"
+                                        alt="img"><span>
+                                        Users</span> <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="newuser.html">New User </a></li>
+                                    <li><a href="userlists.html">Users List</a></li>
+                                </ul>
+                            </li>-->
+                            <li class="submenu">
+                                <a href="javascript:void(0);"><img
+                                        src="<?= $this->basePath('img/icons/settings.svg') ?>" alt="img"><span>
+                                        <?= $auth->translate('Settings'); ?></span> <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="<?= $this->basePath('settings/edit') ?>">
+                                            <?= $auth->translate('General Settings'); ?></a></li>
+                                    <li><a href="<?= $this->basePath('settings/addcompanyinfo') ?>">
+                                            <?= $auth->translate('New company'); ?></a></li>
+                                    <li><a href="<?= $this->basePath('settings/invoice') ?>">
+                                            <?= $auth->translate('Invoice Settings'); ?></a></li>
+                                    <!-- <li><a href="<?= $this->basePath('settings/email') ?>">Email Settings</a></li>
+                                 
+
+                                    <li><a href="paymentsettings.html">Payment Settings</a></li>
+                                    <li><a href="currencysettings.html">Currency Settings</a></li>
+                                    <li><a href="grouppermissions.html">Group Permissions</a></li>
+                                    <li><a href="taxrates.html">Tax Rates</a></li> -->
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <?php
+}
+// dd( $_SESSION["user"]);
+
+?>
+        <!-- jQuery -->
+        <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+        <!-- Bootstrap Bundle (includes Popper) for Bootstrap 4 -->
+        <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script> -->
+
+        <!-- jQuery Slimscroll -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js"></script> -->
+
+        <!-- Chart.js -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+
+        <!-- ApexCharts -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
+
+        <!-- jQuery Magnific Popup -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script> -->
+
+        <!-- jQuery DataTables -->
+        <!-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> -->
+
+        <!-- DataTables Bootstrap 4 -->
+        <!-- <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script> -->
+
+        <!-- DataTables Responsive -->
+        <!-- <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script> -->
+
+        <!-- DataTables Responsive Bootstrap 4 -->
+        <!-- <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script> -->
+
+        <!-- Moment.js -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script> -->
+
+        <!-- Bootstrap Datepicker -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js">  </script>-->
+
+        <script>
+        function showCustomAlert(message) {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('customAlert').style.display = 'block';
+            document.getElementById('customAlertMessage').textContent = message;
+            setTimeout(closeCustomAlert, 2000);
+        }
+
+        function closeCustomAlert() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('customAlert').style.display = 'none';
+            location.reload();
+
+        }
+        </script>
+
+        <?= $this->inlineScript()
+                ->appendFile($this->basePath('js/jquery-3.6.0.min.js'))
+                ->appendFile($this->basePath('js/feather.min.js'))
+                ->appendFile($this->basePath('js/jquery.slimscroll.min.js'))
+                ->appendFile($this->basePath('js/jquery.dataTables.min.js'))
+                ->appendFile($this->basePath('js/dataTables.bootstrap4.min.js'))
+                ->appendFile($this->basePath('js/bootstrap.bundle.min.js'))
+                ->appendFile($this->basePath('plugins/apexchart/apexcharts.min.js'))
+                ->appendFile($this->basePath('plugins/apexchart/chart-data.js'))
+                ->appendFile($this->basePath('plugins/select2/js/select2.min.js'))
+                ->appendFile($this->basePath('plugins/sweetalert/sweetalert2.all.min.js'))
+                ->appendFile($this->basePath('plugins/sweetalert/sweetalerts.min.js'))
+                ->appendFile($this->basePath('plugins/owlcarousel/owl.carousel.min.js')) 
+                ->appendFile($this->basePath('js/script.js'));
+
+
+
+                
+?>
+
+</html>
