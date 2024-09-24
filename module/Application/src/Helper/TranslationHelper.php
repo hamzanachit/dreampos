@@ -4,56 +4,82 @@ namespace Application\Helper;
 
 use Laminas\Db\Adapter\AdapterInterface;
 use GuzzleHttp\Client;
-class TranslationHelper
-{
+
+
+class TranslationHelper{
     private $dbAdapter;
+    private $collectedKeys = [];
+    
 
     public function __construct(AdapterInterface $dbAdapter)
     {
         $this->dbAdapter = $dbAdapter;
+        
+    }
+      public function __invoke($key)
+    {
+        return $this->getTranslation($key );
     }
 
-    // public function getTranslation($key, $locale)
-    // {
-    //     // Adjust the column to fetch based on the locale
-        
 
-    //     // Prepare SQL statement
-    //     $sql = "SELECT `$locale` FROM translations WHERE `origin` = ? LIMIT 1";
-    //     $statement = $this->dbAdapter->createStatement($sql, [$key]);
-    //     $result = $statement->execute();
+  public function getTranslation($key  ){
+  
 
-    //     if ($result->count() > 0) {
-    //         return $result->current()[$locale]; // Use the correct column
-    //     }
+     $locale ="";
+    $langue = $this->getLocaleFromSettings();
+    if($langue === "English"){ 
+        $locale ==="origin";
+    }else if($langue ==="French"){ 
+        $locale ="Fr";
 
-    //     return $key; // Return the key if no translation is found
-    // }
+    }else if ($langue ="Arabe"){ 
+        $locale ="Ar";
 
-    public function getTranslation($key, $locale){
-        // Attempt full sentence translation first
-        $sql = "SELECT `$locale` FROM translations WHERE `origin` = ? LIMIT 1";
-        $statement = $this->dbAdapter->createStatement($sql, [$key]);
+    }else{
+        $locale ="En";
+
+
+    }
+    $sql = "SELECT `$locale` FROM translations WHERE `origin` = ? LIMIT 1";
+    $statement = $this->dbAdapter->createStatement($sql, [$key]);
+    
+    try {
         $result = $statement->execute();
-
         if ($result->count() > 0) {
-            return $result->current()[$locale];
+            $translation = $result->current()[$locale];
+            $this->collectedKeys[$key][$locale] = $translation; // Cache the translation
+            return $translation; // Return the fetched translation
+        }
+    } catch (\Exception $e) {
+        // Optional: Log the error message
+        // error_log($e->getMessage());
+    }
+
+    return $key; // Return the key if no translation is found or an error occurs
+}
+
+
+    // Helper method to get locale from the settings table
+    private function getLocaleFromSettings(){
+         $sql = "SELECT `language` FROM setting WHERE `company_status` = 'actif' LIMIT 1"; // Adjust the key as needed
+        $statement = $this->dbAdapter->createStatement($sql);
+        
+        try {
+            $result = $statement->execute();
+            if ($result->count() > 0) {
+                return $result->current()['language']; // Return the language value
+            }
+        } catch (\Exception $e) {
+            // Optional: Log the error message
+            // error_log($e->getMessage());
         }
 
-        // If not found, call MyMemory API
-        $client = new Client();
-        $response = $client->request('GET', 'https://api.mymemory.translated.net/get', [
-            'query' => [
-                'q' => $key,
-                'langpair' => 'en|' . $locale // Adjust source and target languages
-            ],
-                'verify' => false,  
-
-        ]);
-
-        $data = json_decode($response->getBody(), true);
-        return $data['responseData']['translatedText'] ?? $key; // Fallback to original if not found
+        return null; // Return null if no locale is found or an error occurs
     }
+
+
+
+
 
 
 

@@ -2,12 +2,13 @@
     <input type="text" id="basePath" style="display:none;" value="<?= $this->basePath() ?>">
     <div class="page-header">
         <div class="page-title">
-            <h4>Category List</h4>
-            <h6>Manage your category</h6>
+            <h4><?= $this->translation('Category List '); ?></h4>
+            <h6><?= $this->translation('Manage your category'); ?></h6>
         </div>
         <div class="page-btn">
             <a class="btn btn-added addcategory" id="addcategory">
-                <img src="<?= $this->basePath('img/icons/plus.svg') ?>" alt="img" class="me-1">Add New Element</a>
+                <img src="<?= $this->basePath('img/icons/plus.svg') ?>" alt="img"
+                    class="me-1"><?= $this->translation('Add New Element'); ?></a>
         </div>
     </div>
 
@@ -46,7 +47,7 @@
                                 <div class="col-lg col-sm-6 col-12">
                                     <div class="form-group">
                                         <select class="select">
-                                            <option>Choose Product</option>
+                                            <option><?= $this->translation('Choose Product'); ?></option>
                                             <option>Macbook pro</option>
                                             <option>Orange</option>
                                         </select>
@@ -55,7 +56,7 @@
                                 <div class="col-lg col-sm-6 col-12">
                                     <div class="form-group">
                                         <select class="select">
-                                            <option>Choose Category</option>
+                                            <option><?= $this->translation('Choose Category'); ?></option>
                                             <option>Computers</option>
                                             <option>Fruits</option>
                                         </select>
@@ -64,7 +65,7 @@
                                 <div class="col-lg col-sm-6 col-12">
                                     <div class="form-group">
                                         <select class="select">
-                                            <option>Choose Sub Category</option>
+                                            <option><?= $this->translation('Choose Sub Category'); ?></option>
                                             <option>Computer</option>
                                         </select>
                                     </div>
@@ -108,11 +109,11 @@
                                     <span class="checkmarks"></span>
                                 </label>
                             </th>
-                            <th>Category Name</th>
-                            <th>Category Code</th>
-                            <th>Description </th>
-                            <th>Created By</th>
-                            <th>Action</th>
+                            <th><?= $this->translation('Category Name'); ?></th>
+                            <th><?= $this->translation('Category Code'); ?></th>
+                            <th><?= $this->translation('Description '); ?></th>
+                            <th><?= $this->translation('Created By'); ?></th>
+                            <th><?= $this->translation('Action'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -162,27 +163,27 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Category</h5>
+                <h5 class="modal-title"><?= $this->translation('Add Category'); ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form id="addcategoryForm">
                 <div class="modal-body">
-                    <label for="categoryname">Category Name</label>
+                    <label for="categoryname"><?= $this->translation('Category Name'); ?></label>
                     <input type="text" class="form-control" id="categoryname" required>
-                    <label for="categorycode">Category Code</label>
+                    <label for="categorycode"><?= $this->translation('Category Code'); ?></label>
                     <input type="text" class="form-control" id="categorycode" required>
-                    <label for="description">Description</label>
+                    <label for="description"><?= $this->translation('Description'); ?></label>
                     <input type="text" class="form-control" id="description">
-                    <label for="image">Category Image</label>
+                    <label for="image"><?= $this->translation('Category Image'); ?></label>
                     <input type="file" class="form-control" name="image" id="image">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        id="Closebtnaddcategory">Close</button>
+                        id="Closebtnaddcategory"><?= $this->translation('Close'); ?></button>
                     <button type="submit" class="btn btn-primary" oncklick="validateForm()"
-                        id="saveCategoryBtn">Save</button>
+                        id="saveCategoryBtn"><?= $this->translation('Save'); ?></button>
                 </div>
             </form>
         </div>
@@ -196,28 +197,28 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Update Category</h5>
+                <h5 class="modal-title"><?= $this->translation('Update Category'); ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form id="editcategoryForm">
                 <div class="modal-body">
-                    <label for="categoryNameedit">Category Name</label>
+                    <label for="categoryNameedit"><?= $this->translation('Category Name'); ?></label>
                     <input type="text" class="form-control" id="categoryNameedit">
                     <input type="text" class="form-control hidden " id="idcategory">
-                    <label for="categoryCodeedit">Category Code</label>
+                    <label for="categoryCodeedit"><?= $this->translation('Category Code'); ?></label>
                     <input type="text" class="form-control" id="categoryCodeedit">
-                    <label for="descriptionedit">Description</label>
+                    <label for="descriptionedit"><?= $this->translation('Description'); ?></label>
                     <input type="text" class="form-control" id="descriptionedit">
-                    <label for="image">Category Image</label>
+                    <label for="image"><?= $this->translation('Category Image'); ?></label>
                     <input type="file" class="form-control" name="imageedit" id="imageedit">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        id="Closebtnaddcategory">Close</button>
+                        id="Closebtnaddcategory"><?= $this->translation('Close'); ?></button>
                     <button type="submit" class="btn btn-primary" oncklick="validateForm()"
-                        id="saveCategoryBtn">Save</button>
+                        id="saveCategoryBtn"><?= $this->translation('Save'); ?></button>
                 </div>
             </form>
         </div>
@@ -230,7 +231,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Delete Category</h5>
+                <h5 class="modal-title"><?= $this->translation('Delete Category'); ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -241,8 +242,9 @@
                 </div>
                 <div class="center modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        id="Closebtnaddcategory">Close</button>
-                    <button type="button" class="btn btn-primary" id="confirm">confirm</button>
+                        id="Closebtnaddcategory"><?= $this->translation(''); ?>Close</button>
+                    <button type="button" class="btn btn-primary"
+                        id="confirm"><?= $this->translation('confirm'); ?></button>
                 </div>
             </form>
         </div>

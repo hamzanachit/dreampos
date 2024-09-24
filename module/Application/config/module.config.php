@@ -17,6 +17,7 @@ use Application\Middleware\AuthenticationMiddleware;
 use Laminas\Authentication\Storage\Session as SessionStorage;
 use Laminas\Authentication\Adapter\DbTable\CallbackCheckAdapter;
 use Laminas\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\AdapterInterface;
 use Application\Helper\TranslationHelper;
 
 return [
@@ -77,7 +78,10 @@ return [
 
             // DbAdapter
             Adapter::class => 'Laminas\Db\Adapter\AdapterServiceFactory',
-
+            'DbAdapter' => function($container) {
+                $config = $container->get('config');
+                return new Adapter($config['db']); // Assuming you have a 'db' config section
+            },
             // TranslationHelper
             TranslationHelper::class => function ($container) {
                 return new TranslationHelper(
@@ -100,6 +104,9 @@ return [
                     $container->get(AuthenticationService::class)
                 );
             },
+
+
+         
         ],
     ],
 
@@ -216,7 +223,6 @@ return [
                     ],
                 ],
             ],
-
             'langueActions' => [
                 'type' => Segment::class,
                 'options' => [
@@ -360,6 +366,17 @@ return [
         ],
     ],
 
+
+    'translator' => [
+        'locale' => 'en_US',
+        'translation_file_patterns' => [
+            [
+                'type' => 'phpArray',
+                'base_dir' => __DIR__ . '/../language',
+                'pattern' => '%s.php',
+            ],
+        ],
+    ],
    'controller_plugins' => [
         'aliases' => [
             'auth' => Controller\Plugin\AuthPlugin::class,
@@ -368,7 +385,7 @@ return [
         'factories' => [
             Controller\Plugin\AuthPlugin::class => Controller\Plugin\AuthPluginFactory::class,
             'FlashMessenger' => \Laminas\Mvc\Controller\Plugin\FlashMessengerFactory::class,
-                        'MvcTranslator' => Laminas\I18n\Translator\TranslatorServiceFactory::class,
+             'MvcTranslator' => Laminas\I18n\Translator\TranslatorServiceFactory::class,
 
         ],
     ],
@@ -381,11 +398,15 @@ return [
         ],
      ],
     ],
-    'view_helpers' => [
+     'view_helpers' => [
         'factories' => [
             TranslationHelper::class => InvokableFactory::class,
+            'translation' => function($container) {
+                    $dbAdapter = $container->get('DbAdapter'); // Get your DB adapter from the service manager
+                    return new  TranslationHelper($dbAdapter);
+            },
         ],
-    ],
+        ],
     
       'view_manager' => [
         'display_not_found_reason' => true,

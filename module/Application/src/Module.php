@@ -41,6 +41,7 @@ class Module implements ConfigProviderInterface
         // Inject the Auth plugin into the global ViewModel
         $viewModel = $e->getViewModel();
         $viewModel->auth = $authPlugin;
+        
     }
     public function getServiceConfig()
     {

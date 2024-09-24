@@ -142,19 +142,19 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="javascript:void(0);" class="dropdown-item">
                                 <img src="<?= $this->basePath('img/flags/us.png') ?>" alt="" height="16">
-                                <?= $auth->translate('English'); ?>
+                                <?= $this->translation('English'); ?>
                             </a>
                             <a href="javascript:void(0);" class="dropdown-item">
                                 <img src="<?= $this->basePath('img/flags/fr.png') ?>" alt="" height="16">
-                                <?= $auth->translate('French'); ?>
+                                <?= $this->translation('French'); ?>
                             </a>
                             <a href="javascript:void(0);" class="dropdown-item">
                                 <img src="<?= $this->basePath('img/flags/es.png') ?>" alt="" height="16">
-                                <?= $auth->translate('Spanish'); ?>
+                                <?= $this->translation('Spanish'); ?>
                             </a>
                             <a href="javascript:void(0);" class="dropdown-item">
                                 <img src="<?= $this->basePath('img/flags/de.png') ?>" alt="" height="16">
-                                <?= $auth->translate('German'); ?>
+                                <?= $this->translation('German'); ?>
                             </a>
                         </div>
                     </li>
@@ -167,8 +167,8 @@
                         </a>
                         <div class="dropdown-menu notifications">
                             <div class="topnav-dropdown-header">
-                                <span class="notification-title"> <?= $auth->translate('Notifications'); ?></span>
-                                <a href="javascript:void(0)" class="clear-noti"> <?= $auth->translate('Clear All'); ?>
+                                <span class="notification-title"> <?= $this->translation('Notifications'); ?></span>
+                                <a href="javascript:void(0)" class="clear-noti"> <?= $this->translation('Clear All'); ?>
                                 </a>
                             </div>
                             <div class="noti-content">
@@ -186,13 +186,13 @@
                                                                 if (isset($_SESSION['company'])) {
                                                                     echo htmlspecialchars($_SESSION['fullname'], ENT_QUOTES, 'UTF-8');
                                                                 }
-                                                                ?></span> <?= $auth->translate(' added new task'); ?>
+                                                                ?></span> <?= $this->translation(' added new task'); ?>
                                                         <span class="noti-title">
-                                                            <?= $auth->translate('Patient appointment
+                                                            <?= $this->translation('Patient appointment
                                                             booking'); ?></span>
                                                     </p>
                                                     <p class="noti-time"><span class="notification-time">
-                                                            <?= $auth->translate('4 mins
+                                                            <?= $this->translation('4 mins
                                                             ago'); ?></span>
                                                     </p>
                                                 </div>
@@ -208,13 +208,13 @@
                                                 </span>
                                                 <div class="media-body flex-grow-1">
                                                     <p class="noti-details"><span class="noti-title">
-                                                            <?= $auth->translate('Tarah Shropshire'); ?>
-                                                        </span> <?= $auth->translate('changed the task name'); ?>
+                                                            <?= $this->translation('Tarah Shropshire'); ?>
+                                                        </span> <?= $this->translation('changed the task name'); ?>
                                                         <span class="noti-title">
-                                                            <?= $auth->translate('Appointment booking with payment gateway'); ?></span>
+                                                            <?= $this->translation('Appointment booking with payment gateway'); ?></span>
                                                     </p>
                                                     <p class="noti-time"><span class="notification-time">
-                                                            <?= $auth->translate('6 mins ago'); ?></span>
+                                                            <?= $this->translation('6 mins ago'); ?></span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -229,17 +229,17 @@
                                                 </span>
                                                 <div class="media-body flex-grow-1">
                                                     <p class="noti-details"><span class="noti-title">
-                                                            <?= $auth->translate('Misty Tison'); ?></span>
-                                                        <?= $auth->translate('added'); ?><span class="noti-title">
-                                                            <?= $auth->translate('Domenic Houston'); ?></span>
-                                                        <?= $auth->translate('and'); ?> <span class="noti-title">
-                                                            <?= $auth->translate('Claire Mapes'); ?></span>
+                                                            <?= $this->translation('Misty Tison'); ?></span>
+                                                        <?= $this->translation('added'); ?><span class="noti-title">
+                                                            <?= $this->translation('Domenic Houston'); ?></span>
+                                                        <?= $this->translation('and'); ?> <span class="noti-title">
+                                                            <?= $this->translation('Claire Mapes'); ?></span>
                                                         <span class="noti-title">
-                                                            <?= $auth->translate('Doctor available module'); ?>
+                                                            <?= $this->translation('Doctor available module'); ?>
                                                         </span>
                                                     </p>
                                                     <p class="noti-time"><span class="notification-time">
-                                                            <?= $auth->translate('8 mins ago'); ?>
+                                                            <?= $this->translation('8 mins ago'); ?>
                                                         </span>
                                                     </p>
                                                 </div>
@@ -257,7 +257,7 @@
                                 </ul>
                             </div>
                             <div class="topnav-dropdown-footer">
-                                <a href="activities.html"> <?= $auth->translate('View all Notifications'); ?></a>
+                                <a href="activities.html"> <?= $this->translation('View all Notifications'); ?></a>
                             </div>
                         </div>
                     </li>
@@ -280,26 +280,26 @@
                                                     echo htmlspecialchars($_SESSION['company'][0]['fullname'], ENT_QUOTES, 'UTF-8');
                                                 }
                                                 ?></h6>
-                                        <h5> <?= $auth->translate('Admin'); ?></h5>
+                                        <h5> <?= $this->translation('Admin'); ?></h5>
                                     </div>
                                 </div>
                                 <hr class="m-0">
                                 <a class="dropdown-item" href="profile.html"> <i class="me-2" data-feather="user"></i>
-                                    <?= $auth->translate('My Profile'); ?>
+                                    <?= $this->translation('My Profile'); ?>
                                 </a>
                                 <a class="dropdown-item" href="<?= $this->basePath('settings/edit') ?>"><i class="me-2"
-                                        data-feather="settings"></i> <?= $auth->translate('Settings'); ?></a>
+                                        data-feather="settings"></i> <?= $this->translation('Settings'); ?></a>
 
                                 <a class="dropdown-item " href="<?= $this->basePath('settings/selectcompany') ?>">
                                     <img src="<?= $this->basePath('img/icons/reversedark.svg') ?>" class="me-2"
                                         alt="img">
-                                    <?= $auth->translate(' Change Company '); ?>
+                                    <?= $this->translation(' Change Company '); ?>
                                 </a>
 
                                 <hr class="m-0">
                                 <a class="dropdown-item logout pb-0" href="<?= $this->url('logout') ?>"><img
                                         src="<?= $this->basePath('img/icons/log-out.svg') ?>" class="me-2" alt="img">
-                                    <?= $auth->translate('Logout'); ?></a>
+                                    <?= $this->translation('Logout'); ?></a>
 
 
 
@@ -314,9 +314,9 @@
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                         aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="profile.html"> <?= $auth->translate('My Profile'); ?></a>
-                        <a class="dropdown-item" href="generalsettings.html"> <?= $auth->translate('Settings'); ?></a>
-                        <a class="dropdown-item" href="signin.html"> <?= $auth->translate('Logout'); ?></a>
+                        <a class="dropdown-item" href="profile.html"> <?= $this->translation('My Profile'); ?></a>
+                        <a class="dropdown-item" href="generalsettings.html"> <?= $this->translation('Settings'); ?></a>
+                        <a class="dropdown-item" href="signin.html"> <?= $this->translation('Logout'); ?></a>
                     </div>
                 </div>
 
@@ -330,68 +330,87 @@
                             <li class="active">
                                 <a href="<?= $this->basePath('/') ?>"><img
                                         src="<?= $this->basePath('img/icons/dashboard.svg') ?>" alt="img"><span>
-                                        <?= $auth->translate('Dashboard'); ?></span> </a>
+                                        <?= $this->translation('Dashboard'); ?></span> </a>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/product.svg') ?>"
-                                        alt="img"><span> <?= $auth->translate('Products'); ?></span> <span
+                                        alt="img"><span> <?= $this->translation('Products'); ?></span> <span
                                         class="menu-arrow"></span></a>
                                 <ul>
                                     <li><a href="<?= $this->basePath('/products/list') ?>">
-                                            <?= $auth->translate('Product List'); ?></a></li>
+                                            <?= $this->translation('Product List'); ?></a></li>
                                     <li><a href="<?= $this->basePath('/products/add') ?>">
-                                            <?= $auth->translate('Add Product'); ?></a></li>
+                                            <?= $this->translation('Add Product'); ?></a></li>
                                     <li><a href="<?= $this->basePath('/category/list') ?>">
-                                            <?= $auth->translate('Category'); ?></a></li>
+                                            <?= $this->translation('Category'); ?></a></li>
                                     <li><a href="<?= $this->basePath('/settings/subcategory') ?>">
-                                            <?= $auth->translate('Sub Category List'); ?></a>
+                                            <?= $this->translation('Sub Category List'); ?></a>
                                     </li>
                                     <li><a href="<?= $this->basePath('/settings/brand') ?>">
-                                            <?= $auth->translate('Brand List'); ?></a>
+                                            <?= $this->translation('Brand List'); ?></a>
                                     </li>
                                     <li><a href="<?= $this->basePath('/products/import') ?>">
-                                            <?= $auth->translate('Import Products'); ?>
+                                            <?= $this->translation('Import Products'); ?>
                                         </a></li>
                                     <li><a href="<?= $this->basePath('/products/codebare') ?>">
-                                            <?= $auth->translate('Print Barcode'); ?></a></li>
+                                            <?= $this->translation('Print Barcode'); ?></a></li>
                                 </ul>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/sales1.svg') ?>"
-                                        alt="img"><span> <?= $auth->translate('Sales'); ?></span> <span
+                                        alt="img"><span> <?= $this->translation('Sales'); ?></span> <span
                                         class="menu-arrow"></span></a>
                                 <ul>
                                     <li><a href="<?= $this->basePath('/sales/list') ?>">
-                                            <?= $auth->translate('Bond delivery'); ?></a></li>
+                                            <?= $this->translation('Bond delivery'); ?></a></li>
                                     <li><a href="<?= $this->basePath('/sales/listsales') ?>">
-                                            <?= $auth->translate('Sales List'); ?></a></li>
+                                            <?= $this->translation('Sales List'); ?></a></li>
                                     <li><a href="<?= $this->basePath('/sales/list-estimate') ?>">
-                                            <?= $auth->translate('List Estimate'); ?></a></li>
+                                            <?= $this->translation('List Estimate'); ?></a></li>
                                     <li><a href="<?= $this->basePath('/settings/subcategory') ?>">
-                                            <?= $auth->translate('POS'); ?></a></li>
+                                            <?= $this->translation('POS'); ?></a></li>
                                     <li><a href="<?= $this->basePath('/sales/add') ?>">
-                                            <?= $auth->translate('New Sales'); ?></a></li>
+                                            <?= $this->translation('New Sales'); ?></a></li>
                                     <li><a href="<?= $this->basePath('/settings/subcategory') ?>">
-                                            <?= $auth->translate('Sales Return List'); ?></a>
+                                            <?= $this->translation('Sales Return List'); ?></a>
                                     </li>
                                     <li><a href="<?= $this->basePath('/settings/subcategory') ?>">
-                                            <?= $auth->translate('New Sales Return'); ?></a>
+                                            <?= $this->translation('New Sales Return'); ?></a>
                                     </li>
                                 </ul>
                             </li>
-
+                            <li class="submenu">
+                                <a href="javascript:void(0);"><img src="<?= $this->basePath('img/icons/users1.svg') ?>"
+                                        alt="img"><span>
+                                        <?= $auth->translate('People'); ?></span> <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="<?= $this->basePath('/customers/list') ?>">
+                                            <?= $auth->translate('Customer List'); ?></a></li>
+                                    <!-- <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Customer </a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Supplier List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Supplier </a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">User List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add User</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Store List</a></li>
+                                    <li><a href="<?= $this->basePath('/settings/subcategory') ?>">Add Store</a></li> -->
+                                </ul>
+                            </li>
                             <li class="submenu">
                                 <a href="javascript:void(0);"><img
                                         src="<?= $this->basePath('img/icons/settings.svg') ?>" alt="img"><span>
-                                        <?= $auth->translate('Settings'); ?></span> <span class="menu-arrow"></span></a>
+                                        <?= $this->translation('Settings'); ?></span> <span
+                                        class="menu-arrow"></span></a>
                                 <ul>
                                     <li><a href="<?= $this->basePath('settings/edit') ?>">
-                                            <?= $auth->translate('General Settings'); ?></a></li>
+                                            <?= $this->translation('General Settings'); ?></a></li>
                                     <li><a href="<?= $this->basePath('settings/addcompanyinfo') ?>">
-                                            <?= $auth->translate('New company'); ?></a></li>
+                                            <?= $this->translation('New company'); ?></a></li>
                                     <li><a href="<?= $this->basePath('settings/invoice') ?>">
-                                            <?= $auth->translate('Invoice Settings'); ?></a></li>
-
+                                            <?= $this->translation('Invoice Settings'); ?></a>
+                                    </li>
+                                    <li><a href="<?= $this->basePath('settings/langue') ?>">
+                                            <?= $this->translation('Translate'); ?></a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>

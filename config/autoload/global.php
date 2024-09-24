@@ -59,7 +59,7 @@ return [
         ],
     ],
     
-       'controller_plugins' => [
+    'controller_plugins' => [
         'factories' => [
             'AuthPlugin' => Application\Controller\Plugin\Factory\AuthPluginFactory::class,
         ],
