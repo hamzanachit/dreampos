@@ -58,3 +58,9 @@ sensitive_info/
 
 # Ignore hidden system files
 Thumbs.db
+
+# Ignore global.php
+config/autoload/global.php
+
+# If you have a local.php, add it too
+config/autoload/local.php
