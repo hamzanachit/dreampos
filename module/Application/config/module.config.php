@@ -348,6 +348,20 @@ return [
                     ],
                 ],
             ],
+
+             'customersActions' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route' => '/customers[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => Controller\CustomersController::class,
+                    ],
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ],
+                ],
+            ],
         ],
     ],
 

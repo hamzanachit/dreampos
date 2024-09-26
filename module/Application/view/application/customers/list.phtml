@@ -2,12 +2,13 @@
     <input type="text" id="basePath" style="display:none;" value="<?= $this->basePath() ?>">
     <div class="page-header">
         <div class="page-title">
-            <h4>Customers List</h4>
-            <h6>Manage your Customers</h6>
+            <h4><?= $this->translation('Customers List'); ?></h4>
+            <h6><?= $this->translation('Manage your Customers'); ?></h6>
         </div>
         <div class="page-btn">
             <a id="addCustomer" class="btn btn-added">
-                <img src="<?= $this->basePath('img/icons/plus.svg') ?>" alt="img" class="me-1">Add Customer</a>
+                <img src="<?= $this->basePath('img/icons/plus.svg') ?>" alt="img"
+                    class="me-1"><?= $this->translation('Add Customer'); ?></a>
         </div>
     </div>
 
@@ -53,13 +54,13 @@
                             <span class="checkmarks"></span>
                         </label>
                     </th>
-                    <th>Customer Name</th>
+                    <th><?= $this->translation('Customer Name'); ?></th>
                     <!-- <th>code</th> -->
                     <!-- <th>Customer</th> -->
-                    <th>Phone</th>
-                    <th>email</th>
-                    <th>Address</th>
-                    <th>Action</th>
+                    <th><?= $this->translation('Phone'); ?></th>
+                    <th><?= $this->translation('email'); ?></th>
+                    <th><?= $this->translation('Address'); ?></th>
+                    <th><?= $this->translation('Action'); ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -96,17 +97,13 @@
                     </td>
 
                     <td>
-                        <a class="editbtn" data-item-id="<?= $row->getId() ?>"
-                            data-item-name="<?= htmlspecialchars($row->getName()) ?>"
-                            data-item-email="<?= htmlspecialchars($row->getEmail()) ?>"
-                            data-item-phone="<?= htmlspecialchars($row->getPhone()) ?>"
-                            data-item-ice="<?= htmlspecialchars($row->getICE()) ?>"
-                            data-item-address="<?= htmlspecialchars($row->getAddress()) ?>"
-                            data-item-bank="<?= htmlspecialchars($row->getBank()) ?>"
-                            data-item-note="<?= htmlspecialchars($row->getNote()) ?>"
-                            data-item-customercode="<?= htmlspecialchars($row->getCustomercode()) ?>"
-                            data-item-bankname="<?= htmlspecialchars($row->getBankname()) ?>"
-                            data-item-maxamount="<?= htmlspecialchars($row->getMaxPurchaseAmount()) ?>">
+                        <a class="editbtn" data-item-id="<?= $row->getId() ?>" data-item-name="<?=  $row->getName() ?>"
+                            data-item-email="<?= $row->getEmail()?>" data-item-phone="<?= $row->getPhone()?>"
+                            data-item-ice="<?= $row->getICE()?>" data-item-address="<?= $row->getAddress()?>"
+                            data-item-bank="<?= $row->getBank() ?>" data-item-note="<?= $row->getNote() ?>"
+                            data-item-customercode="<?= $row->getCustomercode() ?>"
+                            data-item-bankname="<?= $row->getBankname() ?>"
+                            data-item-maxamount="<?= $row->getMaxPurchaseAmount() ?>">
                             <img src="<?= $this->basePath('img/icons/edit.svg') ?>" alt="Edit">
                         </a>
 
@@ -147,7 +144,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add New Customer</h5>
+                <h5 class="modal-title"><?= $this->translation('Add New Customer'); ?></h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">×</span></button>
             </div>
@@ -157,68 +154,73 @@
 
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>Name</label>
+                                <label><?= $this->translation('Name'); ?></label>
                                 <div class="input-group">
-                                    <input type="text" name="Name" required id="Name" placeholder="Customer Name"
-                                        class="form-control">
+                                    <input type="text" name="Name" required id="Name"
+                                        placeholder="<?= $this->translation('Customer Name'); ?>" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>email</label>
-                                <input type="text" name="email" id="email" placeholder="Customer Email">
+                                <label><?= $this->translation('email'); ?></label>
+                                <input type="text" name="email" id="email"
+                                    placeholder="<?= $this->translation('Customer Email'); ?>">
                             </div>
                         </div>
 
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>phone</label>
+                                <label><?= $this->translation('phone'); ?></label>
                                 <div class="input-group">
-                                    <input type="text" name="phone" required id="phone" placeholder="Customer Phone"
-                                        class="form-control">
+                                    <input type="text" name="phone" required id="phone"
+                                        placeholder="<?= $this->translation('Customer Phone'); ?>" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>address</label>
-                                <input type="text" name="address" required id="address" placeholder="Customer Address">
+                                <label><?= $this->translation('address'); ?></label>
+                                <input type="text" name="address" required id="address"
+                                    placeholder="<?= $this->translation('Customer Address'); ?>">
                             </div>
                         </div>
 
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>ICE</label>
+                                <label><?= $this->translation('ICE'); ?></label>
                                 <div class="input-group">
-                                    <input type="text" name="ICE" id="ICE" placeholder="Customer ICE"
-                                        class="form-control">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-12 col-12">
-                            <div class="form-group">
-                                <label>Bank Account</label>
-                                <input type="text" name="Bank" id="Bank" placeholder="Customer Bank Account">
-                            </div>
-                        </div>
-
-
-                        <div class="col-lg-6 col-sm-12 col-12">
-                            <div class="form-group">
-                                <label>Bank Name</label>
-                                <div class="input-group">
-                                    <input type="text" name="bankname" id="bankname" placeholder="Customer Bank Name"
-                                        class="form-control">
+                                    <input type="text" name="ICE" id="ICE"
+                                        placeholder="<?= $this->translation('ICE'); ?>" class="form-control">
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>Customer Code</label>
-                                <input type="text" name="Bank" id="Bank" placeholder="Customer Code">
+                                <label><?= $this->translation('Bank Account'); ?></label>
+                                <input type="text" name="Bank" id="Bank"
+                                    placeholder="<?= $this->translation('Customer Bank Account'); ?>">
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label><?= $this->translation('Bank Name'); ?></label>
+                                <div class="input-group">
+                                    <input type="text" name="bankname" id="bankname"
+                                        placeholder="<?= $this->translation('Customer Bank Name'); ?>"
+                                        class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label><?= $this->translation('Customer Code'); ?></label>
+                                <input type="text" name="customercode" id="customercod"
+                                    placeholder="<?= $this->translation('Customer Code'); ?>">
                             </div>
                         </div>
 
@@ -226,9 +228,10 @@
 
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>Max Amount</label>
+                                <label><?= $this->translation('Max Amount'); ?></label>
                                 <div class="input-group">
-                                    <input type="text" name="maxamount" id="maxamount" placeholder="Max Purchase Amount"
+                                    <input type="text" name="maxamount" id="maxamount"
+                                        placeholder="<?= $this->translation('Max Purchase Amount'); ?>"
                                         class="form-control">
                                 </div>
                             </div>
@@ -239,15 +242,17 @@
 
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Note</label>
-                                <textarea class="form-control" name="Note" id="Note" placeholder="Note"></textarea>
+                                <label><?= $this->translation('Note'); ?></label>
+                                <textarea class="form-control" name="Note" id="Note"
+                                    placeholder="<?= $this->translation(''); ?>Note"></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" id="addbtn" class="btn btn-submit">Submit</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" id="addbtn" class="btn btn-submit"><?= $this->translation('save'); ?></button>
+                    <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal"><?= $this->translation('Close'); ?></button>
                 </div>
             </form>
         </div>
@@ -261,7 +266,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editCustomerModalLabel">Edit Customer</h5>
+                <h5 class="modal-title" id="editCustomerModalLabel"><?= $this->translation('Edit Customer'); ?></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="editCustomerForm">
@@ -270,43 +275,44 @@
                     <div class="row">
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="name" id="editName" placeholder="Customer Name"
-                                    class="form-control">
+                                <label><?= $this->translation('Name'); ?></label>
+                                <input type="text" name="name" id="editName"
+                                    placeholder="<?= $this->translation('Customer Name'); ?>" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" name="email" id="editEmail" placeholder="Customer Email"
-                                    class="form-control">
+                                <label><?= $this->translation('Email'); ?></label>
+                                <input type="text" name="email" id="editEmail"
+                                    placeholder="<?= $this->translation('Customer Email'); ?>" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>Phone</label>
-                                <input type="text" name="phone" id="editPhone" placeholder="Customer Phone"
-                                    class="form-control">
+                                <label><?= $this->translation('Phone'); ?></label>
+                                <input type="text" name="phone" id="editPhone"
+                                    placeholder="<?= $this->translation('Customer Phone'); ?>" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>Address</label>
-                                <input type="text" name="address" id="editAddress" placeholder="Customer Address"
-                                    class="form-control">
+                                <label><?= $this->translation('Address'); ?></label>
+                                <input type="text" name="address" id="editAddress"
+                                    placeholder="<?= $this->translation('Customer Address'); ?>" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>ICE</label>
-                                <input type="text" name="ICE" id="editICE" placeholder="Customer ICE"
-                                    class="form-control">
+                                <label><?= $this->translation('ICE'); ?></label>
+                                <input type="text" name="ICE" id="editICE"
+                                    placeholder="<?= $this->translation('ICE'); ?>" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>Bank Account</label>
-                                <input type="text" name="Bank" id="editBank" placeholder="Customer Bank Account"
+                                <label><?= $this->translation('Bank Account'); ?></label>
+                                <input type="text" name="Bank" id="editBank"
+                                    placeholder="<?= $this->translation('Customer Bank Account'); ?>"
                                     class="form-control">
                             </div>
                         </div>
@@ -315,19 +321,20 @@
 
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>Bank Name</label>
+                                <label><?= $this->translation('Bank Name'); ?></label>
                                 <div class="input-group">
                                     <input type="text" name="bankname" id="editbankname"
-                                        placeholder="Customer Bank Name" class="form-control">
+                                        placeholder="<?= $this->translation('Customer Bank Name'); ?>"
+                                        class="form-control">
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>Customer Code</label>
+                                <label><?= $this->translation('Customer Code'); ?></label>
                                 <input type="text" name="customercode" id="editcustomercode"
-                                    placeholder="Customer Code">
+                                    placeholder="<?= $this->translation('Customer Code'); ?>">
                             </div>
                         </div>
 
@@ -335,25 +342,29 @@
 
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label>Max Amount</label>
+                                <label><?= $this->translation('Max Amount'); ?></label>
                                 <div class="input-group">
                                     <input type="text" name="maxamount" id="editmaxamount"
-                                        placeholder="Max Purchase Amount" class="form-control">
+                                        placeholder="<?= $this->translation('Max Purchase Amount'); ?>"
+                                        class="form-control">
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Note</label>
-                                <textarea class="form-control" name="Note" id="editNote" placeholder="Note"></textarea>
+                                <label><?= $this->translation('Note'); ?></label>
+                                <textarea class="form-control" name="Note" id="editNote"
+                                    placeholder="<?= $this->translation('Note'); ?>"></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" id="editSubmitBtn" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" id="editSubmitBtn"
+                        class="btn btn-primary"><?= $this->translation('save'); ?></button>
+                    <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal"><?= $this->translation('Close'); ?></button>
                 </div>
             </form>
         </div>
@@ -367,7 +378,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Delete Customer</h5>
+                <h5 class="modal-title"><?= $this->translation('Delete Customer'); ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -377,8 +388,9 @@
             <div class="modal-body">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary cancelbtn" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary">Confirme</button>
+                <button type="button" class="btn btn-secondary cancelbtn"
+                    data-dismiss="modal"><?= $this->translation('Cancel'); ?></button>
+                <button type="submit" class="btn btn-primary"><?= $this->translation('Confirm'); ?></button>
             </div>
             </form>
         </div>
