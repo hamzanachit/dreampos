@@ -37,8 +37,7 @@ class CustomersController extends AbstractActionController
     public function addAction(){
      ob_start();
 
-        // Check if the request is a POST request
-        if ($this->getRequest()->isPost()) {
+         if ($this->getRequest()->isPost()) {
             try {
                 // Clean output buffer to prevent any previous output from interfering
                 ob_end_clean();
