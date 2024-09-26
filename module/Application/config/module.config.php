@@ -397,7 +397,7 @@ return [
             'flashMessenger' => 'FlashMessenger',
         ],
         'factories' => [
-            Controller\Plugin\AuthPlugin::class => Controller\Plugin\AuthPluginFactory::class,
+            Controller\Plugin\AuthPlugin::class => Controller\Plugin\Factory\AuthPluginFactory::class,
             'FlashMessenger' => \Laminas\Mvc\Controller\Plugin\FlashMessengerFactory::class,
              'MvcTranslator' => Laminas\I18n\Translator\TranslatorServiceFactory::class,
 
