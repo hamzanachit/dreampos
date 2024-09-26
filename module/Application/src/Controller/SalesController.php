@@ -30,6 +30,8 @@ class SalesController extends AbstractActionController{
             'orders' => $orders,
             'currency' => $currency,
         ]);
+         $viewModel->setTemplate('application/Sales/list');
+        return $viewModel;
 
     }
 
