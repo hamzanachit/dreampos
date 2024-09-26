@@ -1,8 +1,60 @@
-# .vagrant/
-# vendor/
-# config/development.config.php
-# data/cache/*
-# !data/cache/.gitkeep
-# phpunit.xml
-# .phpunit.result.cache
-# .github
+
+# Ignore configuration files
+global.php
+local.php
+
+# If you have specific config folders for different environments
+config/autoload/global.php
+config/autoload/local.php
+
+# Example of ignoring environment-specific configs
+.env
+.env.local
+.env.*
+.env.development.local
+.env.production.local
+
+# Ignore backup and log files
+*.bak
+*.log
+*.tmp
+*.swp
+
+# Ignore system files
+Thumbs.db
+.DS_Store
+
+
+# Ignore image files
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.svg
+*.ico
+
+# Ignore personal data files (example formats)
+*.csv
+*.json
+*.xml
+*.txt
+*.xls
+*.xlsx
+*.doc
+*.docx
+
+# Ignore any personal data folder (if you have specific directories)
+personal_data/
+sensitive_info/
+
+# Optional: Ignore backups, logs, and temp files
+*.bak
+*.log
+*.tmp
+*.swp
+.DS_Store
+
+# Ignore hidden system files
+Thumbs.db
